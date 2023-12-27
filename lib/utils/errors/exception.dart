@@ -1,5 +1,5 @@
-import 'package:flutter_app_empty_template/utils/errors/error.dart';
-import 'package:flutter_app_empty_template/utils/logger.dart';
+import 'package:fan2dev/utils/errors/error.dart';
+import 'package:fan2dev/utils/logger.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'exception.freezed.dart';

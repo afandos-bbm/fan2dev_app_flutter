@@ -3,10 +3,10 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app_empty_template/core/locator/locator.dart';
+import 'package:fan2dev/core/locator/locator.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:flutter_app_empty_template/utils/extensions/string_extensions.dart';
-import 'package:flutter_app_empty_template/utils/logger.dart';
+import 'package:fan2dev/utils/extensions/string_extensions.dart';
+import 'package:fan2dev/utils/logger.dart';
 
 /// Listens to all bloc and cubit instances and logs all transitions and errors.
 class AppBlocObserver extends BlocObserver {

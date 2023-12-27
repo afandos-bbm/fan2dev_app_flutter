@@ -1,6 +1,6 @@
-import 'package:flutter_app_empty_template/bootstrap.dart';
-import 'package:flutter_app_empty_template/core/configuration_service/configuration_service.dart';
-import 'package:flutter_app_empty_template/features/app/app.dart';
+import 'package:fan2dev/bootstrap.dart';
+import 'package:fan2dev/core/configuration_service/configuration_service.dart';
+import 'package:fan2dev/features/app/app.dart';
 
 void main() {
   /// Initializes the configuration service with the development flavor

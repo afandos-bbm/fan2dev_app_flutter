@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_empty_template/core/locator/locator.dart';
-import 'package:flutter_app_empty_template/core/shared_preferences_service/shared_preferences_service.dart';
-import 'package:flutter_app_empty_template/utils/theme/themes.dart';
+import 'package:fan2dev/core/locator/locator.dart';
+import 'package:fan2dev/core/shared_preferences_service/shared_preferences_service.dart';
+import 'package:fan2dev/utils/theme/themes.dart';
 
 /// Utility service which interacts with ThemeMode
 ///

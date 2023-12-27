@@ -1,8 +1,8 @@
-name: flutter_app_empty_template
+name: fan2dev
 description: "Flutter App Empty Template for Android, iOS, Web and Windows. This template is a starting point for a Flutter application."
 publish_to: "none"
 
-version: 0.0.1
+version: 0.0.1+1
 
 environment:
   sdk: ">=3.2.0 <4.0.0"
