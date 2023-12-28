@@ -46,12 +46,14 @@ final router = GoRouter(
         GoRoute(
           path: '/blog',
           parentNavigatorKey: _shellNavigatorKey,
-          builder: (context, state) => Container(
-            color: Colors.red,
-            child: Center(
-              child: Text(
-                'Blog',
-                style: Theme.of(context).textTheme.headlineMedium,
+          pageBuilder: (context, state) => NoTransitionPage(
+            child: Container(
+              color: Colors.red,
+              child: Center(
+                child: Text(
+                  'Blog',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
               ),
             ),
           ),
@@ -59,12 +61,14 @@ final router = GoRouter(
         GoRoute(
           path: '/projects',
           parentNavigatorKey: _shellNavigatorKey,
-          builder: (context, state) => Container(
-            color: Colors.blue,
-            child: Center(
-              child: Text(
-                'Projects',
-                style: Theme.of(context).textTheme.headlineMedium,
+          pageBuilder: (context, state) => NoTransitionPage(
+            child: Container(
+              color: Colors.blue,
+              child: Center(
+                child: Text(
+                  'Projects',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
               ),
             ),
           ),
@@ -72,12 +76,14 @@ final router = GoRouter(
         GoRoute(
           path: '/about',
           parentNavigatorKey: _shellNavigatorKey,
-          builder: (context, state) => Container(
-            color: Colors.green,
-            child: Center(
-              child: Text(
-                'About',
-                style: Theme.of(context).textTheme.headlineMedium,
+          pageBuilder: (context, state) => NoTransitionPage(
+            child: Container(
+              color: Colors.green,
+              child: Center(
+                child: Text(
+                  'About',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
               ),
             ),
           ),
@@ -85,12 +91,14 @@ final router = GoRouter(
         GoRoute(
           path: '/contact',
           parentNavigatorKey: _shellNavigatorKey,
-          builder: (context, state) => Container(
-            color: Colors.yellow,
-            child: Center(
-              child: Text(
-                'Contact',
-                style: Theme.of(context).textTheme.headlineMedium,
+          pageBuilder: (context, state) => NoTransitionPage(
+            child: Container(
+              color: Colors.yellow,
+              child: Center(
+                child: Text(
+                  'Contact',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
               ),
             ),
           ),
