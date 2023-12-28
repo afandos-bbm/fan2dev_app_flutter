@@ -1,5 +1,5 @@
 {
-    "@@locale": "en",
+    "@@locale": "es",
     "appName": "fan2dev",
     "@appName": {
         "description": "App name"
@@ -36,11 +36,11 @@
     "@menu_contact": {
         "description": "Contact"
     },
-    "contact_title": "Send me your message!",
+    "contact_title": "Envíame tu mensaje.",
     "@contact_title": {
         "description": "Contact Title Placeholder"
     },
-    "contact_subtitle": "Hello! If you have questions, proposals, or just want to share your ideas, I'm ready to listen. Fill out the form below. Looking forward to your message! 📬",
+    "contact_subtitle": "¡Hola! Si tienes preguntas, propuestas o simplemente quieres compartir tus ideas, estoy listo para escucharte. Completa el formulario a continuación. ¡Espero tu mensaje con interés! 📬",
     "@contact_subtitle": {
         "description": "Contact Subtitle Placeholder"
     },
