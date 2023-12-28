@@ -2,6 +2,10 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:fan2dev/firebase_options.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -80,6 +84,22 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   /// Initializes the service locator.
   await initGetIt();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  if (kIsWeb) {
+    FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
+  }
+
+  FirebaseAuth.instance.authStateChanges().listen((User? user) {
+    if (user == null) {
+      print('User is currently signed out!');
+    } else {
+      print('User is signed in!');
+    }
+  });
 
   /// Initializes the URL strategy for the web.
   usePathUrlStrategy();

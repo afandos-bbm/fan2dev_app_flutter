@@ -30,7 +30,7 @@ if (keystorePropertiesFile.exists()) {
 
 
 android {
-    namespace "com.example.flutter_app_empty_template"
+    namespace "me.fan2dev.app"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 

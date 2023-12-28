@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "901872844965",
+    "project_id": "fan2dev-personal-app",
+    "storage_bucket": "fan2dev-personal-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901872844965:android:26ec4b71bf6ccbc13d8d4c",
+        "android_client_info": {
+          "package_name": "com.example.flutter_app_empty_template"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCllNC1pLhX6e8jUpX5uVQmO8Lw3fp8IuM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
