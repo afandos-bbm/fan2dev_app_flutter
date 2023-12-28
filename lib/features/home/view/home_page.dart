@@ -1,64 +1,169 @@
-import 'package:fan2dev/utils/logger.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
+import 'package:fan2dev/features/home/cubit/home_page_cubit.dart';
 import 'package:fan2dev/l10n/l10n.dart';
+import 'package:fan2dev/utils/const.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required this.child});
+
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
-    return _HomePageView();
+    return BlocProvider(
+      create: (context) => HomePageCubit(),
+      child: _HomePageView(child: child),
+    );
   }
 }
 
 class _HomePageView extends StatelessWidget {
-  _HomePageView();
+  const _HomePageView({required this.child});
 
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(context.l10n.appName),
-      ),
-      body: Form(
-          child: Column(
+      backgroundColor: Colors.black,
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          TextFormField(
-            controller: _emailController,
-            decoration: const InputDecoration(
-              labelText: "Email",
-            ),
-          ),
-          TextFormField(
-            controller: _passwordController,
-            decoration: const InputDecoration(
-              labelText: "Password",
-            ),
-            obscureText: true,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              final String email = _emailController.text;
-              final String password = _passwordController.text;
-
-              FirebaseAuth.instance
-                  .signInWithEmailAndPassword(email: email, password: password)
-                  .then((value) {
-                l(value.toString(), name: '🆕 onCreate - FirebaseAuth');
-              }).catchError((error) {
-                l(error.toString(), name: '❌ onError - FirebaseAuth');
-              });
-            },
-            child: const Text(
-              "Login",
+          const SizedBox(height: 70),
+          SizedBox(
+              height: 50,
+              child: Row(
+                children: [
+                  const SizedBox(width: 10),
+                  InkWell(
+                    onTap: () {
+                      context.push('/log-in');
+                    },
+                    child: CircleAvatar(
+                      radius: 18,
+                      backgroundColor: Colors.white,
+                      child: Padding(
+                        padding: const EdgeInsets.all(2),
+                        child: Image.asset(
+                          kLogoPath,
+                          width: 30,
+                          height: 30,
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TextButton(
+                          child: Text(
+                            context.l10n.menu_blog,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  context.watch<HomePageCubit>().state.index ==
+                                          0
+                                      ? Colors.white
+                                      : Colors.grey,
+                            ),
+                          ),
+                          onPressed: () {
+                            context.read<HomePageCubit>().changeBottomNavBar(0);
+                            context.go('/blog');
+                          },
+                        ),
+                        TextButton(
+                          child: Text(
+                            context.l10n.menu_projects,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  context.watch<HomePageCubit>().state.index ==
+                                          1
+                                      ? Colors.white
+                                      : Colors.grey,
+                            ),
+                          ),
+                          onPressed: () {
+                            context.read<HomePageCubit>().changeBottomNavBar(1);
+                            context.go('/projects');
+                          },
+                        ),
+                        TextButton(
+                          child: Text(
+                            context.l10n.menu_about,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  context.watch<HomePageCubit>().state.index ==
+                                          2
+                                      ? Colors.white
+                                      : Colors.grey,
+                            ),
+                          ),
+                          onPressed: () {
+                            context.read<HomePageCubit>().changeBottomNavBar(2);
+                            context.go('/about');
+                          },
+                        ),
+                        TextButton(
+                          child: Text(
+                            context.l10n.menu_contact,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  context.watch<HomePageCubit>().state.index ==
+                                          3
+                                      ? Colors.white
+                                      : Colors.grey,
+                            ),
+                          ),
+                          onPressed: () {
+                            context.read<HomePageCubit>().changeBottomNavBar(3);
+                            context.go('/contact');
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 30),
+                ],
+              )),
+          const SizedBox(height: 5),
+          Flexible(
+            child: Card(
+              margin: const EdgeInsets.all(0),
+              shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
+              ),
+              child: ClipRRect(
+                borderRadius: const BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
+                child: Expanded(
+                  child: BlocBuilder<HomePageCubit, HomePageState>(
+                    builder: (context, state) {
+                      return child;
+                    },
+                  ),
+                ),
+              ),
             ),
           ),
         ],
-      )),
+      ),
     );
   }
 }

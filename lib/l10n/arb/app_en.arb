@@ -7,5 +7,33 @@
     "error_generic": "An error occurred",
     "@error_generic": {
         "description": "Generic error message"
+    },
+    "footer_text": "fan2dev. All rights reserved.",
+    "@footer_text": {
+        "description": "Footer text"
+    },
+    "login_email": "Email",
+    "@login_email": {
+        "description": "Email"
+    },
+    "login_password": "Password",
+    "@login_password": {
+        "description": "Password"
+    },
+    "menu_blog": "Blog",
+    "@menu_blog": {
+        "description": "Blog"
+    },
+    "menu_projects": "Projects",
+    "@menu_projects": {
+        "description": "Projects"
+    },
+    "menu_about": "About",
+    "@menu_about": {
+        "description": "About"
+    },
+    "menu_contact": "Contact",
+    "@menu_contact": {
+        "description": "Contact"
     }
 }

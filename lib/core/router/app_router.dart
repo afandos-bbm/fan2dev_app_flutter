@@ -1,3 +1,6 @@
+import 'package:fan2dev/features/auth/view/login_page.dart';
+import 'package:fan2dev/features/backoffice/view/backoffice_home_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fan2dev/features/home/view/home_page.dart';
 import 'package:go_router/go_router.dart';
@@ -25,20 +28,102 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>();
 ///
 final router = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/',
+  initialLocation: '/blog',
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
-      pageBuilder: (context, state, child) => const NoTransitionPage(
-        child: HomePage(),
+      pageBuilder: (context, state, child) => NoTransitionPage(
+        child: HomePage(
+          child: child,
+        ),
       ),
       routes: [
         GoRoute(
           path: '/',
-          builder: (context, state) => const HomePage(),
+          parentNavigatorKey: _shellNavigatorKey,
+          redirect: (context, state) => '/blog',
         ),
-        // TODO: Add your routes here
+        GoRoute(
+          path: '/blog',
+          parentNavigatorKey: _shellNavigatorKey,
+          builder: (context, state) => Container(
+            color: Colors.red,
+            child: Center(
+              child: Text(
+                'Blog',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ),
+          ),
+        ),
+        GoRoute(
+          path: '/projects',
+          parentNavigatorKey: _shellNavigatorKey,
+          builder: (context, state) => Container(
+            color: Colors.blue,
+            child: Center(
+              child: Text(
+                'Projects',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ),
+          ),
+        ),
+        GoRoute(
+          path: '/about',
+          parentNavigatorKey: _shellNavigatorKey,
+          builder: (context, state) => Container(
+            color: Colors.green,
+            child: Center(
+              child: Text(
+                'About',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ),
+          ),
+        ),
+        GoRoute(
+          path: '/contact',
+          parentNavigatorKey: _shellNavigatorKey,
+          builder: (context, state) => Container(
+            color: Colors.yellow,
+            child: Center(
+              child: Text(
+                'Contact',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ),
+          ),
+        ),
       ],
+    ),
+    GoRoute(
+      path: '/log-in',
+      parentNavigatorKey: _rootNavigatorKey,
+      redirect: (context, state) {
+        final FirebaseAuth auth = FirebaseAuth.instance;
+
+        if (auth.currentUser != null) {
+          return '/backoffice';
+        } else {
+          return null;
+        }
+      },
+      builder: (context, state) => const LoginPage(),
+    ),
+    GoRoute(
+      path: '/backoffice',
+      parentNavigatorKey: _rootNavigatorKey,
+      redirect: (context, state) {
+        final FirebaseAuth auth = FirebaseAuth.instance;
+
+        if (auth.currentUser == null) {
+          return '/log-in';
+        } else {
+          return null;
+        }
+      },
+      builder: (context, state) => const BackofficeHomePage(),
     ),
   ],
 );

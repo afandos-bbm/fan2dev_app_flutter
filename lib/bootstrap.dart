@@ -64,7 +64,6 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   /// Shows a custom error widget instead of the default Flutter error widget.
   ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
-    // TODO: Implement a custom error widget
     return Container(
       color: Colors.red,
       child: const Center(
@@ -92,14 +91,6 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   if (kIsWeb) {
     FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
   }
-
-  FirebaseAuth.instance.authStateChanges().listen((User? user) {
-    if (user == null) {
-      print('User is currently signed out!');
-    } else {
-      print('User is signed in!');
-    }
-  });
 
   /// Initializes the URL strategy for the web.
   usePathUrlStrategy();
