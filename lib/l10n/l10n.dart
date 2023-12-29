@@ -38,4 +38,17 @@ extension AppLocalizationsX on BuildContext {
             return l10n.settings_theme_system;
         }
       };
+
+  String Function(String key) get translatedLanguage => (key) {
+        switch (key) {
+          case "es":
+            return l10n.settings_language_es;
+          case "va":
+            return l10n.settings_language_va;
+          case "en":
+            return l10n.settings_language_en;
+          default:
+            return "";
+        }
+      };
 }

@@ -88,6 +88,18 @@
     "@settings_language": {
         "description": "Settings Language Placeholder"
     },
+    "settings_language_en": "English",
+    "@settings_language_en": {
+        "description": "Settings Language English Placeholder"
+    },
+    "settings_language_es": "Spanish",
+    "@settings_language_es": {
+        "description": "Settings Language Spanish Placeholder"
+    },
+    "settings_language_va": "Valencian",
+    "@settings_language_va": {
+        "description": "Settings Language Valencian Placeholder"
+    },
     "settings_theme": "Theme",
     "@settings_theme": {
         "description": "Settings Theme Placeholder"

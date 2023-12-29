@@ -1,9 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/features/contact/data/data_sources/firestore_form_submissions_remote_data_source.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/const.dart';
-import 'package:fan2dev/utils/widgets/footer_f2d_widget.dart';
 import 'package:fan2dev/utils/widgets/responsive_widget.dart';
 import 'package:flutter/material.dart';
 

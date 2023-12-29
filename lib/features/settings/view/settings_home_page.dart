@@ -1,7 +1,9 @@
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/core/theme_service/theme_service.dart';
+import 'package:fan2dev/features/language/cubit/language_cubit.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class SettingsHomePage extends StatelessWidget {
@@ -29,7 +31,9 @@ class SettingsHomePage extends StatelessWidget {
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Text(context.l10n.appName,
+                              Text(
+                                  context.translatedLanguage(
+                                      context.watch<LanguageCubit>().locale),
                                   style: TextStyle(
                                       color: Colors.grey[600], fontSize: 16)),
                               const Icon(Icons.arrow_forward_ios),
@@ -37,8 +41,7 @@ class SettingsHomePage extends StatelessWidget {
                           ),
                           leading: const Icon(Icons.language),
                           onTap: () {
-                            Navigator.of(context)
-                                .pushNamed('/settings/language');
+                            context.push('/settings/language');
                           },
                         ),
                         ListTile(

@@ -109,6 +109,14 @@ final ThemeData _darkTheme = ThemeData(
       foregroundColor: Colors.white,
     ),
   ),
+  cardTheme: CardTheme(
+    elevation: 2,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(20)),
+    ),
+    color: Colors.grey[900],
+    surfaceTintColor: Colors.grey[900],
+  ),
 );
 
 extension ContextThemeExtension on BuildContext {

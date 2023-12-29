@@ -3,10 +3,14 @@
         "backoffice",
         "cupertino",
         "genhtml",
-        "lcov"
+        "lcov",
+        "spanish",
+        "valencian",
+        "Valencian"
     ],
     "files.exclude": {
         "**/*.freezed.dart": true,
         "**/*.g.dart": true
-    }
+    },
+    "svg.preview.background": "custom"
 }
