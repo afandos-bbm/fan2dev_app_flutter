@@ -172,7 +172,7 @@ class _HomePageView extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(width: 30),
+                  const SizedBox(width: 10),
                 ],
               )),
           const SizedBox(height: 5),
