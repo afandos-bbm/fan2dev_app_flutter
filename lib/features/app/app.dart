@@ -1,3 +1,5 @@
+import 'package:fan2dev/core/locator/locator.dart';
+import 'package:fan2dev/utils/theme/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:fan2dev/core/provider_store/provider_store.dart';
 import 'package:fan2dev/core/router/app_router.dart';
@@ -20,8 +22,9 @@ class App extends StatelessWidget {
 
       /// Initializes the app with the BlocProviderStore.
       child: BlocProviderStore.init(
-        child: Consumer<ThemeService>(
-          builder: (_, themeService, __) {
+        child: ListenableBuilder(
+          listenable: locator<ThemeService>(),
+          builder: (context, _) {
             return BlocBuilder<LanguageCubit, LanguageState>(
               builder: (context, state) {
                 final selectedLocale = Locale(state.selectedLanguage);
@@ -33,9 +36,9 @@ class App extends StatelessWidget {
                     LocaleNamesLocalizationsDelegate(),
                   ],
                   supportedLocales: AppLocalizations.supportedLocales,
-                  theme: themeService.themeData,
-                  darkTheme: themeService.themeData,
-                  themeMode: themeService.themeMode,
+                  theme: themes[CurrentTheme.light],
+                  darkTheme: themes[CurrentTheme.dark],
+                  themeMode: locator<ThemeService>().themeMode,
                   locale: selectedLocale,
                   routerConfig: router,
                 );

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:fan2dev/utils/errors/error.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -24,6 +25,17 @@ extension AppLocalizationsX on BuildContext {
         switch (key) {
           case ErrorCodes.generic:
             return l10n.error_generic;
+        }
+      };
+
+  String Function(ThemeMode key) get translatedThemeMode => (key) {
+        switch (key) {
+          case ThemeMode.light:
+            return l10n.settings_theme_light;
+          case ThemeMode.dark:
+            return l10n.settings_theme_dark;
+          case ThemeMode.system:
+            return l10n.settings_theme_system;
         }
       };
 }

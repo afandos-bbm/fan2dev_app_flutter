@@ -1,7 +1,9 @@
+import 'package:fan2dev/utils/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/core/shared_preferences_service/shared_preferences_service.dart';
 import 'package:fan2dev/utils/theme/themes.dart';
+import 'package:flutter/scheduler.dart';
 
 /// Utility service which interacts with ThemeMode
 ///
@@ -20,7 +22,17 @@ class ThemeService extends ChangeNotifier {
   }
 
   ThemeMode _themeMode = ThemeMode.light;
-  ThemeMode get themeMode => _themeMode;
+  ThemeMode get themeMode {
+    if (_themeMode == ThemeMode.system) {
+      final brightness =
+          SchedulerBinding.instance.platformDispatcher.platformBrightness;
+      return brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light;
+    }
+
+    return _themeMode;
+  }
+
+  ThemeMode get realThemeMode => _themeMode;
 
   bool get isLightMode => _themeMode == ThemeMode.light;
   bool get isDarkMode => !isLightMode;
@@ -32,9 +44,8 @@ class ThemeService extends ChangeNotifier {
   /// and saves the new theme mode to shared preferences
   /// using [SharedPreferencesService]
   /// and notifies all the listeners.
-  void toggleTheme() {
-    _themeMode =
-        _themeMode == ThemeMode.light ? ThemeMode.dark : ThemeMode.light;
+  void changeThemeMode(ThemeMode themeMode) {
+    _themeMode = themeMode;
     _saveThemeMode();
     notifyListeners();
   }
@@ -48,6 +59,8 @@ class ThemeService extends ChangeNotifier {
         return ThemeMode.light;
       case 'ThemeMode.dark':
         return ThemeMode.dark;
+      case 'ThemeMode.system':
+        return ThemeMode.system;
       default:
         return ThemeMode.light;
     }

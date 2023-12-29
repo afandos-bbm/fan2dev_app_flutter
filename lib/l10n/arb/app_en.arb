@@ -79,5 +79,29 @@
     "contact_error_invalid_email": "Invalid email",
     "@contact_error_invalid_email": {
         "description": "Contact Error Invalid Email Placeholder"
+    },
+    "settings_title": "Settings",
+    "@settings_title": {
+        "description": "Settings Title Placeholder"
+    },
+    "settings_language": "Language",
+    "@settings_language": {
+        "description": "Settings Language Placeholder"
+    },
+    "settings_theme": "Theme",
+    "@settings_theme": {
+        "description": "Settings Theme Placeholder"
+    },
+    "settings_theme_light": "Light",
+    "@settings_theme_light": {
+        "description": "Settings Theme Light Placeholder"
+    },
+    "settings_theme_dark": "Dark",
+    "@settings_theme_dark": {
+        "description": "Settings Theme Dark Placeholder"
+    },
+    "settings_theme_system": "System",
+    "@settings_theme_system": {
+        "description": "Settings Theme System Placeholder"
     }
 }

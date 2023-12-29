@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// Enum that represents the available themes
-enum CurrentTheme { light, dark }
+enum CurrentTheme { light, dark, system }
 
 /// Class whose purpose is to centralize, init and inject common themes.
 final Map<CurrentTheme, ThemeData> themes = {
@@ -22,6 +22,18 @@ final ThemeData _lightTheme = ThemeData(
   colorScheme: const ColorScheme.light(
     primary: Colors.cyan,
     secondary: Colors.white,
+  ),
+  scaffoldBackgroundColor: Colors.grey[200],
+  appBarTheme: const AppBarTheme(
+    backgroundColor: Colors.cyan,
+    foregroundColor: Colors.white,
+    elevation: 0,
+    iconTheme: IconThemeData(color: Colors.white),
+    titleTextStyle: TextStyle(
+      color: Colors.white,
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+    ),
   ),
   inputDecorationTheme: const InputDecorationTheme(
     border: OutlineInputBorder(
@@ -51,6 +63,14 @@ final ThemeData _lightTheme = ThemeData(
       backgroundColor: Colors.cyan,
       foregroundColor: Colors.white,
     ),
+  ),
+  cardTheme: const CardTheme(
+    elevation: 2,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(20)),
+    ),
+    color: Colors.white,
+    surfaceTintColor: Colors.white,
   ),
 );
 

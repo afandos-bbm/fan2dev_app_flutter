@@ -2,6 +2,7 @@ import 'package:fan2dev/features/auth/view/login_page.dart';
 import 'package:fan2dev/features/backoffice/view/backoffice_home_page.dart';
 import 'package:fan2dev/features/contact/view/contact_home_page.dart';
 import 'package:fan2dev/features/settings/view/settings_home_page.dart';
+import 'package:fan2dev/features/settings/view/settings_theme_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fan2dev/features/home/view/home_page.dart';
@@ -117,6 +118,18 @@ final router = GoRouter(
       path: '/settings',
       parentNavigatorKey: _rootNavigatorKey,
       builder: (context, state) => const SettingsHomePage(),
+      routes: [
+        GoRoute(
+          path: 'language',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const SettingsThemePage(),
+        ),
+        GoRoute(
+          path: 'theme',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const SettingsThemePage(),
+        ),
+      ],
     ),
     GoRoute(
       path: '/backoffice',
