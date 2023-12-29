@@ -1,6 +1,9 @@
+import 'package:fan2dev/features/about/view/about_home_page.dart';
 import 'package:fan2dev/features/auth/view/login_page.dart';
 import 'package:fan2dev/features/backoffice/view/backoffice_home_page.dart';
+import 'package:fan2dev/features/blog/blog.dart';
 import 'package:fan2dev/features/contact/view/contact_home_page.dart';
+import 'package:fan2dev/features/projects/projects.dart';
 import 'package:fan2dev/features/settings/view/settings_home_page.dart';
 import 'package:fan2dev/features/settings/view/settings_language_page.dart';
 import 'package:fan2dev/features/settings/view/settings_theme_page.dart';
@@ -50,46 +53,22 @@ final router = GoRouter(
         GoRoute(
           path: '/blog',
           parentNavigatorKey: _shellNavigatorKey,
-          pageBuilder: (context, state) => NoTransitionPage(
-            child: Container(
-              color: Colors.red,
-              child: Center(
-                child: Text(
-                  'Blog',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ),
-            ),
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: BlogHomePage(),
           ),
         ),
         GoRoute(
           path: '/projects',
           parentNavigatorKey: _shellNavigatorKey,
-          pageBuilder: (context, state) => NoTransitionPage(
-            child: Container(
-              color: Colors.blue,
-              child: Center(
-                child: Text(
-                  'Projects',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ),
-            ),
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: ProjectsHomePage(),
           ),
         ),
         GoRoute(
           path: '/about',
           parentNavigatorKey: _shellNavigatorKey,
-          pageBuilder: (context, state) => NoTransitionPage(
-            child: Container(
-              color: Colors.green,
-              child: Center(
-                child: Text(
-                  'About',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ),
-            ),
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: AboutHomePage(),
           ),
         ),
         GoRoute(
