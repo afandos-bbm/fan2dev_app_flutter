@@ -2,6 +2,7 @@ import 'package:fan2dev/features/language/cubit/language_cubit.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/const.dart';
 import 'package:fan2dev/utils/theme/themes.dart';
+import 'package:fan2dev/utils/widgets/footer_f2d_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -73,6 +74,9 @@ class SettingsLanguagePage extends StatelessWidget {
               ),
             ),
           ),
+          const Spacer(),
+          const FooterF2DWidget(),
+          const SizedBox(height: 50),
         ],
       ),
     );

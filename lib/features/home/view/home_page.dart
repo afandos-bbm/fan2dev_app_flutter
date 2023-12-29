@@ -1,3 +1,5 @@
+import 'package:fan2dev/core/locator/locator.dart';
+import 'package:fan2dev/core/theme_service/theme_service.dart';
 import 'package:fan2dev/features/home/cubit/home_page_cubit.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/const.dart';
@@ -178,6 +180,9 @@ class _HomePageView extends StatelessWidget {
           const SizedBox(height: 5),
           Flexible(
             child: Card(
+              color: locator<ThemeService>().themeMode == ThemeMode.dark
+                  ? Colors.grey[900]
+                  : Colors.grey[200],
               margin: const EdgeInsets.all(0),
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(

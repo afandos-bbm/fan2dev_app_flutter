@@ -2,6 +2,7 @@ import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/core/theme_service/theme_service.dart';
 import 'package:fan2dev/features/language/cubit/language_cubit.dart';
 import 'package:fan2dev/l10n/l10n.dart';
+import 'package:fan2dev/utils/widgets/footer_f2d_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -66,6 +67,9 @@ class SettingsHomePage extends StatelessWidget {
                     ),
                   ),
                 ),
+                const Spacer(),
+                const FooterF2DWidget(),
+                const SizedBox(height: 50),
               ],
             ),
           );
