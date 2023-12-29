@@ -87,7 +87,7 @@ class _HomePageView extends StatelessWidget {
                                     context.go('/blog');
                                   },
                                 ),
-                                const SizedBox(width: 20),
+                                const SizedBox(width: 10),
                                 TextButton(
                                   child: Text(
                                     context.l10n.menu_projects,
@@ -110,7 +110,7 @@ class _HomePageView extends StatelessWidget {
                                     context.go('/projects');
                                   },
                                 ),
-                                const SizedBox(width: 20),
+                                const SizedBox(width: 10),
                                 TextButton(
                                   child: Text(
                                     context.l10n.menu_about,
@@ -133,7 +133,7 @@ class _HomePageView extends StatelessWidget {
                                     context.go('/about');
                                   },
                                 ),
-                                const SizedBox(width: 20),
+                                const SizedBox(width: 10),
                                 TextButton(
                                   child: Text(
                                     context.l10n.menu_contact,
