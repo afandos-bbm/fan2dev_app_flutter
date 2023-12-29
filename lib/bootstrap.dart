@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fan2dev/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -66,10 +67,20 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
     return Container(
       color: Colors.red,
-      child: const Center(
-        child: Text(
-          'An error has occurred.',
-          style: TextStyle(color: Colors.white),
+      child: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const Text(
+                'An error has occurred.',
+                style: TextStyle(color: Colors.white),
+              ),
+              Text(
+                errorDetails.exceptionAsString(),
+                style: const TextStyle(color: Colors.white),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -86,6 +97,9 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FirebaseFirestore.instance.settings = const Settings(
+    persistenceEnabled: true,
   );
 
   if (kIsWeb) {

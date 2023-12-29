@@ -34,6 +34,10 @@ final ThemeData _lightTheme = ThemeData(
     floatingLabelStyle: TextStyle(
       color: Colors.black,
     ),
+    errorStyle: TextStyle(
+      color: Colors.red,
+      fontSize: 12,
+    ),
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(

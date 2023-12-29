@@ -59,5 +59,25 @@
     "contact_send": "Send",
     "@contact_send": {
         "description": "Send"
+    },
+    "contact_success_title": "Thank you for your message!",
+    "@contact_success_title": {
+        "description": "Contact Success Title Placeholder"
+    },
+    "contact_success_subtitle": "I will reply to you as soon as possible.",
+    "@contact_success_subtitle": {
+        "description": "Contact Success Subtitle Placeholder"
+    },
+    "contact_success_button": "Back to the site",
+    "@contact_success_button": {
+        "description": "Contact Success Button Placeholder"
+    },
+    "contact_error_empty_message": "This field is empty",
+    "@contact_error_empty_message": {
+        "description": "Contact Error Empty Message Placeholder"
+    },
+    "contact_error_invalid_email": "Invalid email",
+    "@contact_error_invalid_email": {
+        "description": "Contact Error Invalid Email Placeholder"
     }
 }

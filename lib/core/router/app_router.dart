@@ -92,7 +92,7 @@ final router = GoRouter(
         GoRoute(
           path: '/contact',
           parentNavigatorKey: _shellNavigatorKey,
-          pageBuilder: (context, state) => const NoTransitionPage(
+          pageBuilder: (context, state) => NoTransitionPage(
             child: ContactHomePage(),
           ),
         ),
