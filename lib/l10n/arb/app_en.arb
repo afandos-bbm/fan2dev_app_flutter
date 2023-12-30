@@ -20,7 +20,7 @@
     "@login_password": {
         "description": "Password"
     },
-    "menu_blog": "Blog",
+    "menu_blog": "📰Blog",
     "@menu_blog": {
         "description": "Blog"
     },
