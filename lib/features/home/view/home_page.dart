@@ -2,12 +2,8 @@ import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/core/theme_service/theme_service.dart';
 import 'package:fan2dev/features/home/cubit/home_page_cubit.dart';
 import 'package:fan2dev/features/home/view/widgets/f2d_app_bar_widget.dart';
-import 'package:fan2dev/l10n/l10n.dart';
-import 'package:fan2dev/utils/const.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key, required this.child});

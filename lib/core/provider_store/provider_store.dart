@@ -10,7 +10,6 @@ class BlocProviderStore {
         BlocProvider(
           create: (_) => LanguageCubit()..loadLanguagePreference(),
         ),
-        // TODO: Add your providers here
       ],
       child: child,
     );

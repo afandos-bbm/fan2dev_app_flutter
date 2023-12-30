@@ -20,22 +20,21 @@ class ConfigurationService {
   ConfigurationService({
     required this.flavor,
   }) {
-    // TODO: Add the correct urls for each flavor
     switch (flavor) {
       case Flavor.development:
         _config = Configuration(
-          backUrl: 'https://backend.dev.example.com',
+          backUrl: 'https://backend.alejandrofan2.dev',
           appUrl: 'http://localhost:3000',
         );
       case Flavor.staging:
         _config = Configuration(
-          backUrl: 'https://backend.qa.example.com',
-          appUrl: 'https://frontend.qa.example.com',
+          backUrl: 'https://backend.alerfan2.dev',
+          appUrl: 'https://alejandrofan2.dev',
         );
       case Flavor.production:
         _config = Configuration(
-          backUrl: 'https://backend.qa.example.com',
-          appUrl: 'https://frontend.qa.example.com',
+          backUrl: 'https://backend.alerfan2.dev',
+          appUrl: 'https://alejandrofan2.dev',
         );
     }
   }

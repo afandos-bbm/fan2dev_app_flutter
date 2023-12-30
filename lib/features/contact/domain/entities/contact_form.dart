@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:fan2dev/utils/const.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'contact_form.g.dart';

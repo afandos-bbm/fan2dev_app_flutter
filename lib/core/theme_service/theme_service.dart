@@ -1,4 +1,3 @@
-import 'package:fan2dev/utils/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/core/shared_preferences_service/shared_preferences_service.dart';
