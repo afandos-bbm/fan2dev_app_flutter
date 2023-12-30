@@ -45,11 +45,11 @@ class SettingsLanguagePage extends StatelessWidget {
                       kValencianFlagPath,
                       width: 30,
                     ),
-                    trailing: context.watch<LanguageCubit>().locale == "va"
+                    trailing: context.watch<LanguageCubit>().locale == "ca"
                         ? checkIcon
                         : null,
                     onTap: () {
-                      context.read<LanguageCubit>().changeLanguage("va");
+                      context.read<LanguageCubit>().changeLanguage("ca");
                     },
                   ),
                   ListTile(

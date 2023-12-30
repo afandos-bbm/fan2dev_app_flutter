@@ -2,62 +2,118 @@
     "@@locale": "es",
     "appName": "fan2dev",
     "@appName": {
-        "description": "App name"
+        "description": "Nombre de la aplicación"
     },
-    "error_generic": "An error occurred",
+    "error_generic": "Se produjo un error",
     "@error_generic": {
-        "description": "Generic error message"
+        "description": "Mensaje de error genérico"
     },
-    "footer_text": "fan2dev. All rights reserved.",
+    "footer_text": "fan2dev. Todos los derechos reservados.",
     "@footer_text": {
-        "description": "Footer text"
+        "description": "Texto del pie de página"
     },
-    "login_email": "Email",
+    "login_email": "Correo electrónico",
     "@login_email": {
-        "description": "Email"
+        "description": "Correo electrónico"
     },
-    "login_password": "Password",
+    "login_password": "Contraseña",
     "@login_password": {
-        "description": "Password"
+        "description": "Contraseña"
     },
-    "menu_blog": "Blog",
+    "menu_blog": "📰Blog",
     "@menu_blog": {
         "description": "Blog"
     },
-    "menu_projects": "Projects",
+    "menu_projects": "Proyectos",
     "@menu_projects": {
-        "description": "Projects"
+        "description": "Proyectos"
     },
-    "menu_about": "About",
+    "menu_about": "Acerca de",
     "@menu_about": {
-        "description": "About"
+        "description": "Acerca de"
     },
-    "menu_contact": "Contact",
+    "menu_contact": "Contacto",
     "@menu_contact": {
-        "description": "Contact"
+        "description": "Contacto"
     },
-    "contact_title": "Envíame tu mensaje.",
+    "contact_title": "¡Envíame tu mensaje!",
     "@contact_title": {
-        "description": "Contact Title Placeholder"
+        "description": "Marcador de posición del título de contacto"
     },
-    "contact_subtitle": "¡Hola! Si tienes preguntas, propuestas o simplemente quieres compartir tus ideas, estoy listo para escucharte. Completa el formulario a continuación. ¡Espero tu mensaje con interés! 📬",
+    "contact_subtitle": "¡Hola! Si tienes preguntas, propuestas o simplemente quieres compartir tus ideas, estoy listo para escucharte. Completa el formulario a continuación. ¡Espero tu mensaje! 📬",
     "@contact_subtitle": {
-        "description": "Contact Subtitle Placeholder"
+        "description": "Marcador de posición del subtítulo de contacto"
     },
-    "contact_name": "Name",
+    "contact_name": "Nombre",
     "@contact_name": {
-        "description": "Name"
+        "description": "Nombre"
     },
-    "contact_email": "Email",
+    "contact_email": "Correo electrónico",
     "@contact_email": {
-        "description": "Email"
+        "description": "Correo electrónico"
     },
-    "contact_message": "Message",
+    "contact_message": "Mensaje",
     "@contact_message": {
-        "description": "Message"
+        "description": "Mensaje"
     },
-    "contact_send": "Send",
+    "contact_send": "Enviar",
     "@contact_send": {
-        "description": "Send"
+        "description": "Enviar"
+    },
+    "contact_success_title": "¡Gracias por tu mensaje!",
+    "@contact_success_title": {
+        "description": "Marcador de posición del título de éxito de contacto"
+    },
+    "contact_success_subtitle": "Te responderé tan pronto como sea posible.",
+    "@contact_success_subtitle": {
+        "description": "Marcador de posición del subtítulo de éxito de contacto"
+    },
+    "contact_success_button": "Volver al sitio",
+    "@contact_success_button": {
+        "description": "Marcador de posición del botón de éxito de contacto"
+    },
+    "contact_error_empty_message": "Este campo está vacío",
+    "@contact_error_empty_message": {
+        "description": "Marcador de posición del mensaje de error de contacto por campo vacío"
+    },
+    "contact_error_invalid_email": "Correo electrónico no válido",
+    "@contact_error_invalid_email": {
+        "description": "Marcador de posición del mensaje de error de contacto por correo electrónico no válido"
+    },
+    "settings_title": "Configuración",
+    "@settings_title": {
+        "description": "Marcador de posición del título de configuración"
+    },
+    "settings_language": "Idioma",
+    "@settings_language": {
+        "description": "Marcador de posición del idioma de configuración"
+    },
+    "settings_language_en": "Inglés",
+    "@settings_language_en": {
+        "description": "Marcador de posición del idioma de configuración en inglés"
+    },
+    "settings_language_es": "Español",
+    "@settings_language_es": {
+        "description": "Marcador de posición del idioma de configuración en español"
+    },
+    "settings_language_va": "Valenciano",
+    "@settings_language_va": {
+        "description": "Marcador de posición del idioma de configuración valenciano"
+    },
+    "settings_theme": "Tema",
+    "@settings_theme": {
+        "description": "Marcador de posición del tema de configuración"
+    },
+    "settings_theme_light": "Claro",
+    "@settings_theme_light": {
+        "description": "Marcador de posición del tema de configuración claro"
+    },
+    "settings_theme_dark": "Oscuro",
+    "@settings_theme_dark": {
+        "description": "Marcador de posición del tema de configuración oscuro"
+    },
+    "settings_theme_system": "Sistema",
+    "@settings_theme_system": {
+        "description": "Marcador de posición del tema de configuración del sistema"
     }
 }

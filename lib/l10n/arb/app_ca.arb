@@ -1,0 +1,119 @@
+{
+    "@@locale": "ca",
+    "appName": "fan2dev",
+    "@appName": {
+        "description": "Nom de l'aplicació"
+    },
+    "error_generic": "S'ha produït un error",
+    "@error_generic": {
+        "description": "Missatge d'error genèric"
+    },
+    "footer_text": "fan2dev. Tots els drets reservats.",
+    "@footer_text": {
+        "description": "Text del peu de pàgina"
+    },
+    "login_email": "Correu electrònic",
+    "@login_email": {
+        "description": "Correu electrònic"
+    },
+    "login_password": "Contrasenya",
+    "@login_password": {
+        "description": "Contrasenya"
+    },
+    "menu_blog": "📰Blog",
+    "@menu_blog": {
+        "description": "Blog"
+    },
+    "menu_projects": "Projectes",
+    "@menu_projects": {
+        "description": "Projectes"
+    },
+    "menu_about": "Quant a",
+    "@menu_about": {
+        "description": "Quant a"
+    },
+    "menu_contact": "Contacte",
+    "@menu_contact": {
+        "description": "Contacte"
+    },
+    "contact_title": "Envia'm el teu missatge!",
+    "@contact_title": {
+        "description": "Marcador de posició del títol de contacte"
+    },
+    "contact_subtitle": "Hola! Si tens preguntes, propostes o simplement vols compartir les teves idees, estic llest per escoltar-te. Completa el formulari a continuació. Espero el teu missatge! 📬",
+    "@contact_subtitle": {
+        "description": "Marcador de posició del subtítol de contacte"
+    },
+    "contact_name": "Nom",
+    "@contact_name": {
+        "description": "Nom"
+    },
+    "contact_email": "Correu electrònic",
+    "@contact_email": {
+        "description": "Correu electrònic"
+    },
+    "contact_message": "Missatge",
+    "@contact_message": {
+        "description": "Missatge"
+    },
+    "contact_send": "Enviar",
+    "@contact_send": {
+        "description": "Enviar"
+    },
+    "contact_success_title": "Gràcies pel teu missatge!",
+    "@contact_success_title": {
+        "description": "Marcador de posició del títol d'èxit de contacte"
+    },
+    "contact_success_subtitle": "Et respondré tan aviat com siga possible.",
+    "@contact_success_subtitle": {
+        "description": "Marcador de posició del subtítol d'èxit de contacte"
+    },
+    "contact_success_button": "Torna al lloc web",
+    "@contact_success_button": {
+        "description": "Marcador de posició del botó d'èxit de contacte"
+    },
+    "contact_error_empty_message": "Aquest camp està buit",
+    "@contact_error_empty_message": {
+        "description": "Marcador de posició del missatge d'error de contacte per camp buit"
+    },
+    "contact_error_invalid_email": "Correu electrònic no vàlid",
+    "@contact_error_invalid_email": {
+        "description": "Marcador de posició del missatge d'error de contacte per correu electrònic no vàlid"
+    },
+    "settings_title": "Configuració",
+    "@settings_title": {
+        "description": "Marcador de posició del títol de configuració"
+    },
+    "settings_language": "Idioma",
+    "@settings_language": {
+        "description": "Marcador de posició de l'idioma de configuració"
+    },
+    "settings_language_en": "Anglès",
+    "@settings_language_en": {
+        "description": "Marcador de posició de l'idioma de configuració en anglès"
+    },
+    "settings_language_es": "Espanyol",
+    "@settings_language_es": {
+        "description": "Marcador de posició de l'idioma de configuració en espanyol"
+    },
+    "settings_language_va": "Valencià",
+    "@settings_language_va": {
+        "description": "Marcador de posició de l'idioma de configuració valencià"
+    },
+    "settings_theme": "Tema",
+    "@settings_theme": {
+        "description": "Marcador de posició del tema de configuració"
+    },
+    "settings_theme_light": "Clar",
+    "@settings_theme_light": {
+        "description": "Marcador de posició del tema de configuració clar"
+    },
+    "settings_theme_dark": "Fosc",
+    "@settings_theme_dark": {
+        "description": "Marcador de posició del tema de configuració fosc"
+    },
+    "settings_theme_system": "Sistema",
+    "@settings_theme_system": {
+        "description": "Marcador de posició del tema de configuració del sistema"
+    }
+}
