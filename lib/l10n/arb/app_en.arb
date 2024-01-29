@@ -20,7 +20,7 @@
     "@login_password": {
         "description": "Password"
     },
-    "menu_blog": "📰Blog",
+    "menu_blog": "Blog",
     "@menu_blog": {
         "description": "Blog"
     },
@@ -115,5 +115,25 @@
     "settings_theme_system": "System",
     "@settings_theme_system": {
         "description": "Settings Theme System Placeholder"
+    },
+    "about_title": "Hi, my name is Alejandro Fandos",
+    "@about_title": {
+        "description": "About Title Placeholder"
+    },
+    "about_sort_description": "I am passionate software developer crafting digital solutions. Let's turn ideas into innovation together.",
+    "@about_sort_description": {
+        "description": "About Sort Description Placeholder"
+    },
+    "about_text_1": "With a fervent passion for turning conceptual ideas into tangible, high-quality software, I've spent over four years honing my craft. My journey in the ever-evolving world of coding has equipped me with not only technical expertise but also a commitment to understanding and exceeding client expectations. I believe in the power of innovation and continuous learning, and I bring this mindset to every project I undertake.\n\n",
+    "@about_text_1": {
+        "description": "About Text 1 Placeholder"
+    },
+    "about_text_2": "I bring a diverse set of skills to the table, specializing in technologies such as Flutter, AstroJS, JavaScript, Tailwind, NodeJS, and leveraging tools like Git, GitHub Actions, and Docker. My proficiency extends to crafting cross-platform applications and dynamic web solutions. With a knack for problem-solving and an eye for detail, I thrive on delivering efficient and impactful software solutions tailored to meet your unique needs.\n\n",
+    "@about_text_2": {
+        "description": "About Text 2 Placeholder"
+    },
+    "about_text_3": "Beyond the screen, I am a person of varied interests. When not immersed in code, you might find me exploring the outdoors, capturing moments through photography, or delving into the world of literature. I'm a firm believer in maintaining a healthy work-life balance, and my hobbies play a crucial role in keeping my creativity and problem-solving skills sharp. Whether it's a coding challenge or a hiking trail, I approach every endeavor with enthusiasm and a desire to learn.\n",
+    "@about_text_3": {
+        "description": "About Text 3 Placeholder"
     }
 }

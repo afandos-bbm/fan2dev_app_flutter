@@ -36,7 +36,6 @@ class _HomePageView extends StatelessWidget {
                 : context.read<ThemeService>().themeData!.colorScheme.primary,
             bottomSheet: const FooterF2DWidget(),
             body: Column(
-              mainAxisSize: MainAxisSize.min,
               children: [
                 const SizedBox(height: 70),
                 const F2DAppBarWidget(),

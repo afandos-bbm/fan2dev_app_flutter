@@ -20,7 +20,7 @@
     "@login_password": {
         "description": "Contraseña"
     },
-    "menu_blog": "📰Blog",
+    "menu_blog": "Blog",
     "@menu_blog": {
         "description": "Blog"
     },
@@ -115,5 +115,25 @@
     "settings_theme_system": "Sistema",
     "@settings_theme_system": {
         "description": "Marcador de posición del tema de configuración del sistema"
+    },
+    "about_title": "Hola, me llamo Alejandro Fandos",
+    "@about_title": {
+        "description": "Marcador de posición del título Acerca de"
+    },
+    "about_sort_description": "Soy un apasionado desarrollador de software que crea soluciones digitales. Convirtamos ideas en innovación juntos.",
+    "@about_sort_description": {
+        "description": "Marcador de posición de la breve descripción Acerca de"
+    },
+    "about_text_1": "Con una pasión ferviente por convertir ideas conceptuales en software tangible y de alta calidad, he pasado más de cuatro años perfeccionando mi oficio. Mi trayectoria en el mundo siempre cambiante de la programación me ha dotado no solo de experiencia técnica, sino también de un compromiso de comprender y superar las expectativas del cliente. Creo en el poder de la innovación y el aprendizaje continuo, y aplico esta mentalidad a cada proyecto que emprendo.\n\n",
+    "@about_text_1": {
+        "description": "Marcador de posición del texto Acerca de 1"
+    },
+    "about_text_2": "Aporto un conjunto diverso de habilidades a la mesa, especializándome en tecnologías como Flutter, AstroJS, JavaScript, Tailwind, NodeJS, y utilizando herramientas como Git, GitHub Actions y Docker. Mi competencia se extiende a la creación de aplicaciones multiplataforma y soluciones web dinámicas. Con habilidad para resolver problemas y atención al detalle, prospero al entregar soluciones de software eficientes e impactantes diseñadas para satisfacer sus necesidades únicas.\n\n",
+    "@about_text_2": {
+        "description": "Marcador de posición del texto Acerca de 2"
+    },
+    "about_text_3": "Más allá de la pantalla, soy una persona de intereses variados. Cuando no estoy inmerso en código, podrías encontrarme explorando la naturaleza, capturando momentos a través de la fotografía o sumergiéndome en el mundo de la literatura. Creo firmemente en mantener un equilibrio saludable entre el trabajo y la vida, y mis pasatiempos desempeñan un papel crucial para mantener afilada mi creatividad y mis habilidades para resolver problemas. Ya sea un desafío de codificación o un sendero de senderismo, abordo cada empresa con entusiasmo y un deseo de aprender.\n",
+    "@about_text_3": {
+        "description": "Marcador de posición del texto Acerca de 3"
     }
 }
