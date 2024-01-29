@@ -124,11 +124,11 @@
     "@about_sort_description": {
         "description": "About Sort Description Placeholder"
     },
-    "about_text_1": "With a fervent passion for turning conceptual ideas into tangible, high-quality software, I've spent over four years honing my craft. My journey in the ever-evolving world of coding has equipped me with not only technical expertise but also a commitment to understanding and exceeding client expectations. I believe in the power of innovation and continuous learning, and I bring this mindset to every project I undertake.\n\n",
+    "about_text_1": "With a fervent passion for turning conceptual ideas into tangible, high-quality software, I've spent over four years honing my craft. My journey in the ever-evolving world of coding has equipped me with not only technical expertise but also a commitment to understanding and exceeding client expectations. I believe in the power of innovation and continuous learning, and I bring this mindset to every project I undertake.\n",
     "@about_text_1": {
         "description": "About Text 1 Placeholder"
     },
-    "about_text_2": "I bring a diverse set of skills to the table, specializing in technologies such as Flutter, AstroJS, JavaScript, Tailwind, NodeJS, and leveraging tools like Git, GitHub Actions, and Docker. My proficiency extends to crafting cross-platform applications and dynamic web solutions. With a knack for problem-solving and an eye for detail, I thrive on delivering efficient and impactful software solutions tailored to meet your unique needs.\n\n",
+    "about_text_2": "I bring a diverse set of skills to the table, specializing in technologies such as Flutter, AstroJS, JavaScript, Tailwind, NodeJS, and leveraging tools like Git, GitHub Actions, and Docker. My proficiency extends to crafting cross-platform applications and dynamic web solutions. With a knack for problem-solving and an eye for detail, I thrive on delivering efficient and impactful software solutions tailored to meet your unique needs.\n",
     "@about_text_2": {
         "description": "About Text 2 Placeholder"
     },

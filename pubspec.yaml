@@ -37,6 +37,7 @@ dependencies:
   dio: ^5.4.0
   cloud_firestore: ^4.13.6
   flutter_animate: ^4.3.0
+  smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
   flutter_test:

@@ -124,11 +124,11 @@
     "@about_sort_description": {
         "description": "Marcador de posición de la breve descripción Acerca de"
     },
-    "about_text_1": "Con una pasión ferviente por convertir ideas conceptuales en software tangible y de alta calidad, he pasado más de cuatro años perfeccionando mi oficio. Mi trayectoria en el mundo siempre cambiante de la programación me ha dotado no solo de experiencia técnica, sino también de un compromiso de comprender y superar las expectativas del cliente. Creo en el poder de la innovación y el aprendizaje continuo, y aplico esta mentalidad a cada proyecto que emprendo.\n\n",
+    "about_text_1": "Con una pasión ferviente por convertir ideas conceptuales en software tangible y de alta calidad, he pasado más de cuatro años perfeccionando mi oficio. Mi trayectoria en el mundo siempre cambiante de la programación me ha dotado no solo de experiencia técnica, sino también de un compromiso de comprender y superar las expectativas del cliente. Creo en el poder de la innovación y el aprendizaje continuo, y aplico esta mentalidad a cada proyecto que emprendo.\n",
     "@about_text_1": {
         "description": "Marcador de posición del texto Acerca de 1"
     },
-    "about_text_2": "Aporto un conjunto diverso de habilidades a la mesa, especializándome en tecnologías como Flutter, AstroJS, JavaScript, Tailwind, NodeJS, y utilizando herramientas como Git, GitHub Actions y Docker. Mi competencia se extiende a la creación de aplicaciones multiplataforma y soluciones web dinámicas. Con habilidad para resolver problemas y atención al detalle, prospero al entregar soluciones de software eficientes e impactantes diseñadas para satisfacer sus necesidades únicas.\n\n",
+    "about_text_2": "Aporto un conjunto diverso de habilidades a la mesa, especializándome en tecnologías como Flutter, AstroJS, JavaScript, Tailwind, NodeJS, y utilizando herramientas como Git, GitHub Actions y Docker. Mi competencia se extiende a la creación de aplicaciones multiplataforma y soluciones web dinámicas. Con habilidad para resolver problemas y atención al detalle, prospero al entregar soluciones de software eficientes e impactantes diseñadas para satisfacer sus necesidades únicas.\n",
     "@about_text_2": {
         "description": "Marcador de posición del texto Acerca de 2"
     },

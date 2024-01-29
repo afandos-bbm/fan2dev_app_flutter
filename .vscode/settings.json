@@ -1,12 +1,14 @@
 {
     "cSpell.words": [
+        "akira",
         "backoffice",
         "cupertino",
         "genhtml",
         "lcov",
         "spanish",
         "valencian",
-        "Valencian"
+        "Valencian",
+        "webp"
     ],
     "files.exclude": {
         "**/*.freezed.dart": true,

@@ -124,11 +124,11 @@
     "@about_sort_description": {
         "description": "Marcador de posició de la breu descripció Sobre"
     },
-    "about_text_1": "Amb una passió fervent per convertir idees conceptuals en programari tangible i de alta qualitat, he passat més de quatre anys perfeccionant el meu ofici. La meva trajectòria en el món sempre canviant de la programació m'ha dotat no només d'experiència tècnica, sinó també d'un compromís per comprendre i superar les expectatives del client. Crec en el poder de la innovació i l'aprenentatge continu, i aplico aquesta mentalitat a cada projecte que emprenc.\n\n",
+    "about_text_1": "Amb una passió fervent per convertir idees conceptuals en programari tangible i de alta qualitat, he passat més de quatre anys perfeccionant el meu ofici. La meva trajectòria en el món sempre canviant de la programació m'ha dotat no només d'experiència tècnica, sinó també d'un compromís per comprendre i superar les expectatives del client. Crec en el poder de la innovació i l'aprenentatge continu, i aplico aquesta mentalitat a cada projecte que emprenc.\n",
     "@about_text_1": {
         "description": "Marcador de posició del text Sobre 1"
     },
-    "about_text_2": "Aporto un conjunt divers de habilitats a la taula, especialitzant-me en tecnologies com Flutter, AstroJS, JavaScript, Tailwind, NodeJS, i utilitzant eines com Git, GitHub Actions i Docker. La meva competència s'estén a la creació d'aplicacions multiplataforma i solucions web dinàmiques. Amb habilitat per resoldre problemes i atenció al detall, prospero en l'entrega de solucions de programari eficients i impactants dissenyades per satisfer les seves necessitats úniques.\n\n",
+    "about_text_2": "Aporto un conjunt divers de habilitats a la taula, especialitzant-me en tecnologies com Flutter, AstroJS, JavaScript, Tailwind, NodeJS, i utilitzant eines com Git, GitHub Actions i Docker. La meva competència s'estén a la creació d'aplicacions multiplataforma i solucions web dinàmiques. Amb habilitat per resoldre problemes i atenció al detall, prospero en l'entrega de solucions de programari eficients i impactants dissenyades per satisfer les seves necessitats úniques.\n",
     "@about_text_2": {
         "description": "Marcador de posició del text Sobre 2"
     },

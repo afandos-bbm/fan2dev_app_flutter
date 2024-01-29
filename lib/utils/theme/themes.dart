@@ -9,6 +9,8 @@ final Map<CurrentTheme, ThemeData> themes = {
   CurrentTheme.dark: _darkTheme,
 };
 
+const kPrimaryColor = Colors.cyan;
+
 /// Light theme
 final ThemeData _lightTheme = ThemeData(
   pageTransitionsTheme: const PageTransitionsTheme(
@@ -20,12 +22,12 @@ final ThemeData _lightTheme = ThemeData(
   useMaterial3: true,
   brightness: Brightness.light,
   colorScheme: const ColorScheme.light(
-    primary: Colors.cyan,
+    primary: kPrimaryColor,
     secondary: Colors.white,
   ),
   scaffoldBackgroundColor: Colors.grey[200],
   appBarTheme: const AppBarTheme(
-    backgroundColor: Colors.cyan,
+    backgroundColor: kPrimaryColor,
     foregroundColor: Colors.white,
     elevation: 0,
     iconTheme: IconThemeData(color: Colors.white),
@@ -60,7 +62,7 @@ final ThemeData _lightTheme = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       padding: const EdgeInsets.all(10),
-      backgroundColor: Colors.cyan,
+      backgroundColor: kPrimaryColor,
       foregroundColor: Colors.white,
     ),
   ),
@@ -85,7 +87,7 @@ final ThemeData _darkTheme = ThemeData(
   useMaterial3: true,
   brightness: Brightness.dark,
   colorScheme: const ColorScheme.dark(
-    primary: Colors.cyan,
+    primary: kPrimaryColor,
     secondary: Colors.black,
   ),
   inputDecorationTheme: const InputDecorationTheme(
@@ -105,7 +107,7 @@ final ThemeData _darkTheme = ThemeData(
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       padding: const EdgeInsets.all(10),
-      backgroundColor: Colors.cyan,
+      backgroundColor: kPrimaryColor,
       foregroundColor: Colors.white,
     ),
   ),

@@ -1,3 +1,4 @@
+import 'package:fan2dev/features/about/widgets/about_image_carrousel_widget.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/const.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class AboutHeaderWidget extends StatelessWidget {
                   padding: EdgeInsets.only(top: 5),
                   child: CircleAvatar(
                     radius: 50,
-                    backgroundImage: AssetImage(kFan2devAboutPhotoPath),
+                    backgroundImage: AssetImage(kFan2devAboutProfilePath),
                   ),
                 ),
                 const SizedBox(width: 20),
@@ -51,7 +52,7 @@ class AboutHeaderWidget extends StatelessWidget {
                       Text(
                         context.l10n.about_sort_description,
                         overflow: TextOverflow.visible,
-                        style: Theme.of(context).textTheme.bodySmall,
+                        style: Theme.of(context).textTheme.labelSmall,
                       ),
                     ],
                   ),
@@ -61,27 +62,37 @@ class AboutHeaderWidget extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Text.rich(
-                textWidthBasis: TextWidthBasis.longestLine,
-                softWrap: true,
-                TextSpan(
-                  text: context.l10n.about_text_1,
-                  style: Theme.of(context).textTheme.bodySmall,
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
                   children: [
-                    TextSpan(
-                      text: context.l10n.about_text_2,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            context.l10n.about_text_1,
+                            style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                        ),
+                        const SizedBox(width: 10),
+                        Image.asset(
+                          kFan2devAboutFlutterDashPath,
+                          width: 150,
+                        ),
+                      ],
+                    ),
+                    Text(
+                      context.l10n.about_text_2,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
-                    TextSpan(
-                      text: context.l10n.about_text_3,
+                    const AboutImageCarrouselWidget(),
+                    Text(
+                      context.l10n.about_text_3,
                       style: Theme.of(context).textTheme.bodySmall,
                     ),
                   ],
-                ),
-              ),
-            ),
-            const SizedBox(height: 20),
+                )),
+            const SizedBox(height: 70),
           ],
         ),
       ),
