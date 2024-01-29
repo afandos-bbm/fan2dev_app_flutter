@@ -1,4 +1,3 @@
-import 'package:fan2dev/utils/widgets/footer_f2d_widget.dart';
 import 'package:flutter/material.dart';
 
 class UnderConstructionWidget extends StatelessWidget {
@@ -17,8 +16,6 @@ class UnderConstructionWidget extends StatelessWidget {
           ),
           Text('Under Construction'),
           Spacer(),
-          FooterF2DWidget(),
-          SizedBox(height: 50),
         ],
       ),
     );
