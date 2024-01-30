@@ -3,7 +3,7 @@ import 'package:fan2dev/features/contact/domain/entities/contact_form.dart';
 import 'package:fan2dev/utils/logger.dart';
 import 'package:fan2dev/utils/result.dart';
 
-abstract class FirestoreFormSubmissionsRemoteDataSource {
+abstract class ContactFirestoreFormSubmissionsRemoteDataSource {
   Future<Result<void, Exception>> sendContactForm({
     required String email,
     required String name,
@@ -11,9 +11,13 @@ abstract class FirestoreFormSubmissionsRemoteDataSource {
   });
 }
 
-class Web3formsRemoteDataSourceImpl
-    implements FirestoreFormSubmissionsRemoteDataSource {
-  Web3formsRemoteDataSourceImpl();
+class ContactFirestoreFormSubmissionsRemoteDataSourceImpl
+    implements ContactFirestoreFormSubmissionsRemoteDataSource {
+  ContactFirestoreFormSubmissionsRemoteDataSourceImpl({
+    required this.firebaseFirestore,
+  });
+
+  final FirebaseFirestore firebaseFirestore;
 
   @override
   Future<Result<void, Exception>> sendContactForm({

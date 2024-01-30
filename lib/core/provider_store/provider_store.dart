@@ -1,3 +1,4 @@
+import 'package:fan2dev/features/about/cubit/about_cubit/about_cubit.dart';
 import 'package:fan2dev/features/language/language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +10,9 @@ class BlocProviderStore {
       providers: [
         BlocProvider(
           create: (_) => LanguageCubit()..loadLanguagePreference(),
+        ),
+        BlocProvider(
+          create: (_) => AboutCubit()..loadImages(),
         ),
       ],
       child: child,

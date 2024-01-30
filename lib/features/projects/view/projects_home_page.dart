@@ -22,7 +22,14 @@ class ProjectsHomePageView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProjectsCubit, ProjectsCubitState>(
       builder: (context, state) {
-        if (state.status == ProjectsCubitStatus.initial) {
+        if (state.status == ProjectsCubitStatus.loading ||
+            state.status == ProjectsCubitStatus.initial) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+
+        if (state.status == ProjectsCubitStatus.error) {
           return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -47,12 +54,6 @@ class ProjectsHomePageView extends StatelessWidget {
                 ),
               ],
             ),
-          );
-        }
-        if (state.status == ProjectsCubitStatus.loading ||
-            state.status == ProjectsCubitStatus.initial) {
-          return const Center(
-            child: CircularProgressIndicator(),
           );
         }
 

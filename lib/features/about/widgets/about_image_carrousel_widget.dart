@@ -1,17 +1,16 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fan2dev/utils/const.dart';
 import 'package:fan2dev/utils/theme/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class AboutImageCarrouselWidget extends StatelessWidget {
-  const AboutImageCarrouselWidget({super.key});
+  const AboutImageCarrouselWidget({
+    required this.carouselImages,
+    super.key,
+  });
 
-  List<String> get images => [
-        kFan2devAboutAkiraPath,
-        kFan2devAboutArenalPath,
-        kFan2devAboutSwimmingPath,
-        kFan2devAboutCarPath,
-      ];
+  final List<String> carouselImages;
 
   @override
   Widget build(BuildContext context) {
@@ -23,15 +22,22 @@ class AboutImageCarrouselWidget extends StatelessWidget {
           height: 200,
           child: PageView.builder(
             controller: controller,
-            itemCount: images.length,
+            itemCount: carouselImages.length,
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: Image.asset(
-                    images[index],
+                  child: CachedNetworkImage(
+                    key: UniqueKey(),
+                    imageUrl: carouselImages[index],
                     fit: BoxFit.cover,
+                    errorWidget: (context, error, stackTrace) {
+                      return Image.asset(
+                        kLogoPath,
+                        fit: BoxFit.cover,
+                      );
+                    },
                   ),
                 ),
               );
@@ -41,7 +47,7 @@ class AboutImageCarrouselWidget extends StatelessWidget {
         const SizedBox(height: 10),
         SmoothPageIndicator(
           controller: controller,
-          count: images.length,
+          count: carouselImages.length,
           effect: const JumpingDotEffect(
             activeDotColor: kPrimaryColor,
             verticalOffset: 10,
