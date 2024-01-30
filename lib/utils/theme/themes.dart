@@ -74,6 +74,24 @@ final ThemeData _lightTheme = ThemeData(
     color: Colors.white,
     surfaceTintColor: Colors.white,
   ),
+  chipTheme: const ChipThemeData(
+    backgroundColor: Colors.white,
+    disabledColor: Colors.grey,
+    selectedColor: kPrimaryColor,
+    secondarySelectedColor: Colors.grey,
+    padding: EdgeInsets.all(2),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(20)),
+      side: BorderSide(color: Colors.black26, width: 1),
+    ),
+    labelStyle: TextStyle(
+      color: Colors.black,
+    ),
+    secondaryLabelStyle: TextStyle(
+      color: Colors.white,
+    ),
+    brightness: Brightness.light,
+  ),
 );
 
 /// Dark theme
@@ -118,6 +136,24 @@ final ThemeData _darkTheme = ThemeData(
     ),
     color: Colors.grey[900],
     surfaceTintColor: Colors.grey[900],
+  ),
+  chipTheme: const ChipThemeData(
+    backgroundColor: Colors.grey,
+    disabledColor: Colors.grey,
+    selectedColor: kPrimaryColor,
+    secondarySelectedColor: Colors.grey,
+    padding: EdgeInsets.all(2),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.all(Radius.circular(20)),
+      side: BorderSide(color: Colors.black26, width: 1),
+    ),
+    labelStyle: TextStyle(
+      color: Colors.white,
+    ),
+    secondaryLabelStyle: TextStyle(
+      color: Colors.white,
+    ),
+    brightness: Brightness.dark,
   ),
 );
 
