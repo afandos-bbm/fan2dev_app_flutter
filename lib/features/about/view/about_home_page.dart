@@ -8,17 +8,12 @@ class AboutHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        AboutHeaderWidget(),
-      ],
-    );
+    return const AboutHomePageView();
   }
 }
 
-class AboutHeaderWidget extends StatelessWidget {
-  const AboutHeaderWidget({super.key});
+class AboutHomePageView extends StatelessWidget {
+  const AboutHomePageView({super.key});
 
   @override
   Widget build(BuildContext context) {
