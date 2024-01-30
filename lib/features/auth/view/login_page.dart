@@ -47,7 +47,6 @@ class _LoginPageView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Spacer(),
               Image.asset(
                 kLogoPath,
                 width: 100,
