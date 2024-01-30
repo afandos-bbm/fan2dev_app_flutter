@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:fan2dev/utils/errors/error.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 export 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -38,14 +38,14 @@ extension AppLocalizationsX on BuildContext {
 
   String Function(String key) get translatedLanguage => (key) {
         switch (key) {
-          case "es":
+          case 'es':
             return l10n.settings_language_es;
-          case "va":
+          case 'va':
             return l10n.settings_language_va;
-          case "en":
+          case 'en':
             return l10n.settings_language_en;
           default:
-            return "";
+            return '';
         }
       };
 }

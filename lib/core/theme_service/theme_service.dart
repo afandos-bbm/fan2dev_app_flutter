@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/core/shared_preferences_service/shared_preferences_service.dart';
 import 'package:fan2dev/utils/theme/themes.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
 /// Utility service which interacts with ThemeMode

@@ -37,7 +37,6 @@ class AboutHomePageView extends StatelessWidget {
                 Flexible(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
                         '${context.l10n.about_title} 👋',
@@ -57,36 +56,37 @@ class AboutHomePageView extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: [
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            context.l10n.about_text_1,
-                            style: Theme.of(context).textTheme.bodySmall,
-                          ),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          context.l10n.about_text_1,
+                          style: Theme.of(context).textTheme.bodySmall,
                         ),
-                        const SizedBox(width: 10),
-                        Image.asset(
-                          kFan2devAboutFlutterDashPath,
-                          width: 150,
-                        ),
-                      ],
-                    ),
-                    Text(
-                      context.l10n.about_text_2,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                    const AboutImageCarrouselWidget(),
-                    Text(
-                      context.l10n.about_text_3,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ],
-                )),
+                      ),
+                      const SizedBox(width: 10),
+                      Image.asset(
+                        kFan2devAboutFlutterDashPath,
+                        width: 150,
+                      ),
+                    ],
+                  ),
+                  Text(
+                    context.l10n.about_text_2,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                  const AboutImageCarrouselWidget(),
+                  Text(
+                    context.l10n.about_text_3,
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ],
+              ),
+            ),
             const SizedBox(height: 70),
           ],
         ),

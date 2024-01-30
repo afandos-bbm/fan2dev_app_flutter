@@ -10,9 +10,19 @@
         "Valencian",
         "webp"
     ],
+    "cSpell.ignorePaths": [
+        "package-lock.json",
+        "node_modules",
+        "vscode-extension",
+        ".git/objects",
+        ".vscode",
+        ".vscode-insiders",
+        "analysis_options.yaml",
+        "firebase_options.dart",
+    ],
     "files.exclude": {
         "**/*.freezed.dart": true,
-        "**/*.g.dart": true
+        "**/*.g.dart": true,
     },
     "svg.preview.background": "custom"
 }

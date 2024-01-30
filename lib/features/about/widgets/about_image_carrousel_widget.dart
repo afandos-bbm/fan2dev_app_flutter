@@ -40,12 +40,13 @@ class AboutImageCarrouselWidget extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         SmoothPageIndicator(
-            controller: controller,
-            count: images.length,
-            effect: const JumpingDotEffect(
-              activeDotColor: kPrimaryColor,
-              verticalOffset: 10,
-            )),
+          controller: controller,
+          count: images.length,
+          effect: const JumpingDotEffect(
+            activeDotColor: kPrimaryColor,
+            verticalOffset: 10,
+          ),
+        ),
         const SizedBox(height: 10),
       ],
     );

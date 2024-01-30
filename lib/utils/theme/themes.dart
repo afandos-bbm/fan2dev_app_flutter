@@ -42,7 +42,6 @@ final ThemeData _lightTheme = ThemeData(
       borderRadius: BorderRadius.all(Radius.circular(20)),
     ),
     focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.black, width: 1.0),
       borderRadius: BorderRadius.all(Radius.circular(20)),
     ),
     floatingLabelStyle: TextStyle(
@@ -55,8 +54,8 @@ final ThemeData _lightTheme = ThemeData(
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
-      padding: const EdgeInsets.all(0),
-      minimumSize: const Size(0, 0),
+      padding: EdgeInsets.zero,
+      minimumSize: Size.zero,
     ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
@@ -82,7 +81,7 @@ final ThemeData _lightTheme = ThemeData(
     padding: EdgeInsets.all(2),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(20)),
-      side: BorderSide(color: Colors.black26, width: 1),
+      side: BorderSide(color: Colors.black26),
     ),
     labelStyle: TextStyle(
       color: Colors.black,
@@ -112,14 +111,12 @@ final ThemeData _darkTheme = ThemeData(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(20)),
     ),
-    focusedBorder: OutlineInputBorder(
-      borderSide: BorderSide(color: Colors.black, width: 1.0),
-    ),
+    focusedBorder: OutlineInputBorder(),
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
-      padding: const EdgeInsets.all(0),
-      minimumSize: const Size(0, 0),
+      padding: EdgeInsets.zero,
+      minimumSize: Size.zero,
     ),
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
@@ -145,7 +142,7 @@ final ThemeData _darkTheme = ThemeData(
     padding: EdgeInsets.all(2),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.all(Radius.circular(20)),
-      side: BorderSide(color: Colors.black26, width: 1),
+      side: BorderSide(color: Colors.black26),
     ),
     labelStyle: TextStyle(
       color: Colors.white,

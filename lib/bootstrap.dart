@@ -3,15 +3,15 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/firebase_options.dart';
+import 'package:fan2dev/utils/extensions/string_extensions.dart';
+import 'package:fan2dev/utils/logger.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fan2dev/core/locator/locator.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:fan2dev/utils/extensions/string_extensions.dart';
-import 'package:fan2dev/utils/logger.dart';
 
 /// Listens to all bloc and cubit instances and logs all transitions and errors.
 class AppBlocObserver extends BlocObserver {
@@ -65,7 +65,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   /// Shows a custom error widget instead of the default Flutter error widget.
   ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
-    return Container(
+    return ColoredBox(
       color: Colors.red,
       child: Center(
         child: SingleChildScrollView(
@@ -103,7 +103,7 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   );
 
   if (kIsWeb) {
-    FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
+    await FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
   }
 
   /// Initializes the URL strategy for the web.

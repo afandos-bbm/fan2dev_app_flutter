@@ -32,11 +32,11 @@ class SettingsLanguagePage extends StatelessWidget {
                       kSpanishFlagPath,
                       width: 30,
                     ),
-                    trailing: context.watch<LanguageCubit>().locale == "es"
+                    trailing: context.watch<LanguageCubit>().locale == 'es'
                         ? checkIcon
                         : null,
                     onTap: () {
-                      context.read<LanguageCubit>().changeLanguage("es");
+                      context.read<LanguageCubit>().changeLanguage('es');
                     },
                   ),
                   ListTile(
@@ -45,11 +45,11 @@ class SettingsLanguagePage extends StatelessWidget {
                       kValencianFlagPath,
                       width: 30,
                     ),
-                    trailing: context.watch<LanguageCubit>().locale == "ca"
+                    trailing: context.watch<LanguageCubit>().locale == 'ca'
                         ? checkIcon
                         : null,
                     onTap: () {
-                      context.read<LanguageCubit>().changeLanguage("ca");
+                      context.read<LanguageCubit>().changeLanguage('ca');
                     },
                   ),
                   ListTile(
@@ -63,11 +63,11 @@ class SettingsLanguagePage extends StatelessWidget {
                         width: 30,
                       ),
                     ),
-                    trailing: context.watch<LanguageCubit>().locale == "en"
+                    trailing: context.watch<LanguageCubit>().locale == 'en'
                         ? checkIcon
                         : null,
                     onTap: () {
-                      context.read<LanguageCubit>().changeLanguage("en");
+                      context.read<LanguageCubit>().changeLanguage('en');
                     },
                   ),
                 ],

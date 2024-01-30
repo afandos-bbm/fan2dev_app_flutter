@@ -4,8 +4,11 @@ import 'package:fan2dev/utils/logger.dart';
 import 'package:fan2dev/utils/result.dart';
 
 abstract class FirestoreFormSubmissionsRemoteDataSource {
-  Future<Result<void, Exception>> sendContactForm(
-      {required String email, required String name, required String message});
+  Future<Result<void, Exception>> sendContactForm({
+    required String email,
+    required String name,
+    required String message,
+  });
 }
 
 class Web3formsRemoteDataSourceImpl
@@ -13,14 +16,15 @@ class Web3formsRemoteDataSourceImpl
   Web3formsRemoteDataSourceImpl();
 
   @override
-  Future<Result<void, Exception>> sendContactForm(
-      {required String email,
-      required String name,
-      required String message}) async {
+  Future<Result<void, Exception>> sendContactForm({
+    required String email,
+    required String name,
+    required String message,
+  }) async {
     try {
-      final ContactForm formSubmission = ContactForm(
+      final formSubmission = ContactForm(
         email: email,
-        subject: "New message from $name [Via Fan2Dev]",
+        subject: 'New message from $name [Via Fan2Dev]',
         message: message,
         createdAt: DateTime.now().toUtc().toString(),
       );

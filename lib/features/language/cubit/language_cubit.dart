@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/core/shared_preferences_service/shared_preferences_service.dart';
+import 'package:flutter/foundation.dart';
 
 part 'language_state.dart';
 

@@ -3,13 +3,13 @@ import 'package:fan2dev/features/auth/view/login_page.dart';
 import 'package:fan2dev/features/backoffice/view/backoffice_home_page.dart';
 import 'package:fan2dev/features/blog/blog.dart';
 import 'package:fan2dev/features/contact/view/contact_home_page.dart';
+import 'package:fan2dev/features/home/view/home_page.dart';
 import 'package:fan2dev/features/projects/projects.dart';
 import 'package:fan2dev/features/settings/view/settings_home_page.dart';
 import 'package:fan2dev/features/settings/view/settings_language_page.dart';
 import 'package:fan2dev/features/settings/view/settings_theme_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fan2dev/features/home/view/home_page.dart';
 import 'package:go_router/go_router.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -84,7 +84,7 @@ final router = GoRouter(
       path: '/log-in',
       parentNavigatorKey: _rootNavigatorKey,
       redirect: (context, state) {
-        final FirebaseAuth auth = FirebaseAuth.instance;
+        final auth = FirebaseAuth.instance;
 
         if (auth.currentUser != null) {
           return '/backoffice';
@@ -115,7 +115,7 @@ final router = GoRouter(
       path: '/backoffice',
       parentNavigatorKey: _rootNavigatorKey,
       redirect: (context, state) {
-        final FirebaseAuth auth = FirebaseAuth.instance;
+        final auth = FirebaseAuth.instance;
 
         if (auth.currentUser == null) {
           return '/log-in';

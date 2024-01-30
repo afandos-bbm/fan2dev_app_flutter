@@ -1,11 +1,11 @@
 import 'package:fan2dev/core/locator/locator.dart';
-import 'package:fan2dev/utils/theme/themes.dart';
-import 'package:flutter/material.dart';
 import 'package:fan2dev/core/provider_store/provider_store.dart';
 import 'package:fan2dev/core/router/app_router.dart';
 import 'package:fan2dev/core/theme_service/theme_service.dart';
 import 'package:fan2dev/features/language/language.dart';
 import 'package:fan2dev/l10n/l10n.dart';
+import 'package:fan2dev/utils/theme/themes.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:provider/provider.dart';

@@ -14,66 +14,67 @@ class SettingsThemePage extends StatelessWidget {
         Icon(Icons.check, color: context.currentTheme.colorScheme.primary);
 
     return ListenableBuilder(
-        listenable: locator<ThemeService>(),
-        builder: (context, _) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(context.l10n.settings_theme),
-              centerTitle: false,
-            ),
-            body: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(15),
-                  child: Card(
-                    child: Column(
-                      children: [
-                        ListTile(
-                          title: Text(context.l10n.settings_theme_light),
-                          leading: const Icon(Icons.light_mode),
-                          trailing: locator<ThemeService>().realThemeMode ==
-                                  ThemeMode.light
-                              ? checkIcon
-                              : null,
-                          onTap: () {
-                            locator<ThemeService>()
-                                .changeThemeMode(ThemeMode.light);
-                          },
-                        ),
-                        ListTile(
-                          title: Text(context.l10n.settings_theme_dark),
-                          leading: const Icon(Icons.dark_mode),
-                          trailing: locator<ThemeService>().realThemeMode ==
-                                  ThemeMode.dark
-                              ? checkIcon
-                              : null,
-                          onTap: () {
-                            locator<ThemeService>()
-                                .changeThemeMode(ThemeMode.dark);
-                          },
-                        ),
-                        ListTile(
-                          title: Text(context.l10n.settings_theme_system),
-                          leading: const Icon(Icons.settings),
-                          trailing: locator<ThemeService>().realThemeMode ==
-                                  ThemeMode.system
-                              ? checkIcon
-                              : null,
-                          onTap: () {
-                            locator<ThemeService>()
-                                .changeThemeMode(ThemeMode.system);
-                          },
-                        ),
-                      ],
-                    ),
+      listenable: locator<ThemeService>(),
+      builder: (context, _) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(context.l10n.settings_theme),
+            centerTitle: false,
+          ),
+          body: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(15),
+                child: Card(
+                  child: Column(
+                    children: [
+                      ListTile(
+                        title: Text(context.l10n.settings_theme_light),
+                        leading: const Icon(Icons.light_mode),
+                        trailing: locator<ThemeService>().realThemeMode ==
+                                ThemeMode.light
+                            ? checkIcon
+                            : null,
+                        onTap: () {
+                          locator<ThemeService>()
+                              .changeThemeMode(ThemeMode.light);
+                        },
+                      ),
+                      ListTile(
+                        title: Text(context.l10n.settings_theme_dark),
+                        leading: const Icon(Icons.dark_mode),
+                        trailing: locator<ThemeService>().realThemeMode ==
+                                ThemeMode.dark
+                            ? checkIcon
+                            : null,
+                        onTap: () {
+                          locator<ThemeService>()
+                              .changeThemeMode(ThemeMode.dark);
+                        },
+                      ),
+                      ListTile(
+                        title: Text(context.l10n.settings_theme_system),
+                        leading: const Icon(Icons.settings),
+                        trailing: locator<ThemeService>().realThemeMode ==
+                                ThemeMode.system
+                            ? checkIcon
+                            : null,
+                        onTap: () {
+                          locator<ThemeService>()
+                              .changeThemeMode(ThemeMode.system);
+                        },
+                      ),
+                    ],
                   ),
                 ),
-                const Spacer(),
-                const FooterF2DWidget(),
-                const SizedBox(height: 50),
-              ],
-            ),
-          );
-        });
+              ),
+              const Spacer(),
+              const FooterF2DWidget(),
+              const SizedBox(height: 50),
+            ],
+          ),
+        );
+      },
+    );
   }
 }

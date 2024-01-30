@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:fan2dev/features/language/language.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 /// Class whose purpose is to centralize, init and inject common providers.

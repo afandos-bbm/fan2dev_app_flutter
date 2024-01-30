@@ -26,6 +26,6 @@ Future<void> initGetIt() async {
 
   // * Data sources
   locator.registerLazySingleton<FirestoreFormSubmissionsRemoteDataSource>(
-    () => Web3formsRemoteDataSourceImpl(),
+    Web3formsRemoteDataSourceImpl.new,
   );
 }
