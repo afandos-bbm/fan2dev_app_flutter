@@ -1,10 +1,14 @@
+import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/features/about/view/about_home_page.dart';
 import 'package:fan2dev/features/auth/view/login_page.dart';
 import 'package:fan2dev/features/backoffice/view/backoffice_home_page.dart';
 import 'package:fan2dev/features/blog/blog.dart';
 import 'package:fan2dev/features/contact/view/contact_home_page.dart';
 import 'package:fan2dev/features/home/view/home_page.dart';
+import 'package:fan2dev/features/projects/data/data_sources/local_data_source.dart';
+import 'package:fan2dev/features/projects/domain/project/projects_project.dart';
 import 'package:fan2dev/features/projects/projects.dart';
+import 'package:fan2dev/features/projects/view/projects_project_datail_page.dart';
 import 'package:fan2dev/features/settings/view/settings_home_page.dart';
 import 'package:fan2dev/features/settings/view/settings_language_page.dart';
 import 'package:fan2dev/features/settings/view/settings_theme_page.dart';
@@ -63,6 +67,98 @@ final router = GoRouter(
           pageBuilder: (context, state) => const NoTransitionPage(
             child: ProjectsHomePage(),
           ),
+          routes: [
+            GoRoute(
+              path: ':id',
+              parentNavigatorKey: _shellNavigatorKey,
+              redirect: (context, state) {
+                final extra = state.extra;
+                final possibleProject = extra as ProjectsProject?;
+
+                if (possibleProject != null) {
+                  return null;
+                }
+
+                final projectParamId = state.pathParameters['id']!;
+                final id = int.tryParse(projectParamId);
+
+                if (id == null) {
+                  return '/projects';
+                }
+
+                final result = locator<LocalDataSourceImpl>().getProjectById(
+                  id,
+                );
+
+                ProjectsProject? project;
+
+                result.when(
+                  success: (project) {
+                    project = project;
+                  },
+                  failure: (failure) {
+                    project = null;
+                  },
+                  empty: () {
+                    project = null;
+                  },
+                );
+
+                if (project == null) {
+                  return '/projects';
+                }
+
+                return null;
+              },
+              pageBuilder: (context, state) {
+                final extra = state.extra;
+                final possibleProject = extra as ProjectsProject?;
+
+                if (possibleProject != null) {
+                  return NoTransitionPage(
+                    child: ProjectsProjectDetailPage(project: possibleProject),
+                  );
+                }
+
+                final projectParamId = state.pathParameters['id']!;
+                final id = int.tryParse(projectParamId);
+
+                if (id == null) {
+                  return const NoTransitionPage(
+                    child: ProjectsHomePage(),
+                  );
+                }
+
+                final result = locator<LocalDataSourceImpl>().getProjectById(
+                  id,
+                );
+
+                ProjectsProject? project;
+
+                result.when(
+                  success: (project) {
+                    project = project;
+                  },
+                  failure: (failure) {
+                    project = null;
+                  },
+                  empty: () {
+                    project = null;
+                  },
+                );
+
+                if (project == null) {
+                  return const NoTransitionPage(
+                    child: ProjectsHomePage(),
+                  );
+                }
+
+                return NoTransitionPage(
+                  child: ProjectsProjectDetailPage(project: project!),
+                );
+              },
+            ),
+          ],
         ),
         GoRoute(
           path: '/about',
