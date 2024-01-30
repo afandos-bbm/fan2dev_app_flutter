@@ -58,7 +58,11 @@ List<ProjectsProject> _projectList = [
       _technologies[3],
       _technologies[4],
     ],
-    screenShotAssetUrls: const ['assets/images/fan2dev.png'],
+    screenShotAssetUrls: const [
+      'assets/images/fan2dev.png',
+      'assets/images/fan2dev.png',
+      'assets/images/fan2dev.png'
+    ],
     codeRepositoryUrl: 'https://github.com',
     webPageUrl: 'https://fan2dev.com',
   ),
@@ -79,7 +83,11 @@ List<ProjectsProject> _projectList = [
     ],
     status: ProjectsProjectStatus.soon,
     estimatedTimeExpended: '1mo',
-    screenShotAssetUrls: const ['assets/images/fan2dev.png'],
+    screenShotAssetUrls: const [
+      'assets/images/fan2dev.png',
+      'assets/images/fan2dev.png',
+      'assets/images/fan2dev.png'
+    ],
     codeRepositoryUrl: 'https://github.com',
     webPageUrl: 'https://fan2dev.com',
   ),
