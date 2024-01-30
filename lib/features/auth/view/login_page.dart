@@ -39,6 +39,7 @@ class _LoginPageView extends StatelessWidget {
         },
         child: const Icon(Icons.arrow_back_ios_new_outlined),
       ),
+      bottomSheet: const FooterF2DWidget(),
       body: Padding(
         padding: const EdgeInsets.all(30),
         child: Form(
@@ -120,11 +121,6 @@ class _LoginPageView extends StatelessWidget {
                     'Login',
                   ),
                 ),
-              ),
-              const Spacer(),
-              const FooterF2DWidget(),
-              const SizedBox(
-                height: 0,
               ),
             ],
           ),

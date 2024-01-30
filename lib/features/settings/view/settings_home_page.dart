@@ -22,6 +22,7 @@ class SettingsHomePage extends StatelessWidget {
             title: Text(context.l10n.settings_title),
             centerTitle: false,
           ),
+          bottomSheet: const FooterF2DWidget(),
           body: Column(
             children: [
               Padding(
@@ -101,9 +102,6 @@ class SettingsHomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              const Spacer(),
-              const FooterF2DWidget(),
-              const SizedBox(height: 50),
             ],
           ),
         );
