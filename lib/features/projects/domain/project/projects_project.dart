@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:fan2dev/features/projects/domain/technology/projects_project_technology.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'projects_project.g.dart';
@@ -11,10 +12,12 @@ class ProjectsProject extends Equatable {
     required this.id,
     required this.name,
     required this.description,
+    required this.longDescription,
     required this.status,
-    required this.estimatedDuration,
+    required this.estimatedTimeExpended,
+    required this.technologies,
     required this.logoAssetUrl,
-    required this.screenShotAssetUrl,
+    required this.screenShotAssetUrls,
     this.codeRepositoryUrl,
     this.webPageUrl,
   });
@@ -27,20 +30,24 @@ class ProjectsProject extends Equatable {
   final int id;
   final String name;
   final String description;
+  final String longDescription;
   final ProjectsProjectStatus status;
-  final String estimatedDuration;
+  final String estimatedTimeExpended;
+  final List<ProjectsProjectTechnology> technologies;
   final String logoAssetUrl;
-  final String screenShotAssetUrl;
+  final List<String> screenShotAssetUrls;
   final String? codeRepositoryUrl;
   final String? webPageUrl;
 
   ProjectsProject copyWith({
     String? name,
     String? description,
+    String? longDescription,
     ProjectsProjectStatus? status,
     String? estimatedTimeExpended,
+    List<ProjectsProjectTechnology>? technologies,
     String? logoAssetUrl,
-    String? screenShotAssetUrl,
+    List<String>? screenShotAssetUrls,
     String? codeRepositoryUrl,
     String? webPageUrl,
   }) {
@@ -48,10 +55,13 @@ class ProjectsProject extends Equatable {
       id: id,
       name: name ?? this.name,
       description: description ?? this.description,
+      longDescription: longDescription ?? this.longDescription,
       status: status ?? this.status,
-      estimatedDuration: estimatedTimeExpended ?? this.estimatedDuration,
+      estimatedTimeExpended:
+          estimatedTimeExpended ?? this.estimatedTimeExpended,
+      technologies: technologies ?? this.technologies,
       logoAssetUrl: logoAssetUrl ?? this.logoAssetUrl,
-      screenShotAssetUrl: screenShotAssetUrl ?? this.screenShotAssetUrl,
+      screenShotAssetUrls: screenShotAssetUrls ?? this.screenShotAssetUrls,
       codeRepositoryUrl: codeRepositoryUrl ?? this.codeRepositoryUrl,
       webPageUrl: webPageUrl ?? this.webPageUrl,
     );
@@ -63,9 +73,9 @@ class ProjectsProject extends Equatable {
         name,
         description,
         status,
-        estimatedDuration,
+        estimatedTimeExpended,
         logoAssetUrl,
-        screenShotAssetUrl,
+        screenShotAssetUrls,
         codeRepositoryUrl,
         webPageUrl,
       ];

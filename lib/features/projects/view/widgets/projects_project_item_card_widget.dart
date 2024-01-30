@@ -47,7 +47,7 @@ class ProjectsProjectItemCardWidget extends StatelessWidget {
                               child: ColoredBox(
                                 color: Colors.white,
                                 child: Image.asset(
-                                  project.screenShotAssetUrl,
+                                  project.screenShotAssetUrls.first,
                                   width: 100,
                                   height: 200,
                                   errorBuilder: (context, error, stackTrace) {
@@ -91,7 +91,7 @@ class ProjectsProjectItemCardWidget extends StatelessWidget {
                                             ),
                                           ),
                                           Text(
-                                            '~${project.estimatedDuration}',
+                                            '~${project.estimatedTimeExpended}',
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .labelSmall!
