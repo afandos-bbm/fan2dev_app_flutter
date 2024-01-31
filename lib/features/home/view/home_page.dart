@@ -1,6 +1,6 @@
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/core/theme_service/theme_service.dart';
-import 'package:fan2dev/features/home/cubit/home_page_cubit.dart';
+import 'package:fan2dev/features/home/cubit/home_page_cubit/home_page_cubit.dart';
 import 'package:fan2dev/features/home/view/widgets/f2d_app_bar_widget.dart';
 import 'package:fan2dev/utils/widgets/footer_f2d_widget.dart';
 import 'package:flutter/material.dart';

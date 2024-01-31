@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:fan2dev/features/contact/domain/entities/contact_form.dart';
+import 'package:fan2dev/features/contact/domain/entities/contact_form/contact_form.dart';
 import 'package:fan2dev/utils/logger.dart';
 import 'package:fan2dev/utils/result.dart';
 
