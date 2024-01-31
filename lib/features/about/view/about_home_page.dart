@@ -1,8 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fan2dev/features/about/cubit/about_cubit/about_cubit.dart';
-import 'package:fan2dev/features/about/widgets/about_image_carrousel_widget.dart';
+import 'package:fan2dev/features/about/view/widgets/about_image_carrousel_widget.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/const.dart';
+import 'package:fan2dev/utils/widgets/page_load_error_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,30 +37,9 @@ class AboutHomePageView extends StatelessWidget {
         }
 
         if (state.status == AboutCubitStateStatus.error) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.error,
-                  color: Theme.of(context).colorScheme.error,
-                  size: 50,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  'Something went wrong. \nPlease try again. \n${state.error}',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 10),
-                IconButton(
-                  icon: const Icon(Icons.refresh),
-                  onPressed: () {
-                    context.read<AboutCubit>().loadImages();
-                  },
-                ),
-              ],
-            ),
+          return PageLoadErrorWidget(
+            onRefresh: () => context.read<AboutCubit>().loadImages(),
+            errorMessage: state.error.toString(),
           );
         }
 

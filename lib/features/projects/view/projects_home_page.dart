@@ -1,5 +1,6 @@
 import 'package:fan2dev/features/projects/cubit/projects_cubit/projects_cubit.dart';
 import 'package:fan2dev/features/projects/view/widgets/projects_project_item_card_widget.dart';
+import 'package:fan2dev/utils/widgets/page_load_error_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,30 +31,9 @@ class ProjectsHomePageView extends StatelessWidget {
         }
 
         if (state.status == ProjectsCubitStatus.error) {
-          return Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.error,
-                  color: Theme.of(context).colorScheme.error,
-                  size: 50,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  'Something went wrong. \nPlease try again. \n${state.error}',
-                  style: Theme.of(context).textTheme.bodyMedium,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 10),
-                IconButton(
-                  icon: const Icon(Icons.refresh),
-                  onPressed: () {
-                    context.read<ProjectsCubit>().getProjects();
-                  },
-                ),
-              ],
-            ),
+          return PageLoadErrorWidget(
+            onRefresh: () => context.read<ProjectsCubit>().getProjects(),
+            errorMessage: state.error!.errorMessage,
           );
         }
 

@@ -3,6 +3,7 @@ import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/features/about/data/data_sources/about_firebase_storage_remote_data_source.dart';
 import 'package:fan2dev/features/about/domain/entities/about_images/about_images.dart';
 import 'package:fan2dev/utils/logger.dart';
+import 'package:fan2dev/utils/utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'about_cubit_state.dart';
@@ -31,7 +32,10 @@ class AboutCubit extends Cubit<AboutCubitState> {
           emit(
             state.copyWith(
               status: AboutCubitStateStatus.error,
-              error: error,
+              error: InternalAppError.generic(
+                errorCode: ErrorCodes.generic,
+                errorMessage: error.toString(),
+              ),
             ),
           );
         },
@@ -40,7 +44,10 @@ class AboutCubit extends Cubit<AboutCubitState> {
           emit(
             state.copyWith(
               status: AboutCubitStateStatus.error,
-              error: Exception('No images found'),
+              error: const InternalAppError.generic(
+                errorCode: ErrorCodes.generic,
+                errorMessage: 'No images found.',
+              ),
             ),
           );
         },
@@ -50,7 +57,11 @@ class AboutCubit extends Cubit<AboutCubitState> {
       emit(
         state.copyWith(
           status: AboutCubitStateStatus.error,
-          error: Exception('Error loading images'),
+          error: InternalAppError.generic(
+            errorCode: ErrorCodes.generic,
+            stackTrace: StackTrace.current,
+            errorMessage: e.toString(),
+          ),
         ),
       );
     }

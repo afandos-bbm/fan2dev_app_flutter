@@ -11,12 +11,12 @@ class AboutCubitState extends Equatable {
 
   final AboutCubitStateStatus status;
   final AboutImages? aboutImages;
-  final Exception? error;
+  final AppError? error;
 
   AboutCubitState copyWith({
     AboutCubitStateStatus? status,
     AboutImages? aboutImages,
-    Exception? error,
+    AppError? error,
   }) {
     return AboutCubitState(
       aboutImages: aboutImages ?? this.aboutImages,
