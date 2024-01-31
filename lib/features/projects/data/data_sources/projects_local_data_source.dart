@@ -1,5 +1,4 @@
 import 'package:fan2dev/features/projects/domain/domain.dart';
-import 'package:fan2dev/features/projects/domain/technology/projects_project_technology.dart';
 import 'package:fan2dev/utils/result.dart';
 
 List<ProjectsProjectTechnology> _technologies = [

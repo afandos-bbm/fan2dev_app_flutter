@@ -1,7 +1,4 @@
-import 'package:fan2dev/features/projects/domain/project/projects_project.dart';
-import 'package:fan2dev/features/projects/view/widgets/projects_project_detail_page_header_widget.dart';
-import 'package:fan2dev/features/projects/view/widgets/projects_project_detail_screenshots_section_widget.dart';
-import 'package:fan2dev/features/projects/view/widgets/projects_project_detail_technologies_section_widget.dart';
+import 'package:fan2dev/features/projects/projects.dart';
 import 'package:flutter/material.dart';
 
 class ProjectsProjectDetailPage extends StatelessWidget {

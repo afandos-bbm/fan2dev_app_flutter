@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/features/about/data/data_sources/about_firebase_storage_remote_data_source.dart';
 import 'package:fan2dev/features/about/domain/entities/about_images/about_images.dart';
-import 'package:fan2dev/utils/logger.dart';
 import 'package:fan2dev/utils/utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

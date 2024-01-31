@@ -3,10 +3,11 @@ part of 'projects_cubit.dart';
 enum ProjectsCubitStatus { initial, loading, loaded, error }
 
 class ProjectsCubitState extends Equatable {
-  const ProjectsCubitState(
-      {this.status = ProjectsCubitStatus.initial,
-      this.projects = const <ProjectsProject>[],
-      this.error});
+  const ProjectsCubitState({
+    this.status = ProjectsCubitStatus.initial,
+    this.projects = const <ProjectsProject>[],
+    this.error,
+  });
 
   final ProjectsCubitStatus status;
   final List<ProjectsProject> projects;

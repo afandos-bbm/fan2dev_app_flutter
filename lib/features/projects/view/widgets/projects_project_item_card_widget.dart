@@ -1,8 +1,5 @@
-import 'package:fan2dev/features/projects/domain/project/projects_project.dart';
-import 'package:fan2dev/features/projects/view/widgets/projects_project_item_card_chip_widget.dart';
-import 'package:fan2dev/utils/const.dart';
-import 'package:fan2dev/utils/open_url.dart';
-import 'package:fan2dev/utils/theme/themes.dart';
+import 'package:fan2dev/features/projects/projects.dart';
+import 'package:fan2dev/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
