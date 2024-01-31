@@ -1,1 +1,10 @@
+export 'cubit/cubit.dart';
+export 'data/data.dart';
+export 'domain/domain.dart';
 export 'view/projects_home_page.dart';
+export 'view/projects_project_detail_page.dart';
+export 'view/widgets/projects_project_detail_page_header_widget.dart';
+export 'view/widgets/projects_project_detail_screenshots_section_widget.dart';
+export 'view/widgets/projects_project_detail_technologies_section_widget.dart';
+export 'view/widgets/projects_project_item_card_chip_widget.dart';
+export 'view/widgets/projects_project_item_card_widget.dart';

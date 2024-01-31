@@ -61,7 +61,7 @@ List<ProjectsProject> _projectList = [
     screenShotAssetUrls: const [
       'assets/images/fan2dev.png',
       'assets/images/fan2dev.png',
-      'assets/images/fan2dev.png'
+      'assets/images/fan2dev.png',
     ],
     codeRepositoryUrl: 'https://github.com',
     webPageUrl: 'https://fan2dev.com',
@@ -86,7 +86,7 @@ List<ProjectsProject> _projectList = [
     screenShotAssetUrls: const [
       'assets/images/fan2dev.png',
       'assets/images/fan2dev.png',
-      'assets/images/fan2dev.png'
+      'assets/images/fan2dev.png',
     ],
     codeRepositoryUrl: 'https://github.com',
     webPageUrl: 'https://fan2dev.com',
@@ -135,12 +135,12 @@ List<ProjectsProject> _projectList = [
   ),
 ];
 
-abstract class LocalDataSource {
+abstract class ProjectsLocalDataSource {
   Result<List<ProjectsProject>, Exception> getProjects();
   Result<ProjectsProject, Exception> getProjectById(int id);
 }
 
-class LocalDataSourceImpl implements LocalDataSource {
+class LocalDataSourceImpl implements ProjectsLocalDataSource {
   LocalDataSourceImpl();
 
   @override

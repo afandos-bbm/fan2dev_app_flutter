@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:fan2dev/core/locator/locator.dart';
-import 'package:fan2dev/features/projects/data/data_sources/local_data_source.dart';
+import 'package:fan2dev/features/projects/data/data_sources/projects_local_data_source.dart';
 import 'package:fan2dev/features/projects/domain/project/projects_project.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,7 +14,7 @@ class ProjectsCubit extends Cubit<ProjectsCubitState> {
 
   Future<void> getProjects() async {
     emit(state.copyWith(status: ProjectsCubitStatus.loading));
-    final result = locator<LocalDataSource>().getProjects();
+    final result = locator<ProjectsLocalDataSource>().getProjects();
     result.when(
       success: (data) {
         emit(

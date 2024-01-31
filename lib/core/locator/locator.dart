@@ -5,7 +5,7 @@ import 'package:fan2dev/core/shared_preferences_service/shared_preferences_servi
 import 'package:fan2dev/core/theme_service/theme_service.dart';
 import 'package:fan2dev/features/about/data/data_sources/about_firebase_storage_remote_data_source.dart';
 import 'package:fan2dev/features/contact/data/data_sources/contact_firestore_form_submissions_remote_data_source.dart';
-import 'package:fan2dev/features/projects/data/data_sources/local_data_source.dart';
+import 'package:fan2dev/features/projects/data/data_sources/projects_local_data_source.dart';
 import 'package:fan2dev/utils/device_info.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -40,7 +40,7 @@ Future<void> initGetIt() async {
       firebaseStorage: FirebaseStorage.instance,
     ),
   );
-  locator.registerLazySingleton<LocalDataSource>(
+  locator.registerLazySingleton<ProjectsLocalDataSource>(
     LocalDataSourceImpl.new,
   );
 }
