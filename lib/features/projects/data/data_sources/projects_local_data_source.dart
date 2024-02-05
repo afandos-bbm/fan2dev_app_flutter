@@ -63,7 +63,7 @@ List<ProjectsProject> _projectList = [
       'assets/images/fan2dev.png',
     ],
     codeRepositoryUrl: 'https://github.com',
-    webPageUrl: 'https://fan2dev.com',
+    websiteUrl: 'https://fan2dev.com',
   ),
   ProjectsProject(
     id: 2,
@@ -88,7 +88,7 @@ List<ProjectsProject> _projectList = [
       'assets/images/fan2dev.png',
     ],
     codeRepositoryUrl: 'https://github.com',
-    webPageUrl: 'https://fan2dev.com',
+    websiteUrl: 'https://fan2dev.com',
   ),
   ProjectsProject(
     id: 3,
@@ -109,7 +109,7 @@ List<ProjectsProject> _projectList = [
     estimatedTimeExpended: '1mo',
     screenShotAssetUrls: const ['assets/images/fan2dev.png'],
     codeRepositoryUrl: 'https://github.com',
-    webPageUrl: 'https://fan2dev.com',
+    websiteUrl: 'https://fan2dev.com',
   ),
   ProjectsProject(
     id: 4,
@@ -130,7 +130,7 @@ List<ProjectsProject> _projectList = [
     estimatedTimeExpended: '1mo',
     screenShotAssetUrls: const ['assets/images/fan2dev.png'],
     codeRepositoryUrl: 'https://github.com',
-    webPageUrl: 'https://fan2dev.com',
+    websiteUrl: 'https://fan2dev.com',
   ),
 ];
 

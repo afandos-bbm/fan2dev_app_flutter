@@ -19,7 +19,7 @@ class ProjectsProject extends Equatable {
     required this.logoAssetUrl,
     required this.screenShotAssetUrls,
     this.codeRepositoryUrl,
-    this.webPageUrl,
+    this.websiteUrl,
   });
 
   factory ProjectsProject.fromJson(Map<String, dynamic> json) =>
@@ -37,7 +37,7 @@ class ProjectsProject extends Equatable {
   final String logoAssetUrl;
   final List<String> screenShotAssetUrls;
   final String? codeRepositoryUrl;
-  final String? webPageUrl;
+  final String? websiteUrl;
 
   ProjectsProject copyWith({
     String? name,
@@ -63,7 +63,7 @@ class ProjectsProject extends Equatable {
       logoAssetUrl: logoAssetUrl ?? this.logoAssetUrl,
       screenShotAssetUrls: screenShotAssetUrls ?? this.screenShotAssetUrls,
       codeRepositoryUrl: codeRepositoryUrl ?? this.codeRepositoryUrl,
-      webPageUrl: webPageUrl ?? this.webPageUrl,
+      websiteUrl: webPageUrl ?? this.websiteUrl,
     );
   }
 
@@ -77,6 +77,6 @@ class ProjectsProject extends Equatable {
         logoAssetUrl,
         screenShotAssetUrls,
         codeRepositoryUrl,
-        webPageUrl,
+        websiteUrl,
       ];
 }

@@ -1,3 +1,4 @@
+import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/const.dart';
 import 'package:fan2dev/utils/theme/themes.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,7 @@ class ProjectsProjectDetailScreenshotsSectionWidget extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Screenshots',
+          context.l10n.projects_details_screenshots,
           style: context.currentTheme.textTheme.headlineMedium,
         ),
         const SizedBox(height: 20),

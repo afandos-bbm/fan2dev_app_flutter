@@ -135,5 +135,37 @@
     "about_text_3": "Beyond the screen, I am a person of varied interests. When not immersed in code, you might find me exploring the outdoors, capturing moments through photography, or delving into the world of literature. I'm a firm believer in maintaining a healthy work-life balance, and my hobbies play a crucial role in keeping my creativity and problem-solving skills sharp. Whether it's a coding challenge or a hiking trail, I approach every endeavor with enthusiasm and a desire to learn.\n",
     "@about_text_3": {
         "description": "About Text 3 Placeholder"
+    },
+    "projects_title": "Projects",
+    "@projects_title": {
+        "description": "Projects Title Placeholder"
+    },
+    "projects_subtitle": "Here are some of the projects I've worked on. Click on the cards to learn more about each one.",
+    "@projects_subtitle": {
+        "description": "Projects Subtitle Placeholder"
+    },
+    "projects_status": "{status, select, development{Development} soon{Soon} finished{finished} other{Other}}",
+    "@projects_status": {
+        "description": "Projects Status Placeholder"
+    },
+    "projects_time_expended": "Time expended:",
+    "@projects_time_expended": {
+        "description": "Projects Time Expended Placeholder"
+    },
+    "projects_open_website": "Open website",
+    "@projects_open_website": {
+        "description": "Projects Open Website Placeholder"
+    },
+    "projects_open_repository": "Open code repository",
+    "@projects_open_repository": {
+        "description": "Projects Open Repository Placeholder"
+    },
+    "projects_details_screenshots": "Screenshots",
+    "@projects_details_screenshots": {
+        "description": "Projects Details Screenshots Placeholder"
+    },
+    "projects_details_technologies": "Technologies",
+    "@projects_details_technologies": {
+        "description": "Projects Details Technologies Placeholder"
     }
 }

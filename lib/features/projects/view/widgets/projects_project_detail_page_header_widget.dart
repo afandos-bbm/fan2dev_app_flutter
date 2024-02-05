@@ -1,3 +1,4 @@
+import 'package:fan2dev/features/projects/projects.dart';
 import 'package:fan2dev/utils/const.dart';
 import 'package:fan2dev/utils/theme/themes.dart';
 import 'package:flutter/material.dart';
@@ -7,13 +8,13 @@ class ProjectsProjectDetailPageHeaderWidget extends StatelessWidget {
   const ProjectsProjectDetailPageHeaderWidget({
     required this.projectName,
     required this.projectLogoAssetUrl,
-    required this.projectEstimatedTimeExpended,
+    required this.projectStatus,
     super.key,
   });
 
   final String projectName;
   final String projectLogoAssetUrl;
-  final String projectEstimatedTimeExpended;
+  final ProjectsProjectStatus projectStatus;
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +51,14 @@ class ProjectsProjectDetailPageHeaderWidget extends StatelessWidget {
               ),
             ],
           ),
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: Text(
-              projectEstimatedTimeExpended,
-              style: context.currentTheme.textTheme.labelMedium,
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            decoration: BoxDecoration(
+              color: context.currentTheme.colorScheme.secondary,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: ProjectsProjectItemCardChipWidget(
+              type: projectStatus,
             ),
           ),
         ],

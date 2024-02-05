@@ -1,4 +1,5 @@
 import 'package:fan2dev/features/projects/domain/technology/projects_project_technology.dart';
+import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/const.dart';
 import 'package:fan2dev/utils/theme/themes.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class ProjectsProjectDetailTechnologiesSectionWidget extends StatelessWidget {
       children: [
         const SizedBox(height: 20),
         Text(
-          'Technologies',
+          context.l10n.projects_details_technologies,
           style: context.currentTheme.textTheme.headlineMedium,
         ),
         GridView.builder(

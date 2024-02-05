@@ -1,5 +1,6 @@
 import 'package:fan2dev/features/projects/cubit/projects_cubit/projects_cubit.dart';
 import 'package:fan2dev/features/projects/view/widgets/projects_project_item_card_widget.dart';
+import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/widgets/page_load_error_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -47,12 +48,12 @@ class ProjectsHomePageView extends StatelessWidget {
                   children: [
                     const SizedBox(height: 30),
                     Text(
-                      'Welcome to my projects.',
+                      context.l10n.projects_title,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 10),
                     Text(
-                      'Here you can find some of my projects. I hope you like them. If you have any questions, please contact me.',
+                      context.l10n.projects_subtitle,
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ],

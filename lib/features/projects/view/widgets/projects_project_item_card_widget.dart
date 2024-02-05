@@ -1,4 +1,5 @@
 import 'package:fan2dev/features/projects/projects.dart';
+import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -140,8 +141,8 @@ class ProjectsProjectItemCardWidget extends StatelessWidget {
                                                         VisualDensity.compact,
                                                     icon:
                                                         const Icon(Icons.code),
-                                                    tooltip:
-                                                        'Open code repository',
+                                                    tooltip: context.l10n
+                                                        .projects_open_repository,
                                                     onPressed: () {
                                                       tryToOpenUrl(
                                                         project
@@ -149,7 +150,7 @@ class ProjectsProjectItemCardWidget extends StatelessWidget {
                                                       );
                                                     },
                                                   ),
-                                                if (project.webPageUrl != null)
+                                                if (project.websiteUrl != null)
                                                   IconButton(
                                                     padding: EdgeInsets.zero,
                                                     visualDensity:
@@ -157,10 +158,11 @@ class ProjectsProjectItemCardWidget extends StatelessWidget {
                                                     icon: const Icon(
                                                       Icons.public,
                                                     ),
-                                                    tooltip: 'Open web page',
+                                                    tooltip: context.l10n
+                                                        .projects_open_website,
                                                     onPressed: () {
                                                       tryToOpenUrl(
-                                                        project.webPageUrl!,
+                                                        project.websiteUrl!,
                                                       );
                                                     },
                                                   ),

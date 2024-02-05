@@ -1,4 +1,5 @@
 import 'package:fan2dev/features/projects/domain/project/projects_project.dart';
+import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/theme/themes.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class ProjectsProjectItemCardChipWidget extends StatelessWidget {
     return Chip(
       backgroundColor: chipColor,
       label: Text(
-        type.name.toUpperCase(),
+        context.l10n.projects_status(type.name),
         style: context.currentTheme.textTheme.labelSmall,
       ),
       shape: context.currentTheme.chipTheme.shape!.copyWith(
