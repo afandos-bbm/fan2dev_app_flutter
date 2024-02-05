@@ -156,4 +156,5 @@ final ThemeData _darkTheme = ThemeData(
 
 extension ContextThemeExtension on BuildContext {
   ThemeData get currentTheme => Theme.of(this);
+  ColorScheme get themeColors => Theme.of(this).colorScheme;
 }
