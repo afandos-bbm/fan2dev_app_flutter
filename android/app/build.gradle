@@ -48,14 +48,16 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.flutter_app_empty_template"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
+        applicationId "me.fan2dev.app"
+        multiDexEnabled true
         minSdkVersion flutter.minSdkVersion
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
+        // Added as a workaround for this issue:
+        // https://developer.android.com/ndk/guides/abis#gradle
+        // https://github.com/flutter/flutter/issues/83596
+        ndk { abiFilters 'armeabi-v7a','arm64-v8a', 'x86_64' }
     }
 
 
@@ -84,17 +86,17 @@ android {
         production {
             dimension "default"
             applicationIdSuffix ""
-            manifestPlaceholders = [appName: "App Name"]
+            manifestPlaceholders = [appName: "Fan2Dev"]
         }
         staging {
             dimension "default"
             applicationIdSuffix ".stg"
-            manifestPlaceholders = [appName: "[STG] App Name"]
+            manifestPlaceholders = [appName: "[STG] Fan2Dev"]
         }
         development {
             dimension "default"
             applicationIdSuffix ".dev"
-            manifestPlaceholders = [appName: "[DEV] App Name"]
+            manifestPlaceholders = [appName: "[DEV] Fan2Dev"]
         }
     }
 
@@ -117,4 +119,5 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+}
