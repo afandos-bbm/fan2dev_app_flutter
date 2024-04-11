@@ -1,0 +1,22 @@
+
+Privacy Policy of Fan2Dev
+Last updated: 11/04/2023
+This Privacy Policy describes how Fan2Dev collects, uses, and shares personal information when you use our mobile application Fan2Dev (hereinafter referred to as "the Application").
+
+Information Collected
+When you use our Application, we collect certain information about your device, including the device model, operating system. We may also collect information about your use of the Application, such as the pages you visit and the actions you take within the Application.
+
+Use of Information
+We use the collected information to provide and improve the Application, to analyze the usage of the Application, and to personalize your experience within the Application. We may also use the information for marketing purposes and to communicate with you about updates and news related to the Application.
+
+Sharing of Information
+We do not share personal information with third parties, except when necessary to provide services in connection with the Application, to comply with the law, or to protect our rights.
+
+Security
+We take reasonable measures to protect the personal information we collect and store, but we cannot guarantee its absolute security.
+
+Changes to the Privacy Policy
+We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
+
+Contact
+If you have any questions or concerns about our Privacy Policy, feel free to contact us at contacto@alejandrofan2.dev
