@@ -116,6 +116,10 @@
     "@settings_theme_system": {
         "description": "Settings Theme System Placeholder"
     },
+    "settings_privacy_policy": "Privacy Policy",
+    "@settings_privacy_policy": {
+        "description": "Settings Privacy Policy Placeholder"
+    },
     "about_title": "Hi, my name is Alejandro Fandos",
     "@about_title": {
         "description": "About Title Placeholder"
@@ -167,5 +171,13 @@
     "projects_details_technologies": "Technologies",
     "@projects_details_technologies": {
         "description": "Projects Details Technologies Placeholder"
+    },
+    "privacy_policy_title": "Privacy Policy",
+    "@privacy_policy_title": {
+        "description": "Privacy Policy Title Placeholder"
+    },
+    "error_loading_privacy_policy": "Error loading privacy policy",
+    "@error_loading_privacy_policy": {
+        "description": "Error Loading Privacy Policy Placeholder"
     }
 }

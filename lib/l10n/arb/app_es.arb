@@ -116,6 +116,10 @@
     "@settings_theme_system": {
         "description": "Marcador de posición del tema de configuración del sistema"
     },
+    "settings_privacy_policy": "Política de privacidad",
+    "@settings_privacy_policy": {
+        "description": "Marcador de posición de la política de privacidad de configuración"
+    },
     "about_title": "Hola, me llamo Alejandro Fandos",
     "@about_title": {
         "description": "Marcador de posición del título Acerca de"
@@ -135,5 +139,13 @@
     "about_text_3": "Más allá de la pantalla, soy una persona de intereses variados. Cuando no estoy inmerso en código, podrías encontrarme explorando la naturaleza, capturando momentos a través de la fotografía o sumergiéndome en el mundo de la literatura. Creo firmemente en mantener un equilibrio saludable entre el trabajo y la vida, y mis pasatiempos desempeñan un papel crucial para mantener afilada mi creatividad y mis habilidades para resolver problemas. Ya sea un desafío de codificación o un sendero de senderismo, abordo cada empresa con entusiasmo y un deseo de aprender.\n",
     "@about_text_3": {
         "description": "Marcador de posición del texto Acerca de 3"
+    },
+    "privacy_policy_title": "Política de privacidad",
+    "@privacy_policy_title": {
+        "description": "Marcador de posición del título de la política de privacidad"
+    },
+    "error_loading_privacy_policy": "Se produjo un error al cargar la política de privacidad",
+    "@error_loading_privacy_policy": {
+        "description": "Mensaje de error al cargar la política de privacidad"
     }
 }
