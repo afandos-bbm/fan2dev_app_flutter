@@ -1,3 +1,4 @@
+import 'package:fan2dev/core/core.dart';
 import 'package:fan2dev/features/projects/domain/project/projects_project.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/theme/themes.dart';
@@ -17,16 +18,30 @@ class ProjectsProjectItemCardChipWidget extends StatelessWidget {
     Color chipColor;
     Color chipBorderColor;
 
-    switch (type) {
-      case ProjectsProjectStatus.soon:
-        chipColor = Colors.orange[50]!;
-        chipBorderColor = Colors.orange[200]!;
-      case ProjectsProjectStatus.development:
-        chipColor = Colors.green[50]!;
-        chipBorderColor = Colors.green[200]!;
-      case ProjectsProjectStatus.finished:
-        chipColor = Colors.blue[50]!;
-        chipBorderColor = Colors.blue[200]!;
+    if (locator<ThemeService>().isDarkMode) {
+      switch (type) {
+        case ProjectsProjectStatus.soon:
+          chipColor = Colors.orange[900]!;
+          chipBorderColor = Colors.orange[700]!;
+        case ProjectsProjectStatus.development:
+          chipColor = Colors.green[900]!;
+          chipBorderColor = Colors.green[700]!;
+        case ProjectsProjectStatus.finished:
+          chipColor = Colors.blue[900]!;
+          chipBorderColor = Colors.blue[700]!;
+      }
+    } else {
+      switch (type) {
+        case ProjectsProjectStatus.soon:
+          chipColor = Colors.orange[50]!;
+          chipBorderColor = Colors.orange[200]!;
+        case ProjectsProjectStatus.development:
+          chipColor = Colors.green[50]!;
+          chipBorderColor = Colors.green[200]!;
+        case ProjectsProjectStatus.finished:
+          chipColor = Colors.blue[50]!;
+          chipBorderColor = Colors.blue[200]!;
+      }
     }
 
     return Chip(

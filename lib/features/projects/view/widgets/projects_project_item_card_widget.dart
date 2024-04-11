@@ -1,3 +1,5 @@
+import 'package:fan2dev/core/core.dart';
+import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/features/projects/projects.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/utils.dart';
@@ -32,7 +34,9 @@ class ProjectsProjectItemCardWidget extends StatelessWidget {
               Flexible(
                 child: Card(
                   elevation: 1,
-                  color: kPrimaryColor[50],
+                  color: locator<ThemeService>().isDarkMode
+                      ? kPrimaryColor[900]
+                      : kPrimaryColor[50],
                   margin: EdgeInsets.zero,
                   child: Stack(
                     children: [
