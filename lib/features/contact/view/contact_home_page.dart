@@ -135,7 +135,7 @@ class ContactHomePage extends StatelessWidget {
 
                                 result.whenOrNull(
                                   success: (_) {
-                                    showBottomSheet<ColoredBox>(
+                                    showBottomSheet(
                                       context: context,
                                       builder: (_) {
                                         return ColoredBox(
