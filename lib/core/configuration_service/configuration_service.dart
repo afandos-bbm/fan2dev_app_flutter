@@ -10,10 +10,12 @@ class Configuration {
   Configuration({
     required this.appUrl,
     required this.backUrl,
+    this.sentryDsn,
   });
 
   final String appUrl;
   final String backUrl;
+  final String? sentryDsn;
 }
 
 class ConfigurationService {
@@ -28,13 +30,15 @@ class ConfigurationService {
         );
       case Flavor.staging:
         _config = Configuration(
-          backUrl: 'https://backend.alerfan2.dev',
+          backUrl: 'https://backend.alejandrofan2.dev',
           appUrl: 'https://alejandrofan2.dev',
         );
       case Flavor.production:
         _config = Configuration(
-          backUrl: 'https://backend.alerfan2.dev',
+          backUrl: 'https://backend.alejandrofan2.dev',
           appUrl: 'https://alejandrofan2.dev',
+          sentryDsn:
+              'https://b93730f66209c6d4c4384ecb37577873@o4507097049595904.ingest.de.sentry.io/4507097682280528',
         );
     }
   }
@@ -57,6 +61,7 @@ class ConfigurationService {
 
   String get appUrl => _config.appUrl;
   String get hadeaBackUrl => _config.backUrl;
+  String? get sentryDsn => _config.sentryDsn;
   Flavor get currentFlavor => flavor;
 
   static ConfigurationService of(BuildContext context) {
