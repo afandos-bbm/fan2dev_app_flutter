@@ -27,7 +27,13 @@ class AboutCubit extends Cubit<AboutCubitState> {
           );
         },
         failure: (error) {
-          l('Error loading images: $error');
+          l(
+            'Error loading images: $error',
+            error: error,
+            stackTrace: StackTrace.current,
+            level: LogLevel.error,
+            name: 'AboutCubit',
+          );
           emit(
             state.copyWith(
               status: AboutCubitStateStatus.error,
@@ -52,7 +58,13 @@ class AboutCubit extends Cubit<AboutCubitState> {
         },
       );
     } catch (e) {
-      l('Error loading images: $e');
+      l(
+        'Error loading images: $e',
+        error: e,
+        stackTrace: StackTrace.current,
+        level: LogLevel.error,
+        name: 'AboutCubit',
+      );
       emit(
         state.copyWith(
           status: AboutCubitStateStatus.error,

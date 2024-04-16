@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'package:sentry_flutter/sentry_flutter.dart';
+
 /// Levels of log messages
 enum LogLevel {
   info,
@@ -43,6 +45,24 @@ void l(
   Object? error,
   StackTrace? stackTrace,
 }) {
+  if (level == LogLevel.error) {
+    Sentry.captureException(
+      error,
+      stackTrace: stackTrace,
+      withScope: (scope) {
+        scope.setExtra('name', name);
+        scope.setExtra('message', message);
+        scope.addBreadcrumb(
+          Breadcrumb(
+            message: message,
+            level: SentryLevel.error,
+            type: name,
+          ),
+        );
+      },
+    );
+  }
+
   log(
     '${level.levelColor()}$message$_resetCode',
     name: name ?? '',

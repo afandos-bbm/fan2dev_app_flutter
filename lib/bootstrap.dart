@@ -49,7 +49,7 @@ class AppBlocObserver extends BlocObserver {
 
   @override
   void onClose(BlocBase<dynamic> bloc) {
-    log('', name: '😵 onClose - ${bloc.runtimeType}');
+    l('', name: '😵 onClose - ${bloc.runtimeType}');
     super.onClose(bloc);
   }
 }
@@ -59,11 +59,22 @@ class AppBlocObserver extends BlocObserver {
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   /// Logs all Flutter errors to the console.
   FlutterError.onError = (details) {
-    log(details.exceptionAsString(), stackTrace: details.stack);
+    l(
+      details.exceptionAsString(),
+      stackTrace: details.stack,
+      level: LogLevel.error,
+      name: '❌ FlutterError',
+    );
   };
 
   /// Shows a custom error widget instead of the default Flutter error widget.
   ErrorWidget.builder = (FlutterErrorDetails errorDetails) {
+    l(
+      errorDetails.exceptionAsString(),
+      stackTrace: errorDetails.stack,
+      level: LogLevel.error,
+      name: '❌ ErrorWidget',
+    );
     return ColoredBox(
       color: Colors.red,
       child: Center(
