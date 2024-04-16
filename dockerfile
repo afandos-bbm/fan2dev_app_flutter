@@ -2,7 +2,7 @@
 # The first stage is used to build the app
 # The second stage is used to run the app
 
-#Stage 1 - Install dependencies and build the app in a build environment
+# * Stage 1 - Install dependencies and build the app in a build environment
 FROM debian:latest AS builder
 
 # Install flutter dependencies
@@ -29,9 +29,13 @@ RUN flutter pub get
 RUN flutter pub run build_runner build --delete-conflicting-outputs
 RUN flutter build web --no-tree-shake-icons --release --target lib/main_production.dart
 
-# Stage 2 - Create the run-time image
+# * Stage 2 - Create the run-time image
 FROM nginx:stable-alpine AS runner
 
 # Copy the build output to replace the default nginx contents.
 COPY --from=builder /app/build/web /usr/share/nginx/html
 
+# Modify the default.conf file to add the following line
+# try_files $uri $uri/ /index.html;
+# ? This is to make sure that the index.html file is served when the user navigates to a route that is not defined
+COPY nginx.default.conf /etc/nginx/conf.d/default.conf
