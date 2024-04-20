@@ -18,7 +18,7 @@ ENV PATH="${PATH}:/usr/local/flutter/bin:/usr/local/flutter/bin/cache/dart-sdk/b
 # Run flutter standard commands
 RUN flutter channel stable
 RUN flutter upgrade
-RUn flutter config --enable-web
+RUN flutter config --enable-web
 RUN flutter doctor -v
 
 # Copy files to container and build (also get dependencies and execute build_runner)
