@@ -10,6 +10,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 /// Listens to all bloc and cubit instances and logs all transitions and errors.
 class AppBlocObserver extends BlocObserver {
@@ -117,6 +118,15 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   /// Initializes the URL strategy for the web.
   usePathUrlStrategy();
+
+  final deviceInfo = await DeviceInfo().getDeviceInfoPerPlatform();
+  if (deviceInfo != null) {
+    Sentry.metrics().increment(
+      'app.start',
+      unit: SentryMeasurementUnit.none,
+      tags: {'device-info': deviceInfo.toString()},
+    );
+  }
 
   /// Runs the application.
   runApp(await builder());

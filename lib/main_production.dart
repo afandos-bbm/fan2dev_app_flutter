@@ -11,6 +11,7 @@ void main() {
     (options) {
       options.dsn = ConfigurationService.i.sentryDsn;
       options.environment = ConfigurationService.i.flavor.name;
+      options.enableMetrics = true;
     },
     appRunner: () => bootstrap(() => const App()),
   );
