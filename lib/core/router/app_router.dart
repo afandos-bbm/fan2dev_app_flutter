@@ -113,8 +113,12 @@ final router = GoRouter(
                 if (possiblePost != null) {
                   return NoTransitionPage(
                     child: BlogPostDetailPage(
-                        post: Future.value(Result<BlogPost, Exception>.success(
-                            data: possiblePost))),
+                      post: Future.value(
+                        Result<BlogPost, Exception>.success(
+                          data: possiblePost,
+                        ),
+                      ),
+                    ),
                   );
                 }
 

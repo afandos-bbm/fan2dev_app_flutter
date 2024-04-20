@@ -1,5 +1,4 @@
 import 'package:fan2dev/core/core.dart';
-import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/features/projects/projects.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/utils.dart';

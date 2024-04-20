@@ -1,16 +1,12 @@
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/features/blog/cubit/cubit.dart';
 import 'package:fan2dev/features/blog/data/data_sources/blog_firestore_remote_data_source.dart';
-import 'package:fan2dev/features/blog/domain/entities/blog_post.dart';
 import 'package:fan2dev/features/blog/view/widgets/blog_post_item.dart';
-import 'package:fan2dev/utils/extensions/datetime_extensions.dart';
-import 'package:fan2dev/utils/theme/themes.dart';
 import 'package:fan2dev/utils/utils.dart';
 import 'package:fan2dev/utils/widgets/generic_error_widget.dart';
 import 'package:fan2dev/utils/widgets/loading_widget.dart';
 import 'package:fan2dev/utils/widgets/paginated_list_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BlogHomePage extends StatelessWidget {
@@ -36,7 +32,7 @@ class _BlogHomePageView extends StatelessWidget {
       builder: (context, state) {
         return Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             SizedBox(
