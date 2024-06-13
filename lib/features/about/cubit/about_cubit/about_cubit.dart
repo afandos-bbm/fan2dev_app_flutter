@@ -4,6 +4,7 @@ import 'package:fan2dev/features/about/data/data_sources/about_firebase_storage_
 import 'package:fan2dev/features/about/domain/entities/about_images/about_images.dart';
 import 'package:fan2dev/utils/utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 part 'about_cubit_state.dart';
 
@@ -29,7 +30,8 @@ class AboutCubit extends Cubit<AboutCubitState> {
         failure: (error) {
           l(
             'Error loading images: $error',
-            error: error,
+            exception: BusinessAppError.generic(
+                errorCode: ErrorCodes.generic, errorMessage: error.toString(),),
             stackTrace: StackTrace.current,
             level: LogLevel.error,
             name: 'AboutCubit',
@@ -60,7 +62,10 @@ class AboutCubit extends Cubit<AboutCubitState> {
     } catch (e) {
       l(
         'Error loading images: $e',
-        error: e,
+        exception: InternalAppError.generic(
+          errorCode: ErrorCodes.generic,
+          errorMessage: e.toString(),
+        ),
         stackTrace: StackTrace.current,
         level: LogLevel.error,
         name: 'AboutCubit',

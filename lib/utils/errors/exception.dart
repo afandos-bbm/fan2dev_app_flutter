@@ -1,6 +1,7 @@
 import 'package:fan2dev/utils/errors/error.dart';
 import 'package:fan2dev/utils/logger.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 part 'exception.freezed.dart';
 

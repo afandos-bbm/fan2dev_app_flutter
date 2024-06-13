@@ -27,7 +27,7 @@ COPY . /app/
 WORKDIR /app/
 RUN flutter pub get
 RUN flutter pub run build_runner build --delete-conflicting-outputs
-RUN flutter build web --no-tree-shake-icons --release --target lib/main_production.dart
+RUN flutter build web --no-tree-shake-icons --release --target lib/main_production.dart --web-renderer html
 
 # * Stage 2 - Create the run-time image
 FROM nginx:stable-alpine AS runner

@@ -1,6 +1,7 @@
 import 'package:fan2dev/features/projects/cubit/projects_cubit/projects_cubit.dart';
 import 'package:fan2dev/features/projects/view/widgets/projects_project_item_card_widget.dart';
 import 'package:fan2dev/l10n/l10n.dart';
+import 'package:fan2dev/utils/utils.dart';
 import 'package:fan2dev/utils/widgets/page_load_error_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -66,6 +67,19 @@ class ProjectsHomePageView extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                 itemBuilder: (context, index) {
+                  if (!ResponsiveWidget.isMobile(context)) {
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: 550,
+                          child: ProjectsProjectItemCardWidget(
+                            project: state.projects[index],
+                          ),
+                        ),
+                      ],
+                    );
+                  }
                   return ProjectsProjectItemCardWidget(
                     project: state.projects[index],
                   );

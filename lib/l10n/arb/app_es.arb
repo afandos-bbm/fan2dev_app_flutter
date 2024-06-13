@@ -147,5 +147,37 @@
     "error_loading_privacy_policy": "Se produjo un error al cargar la política de privacidad",
     "@error_loading_privacy_policy": {
         "description": "Mensaje de error al cargar la política de privacidad"
+    },
+    "projects_title": "Proyectos",
+    "@projects_title": {
+        "description": "Marcador de posición del título de proyectos"
+    },
+    "projects_subtitle": "Aquí tienes algunos de los proyectos en los que he trabajado. Haz clic en las tarjetas para obtener más información sobre cada uno.",
+    "@projects_subtitle": {
+        "description": "Marcador de posición del subtítulo de proyectos"
+    },
+    "projects_status": "{status, select, development{Desarrollo} soon{Pronto} finished{Finalizado} other{Otro}}",
+    "@projects_status": {
+        "description": "Marcador de posición del estado de proyectos"
+    },
+    "projects_time_expended": "Tiempo invertido:",
+    "@projects_time_expended": {
+        "description": "Marcador de posición del tiempo invertido en proyectos"
+    },
+    "projects_open_website": "Abrir sitio web",
+    "@projects_open_website": {
+        "description": "Marcador de posición del botón de abrir sitio web de proyectos"
+    },
+    "projects_open_repository": "Abrir repositorio de código",
+    "@projects_open_repository": {
+        "description": "Marcador de posición del botón de abrir repositorio de código de proyectos"
+    },
+    "projects_details_screenshots": "Capturas de pantalla",
+    "@projects_details_screenshots": {
+        "description": "Marcador de posición de las capturas de pantalla de detalles de proyectos"
+    },
+    "projects_details_technologies": "Tecnologías",
+    "@projects_details_technologies": {
+        "description": "Marcador de posición de las tecnologías de detalles de proyectos"
     }
 }

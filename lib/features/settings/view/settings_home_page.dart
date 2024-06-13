@@ -23,7 +23,7 @@ class SettingsHomePage extends StatelessWidget {
             title: Text(context.l10n.settings_title),
             centerTitle: false,
           ),
-          bottomSheet: const FooterF2DWidget(),
+          bottomNavigationBar: const FooterF2DWidget(),
           body: Column(
             children: [
               Padding(

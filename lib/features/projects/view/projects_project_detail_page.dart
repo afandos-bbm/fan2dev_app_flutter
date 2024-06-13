@@ -27,7 +27,7 @@ class ProjectsProjectDetailPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  '${context.l10n.projects_time_expended} ${project.estimatedTimeExpended}',
+                  '${context.l10n.projects_time_expended} ~${project.estimatedTimeExpended}',
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         fontWeight: FontWeight.w500,
                       ),

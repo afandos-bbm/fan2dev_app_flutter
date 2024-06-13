@@ -1,8 +1,8 @@
 import 'package:fan2dev/features/projects/domain/technology/projects_project_technology.dart';
 import 'package:fan2dev/l10n/l10n.dart';
-import 'package:fan2dev/utils/const.dart';
-import 'package:fan2dev/utils/theme/themes.dart';
+import 'package:fan2dev/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class ProjectsProjectDetailTechnologiesSectionWidget extends StatelessWidget {
   const ProjectsProjectDetailTechnologiesSectionWidget({
@@ -27,11 +27,8 @@ class ProjectsProjectDetailTechnologiesSectionWidget extends StatelessWidget {
           itemCount: technologies.length,
           physics: const NeverScrollableScrollPhysics(),
           padding: const EdgeInsets.symmetric(vertical: 15),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 5,
-            mainAxisSpacing: 5,
-            childAspectRatio: 1.55,
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 200,
           ),
           itemBuilder: (context, index) {
             return SizedBox(
@@ -45,35 +42,34 @@ class ProjectsProjectDetailTechnologiesSectionWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SizedBox(
-                        height: 30,
-                        child: Row(
-                          children: [
-                            CircleAvatar(
-                              backgroundColor: Colors.transparent,
-                              child: Image.asset(
-                                technologies[index].logoAssetUrl,
-                                width: 20,
-                                height: 20,
-                                errorBuilder: (context, error, stackTrace) =>
-                                    Image.asset(
-                                  kLogoPath,
-                                  width: 20,
-                                  height: 20,
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: SizedBox(
+                          height: 30,
+                          child: Row(
+                            children: [
+                              CircleAvatar(
+                                backgroundColor: Colors.transparent,
+                                child: SvgPicture.asset(
+                                  technologies[index].logoAssetUrl,
+                                  width: 30,
+                                  height: 30,
                                 ),
                               ),
-                            ),
-                            const SizedBox(width: 5),
-                            Text(
-                              technologies[index].name,
-                              style: Theme.of(context).textTheme.bodyMedium,
-                            ),
-                          ],
+                              const SizedBox(width: 5),
+                              Text(
+                                technologies[index].name,
+                                style: Theme.of(context).textTheme.bodyMedium,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 5),
-                      Row(
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Chip(
                             padding: EdgeInsets.zero,
@@ -85,14 +81,14 @@ class ProjectsProjectDetailTechnologiesSectionWidget extends StatelessWidget {
                               horizontal: 8,
                             ),
                             label: Text(
-                              technologies[index].type.name,
+                              technologies[index].type.name.capitalize(),
                               style: Theme.of(context).textTheme.labelSmall,
                             ),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),
                           ),
-                          const SizedBox(width: 5),
+                          const SizedBox(height: 5),
                           Chip(
                             padding: EdgeInsets.zero,
                             elevation: 2,
@@ -103,7 +99,7 @@ class ProjectsProjectDetailTechnologiesSectionWidget extends StatelessWidget {
                               horizontal: 8,
                             ),
                             label: Text(
-                              technologies[index].objective.name,
+                              technologies[index].objective.name.capitalize(),
                               style: Theme.of(context).textTheme.labelSmall,
                             ),
                             shape: RoundedRectangleBorder(

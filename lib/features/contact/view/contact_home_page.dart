@@ -21,6 +21,7 @@ class ContactHomePage extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Flexible(
               child: ConstrainedBox(
@@ -42,13 +43,13 @@ class ContactHomePage extends StatelessWidget {
                             padding: const EdgeInsets.all(8),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                if (!ResponsiveWidget.isDesktop(context))
-                                  Image.asset(
-                                    kContactEmojiPath,
-                                    width: 150,
-                                    height: 150,
-                                  ),
+                                Image.asset(
+                                  kContactEmojiPath,
+                                  width: 150,
+                                  height: 150,
+                                ),
                                 Text(
                                   context.l10n.contact_title,
                                   style: Theme.of(context)

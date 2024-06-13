@@ -1,6 +1,7 @@
-import 'package:fan2dev/utils/logger.dart';
+import 'package:fan2dev/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 Future<void> tryToOpenUrl(
@@ -13,7 +14,10 @@ Future<void> tryToOpenUrl(
   } on PlatformException catch (error) {
     l(
       ' ❌ launchUrl error: ',
-      error: error,
+      exception: InternalAppError.generic(
+        errorCode: ErrorCodes.generic,
+        errorMessage: error.toString(),
+      ),
       name: 'tryToOpenUrl',
       level: LogLevel.error,
     );

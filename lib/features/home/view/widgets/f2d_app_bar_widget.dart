@@ -13,7 +13,6 @@ class F2DAppBarWidget extends StatelessWidget {
     return SizedBox(
       height: 50,
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           const SizedBox(width: 10),
           Padding(
@@ -47,7 +46,6 @@ class F2DAppBarWidget extends StatelessWidget {
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             TextButton(
                               style: ButtonStyle(

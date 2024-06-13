@@ -86,3 +86,9 @@ class InheritedConfigurationServiceWidget extends InheritedWidget {
     return configService != oldWidget.configService;
   }
 }
+
+extension FlavorExt on Flavor {
+  bool get isDevelopment => this == Flavor.development;
+  bool get isStaging => this == Flavor.staging;
+  bool get isProduction => this == Flavor.production;
+}

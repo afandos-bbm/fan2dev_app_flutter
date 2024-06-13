@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:fan2dev/core/dio_client/interceptors/logger_interceptor.dart';
-
-export 'interceptors/logger_interceptor.dart';
+import 'package:talker_dio_logger/talker_dio_logger_interceptor.dart';
 
 /// Client for making HTTP request using Dio.
 /// It is used to make HTTP requests to the backend.
@@ -18,7 +16,7 @@ class DioClient {
 
     // Add interceptors
     _dio.interceptors.addAll([
-      LoggerInterceptor(),
+      TalkerDioLogger(),
     ]);
   }
 

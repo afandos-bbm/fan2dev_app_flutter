@@ -2,6 +2,7 @@ import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/core/theme_service/theme_service.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/const.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -50,7 +51,7 @@ class FooterF2DWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: 30,
+            height: kIsWeb ? 15 : 30,
           ),
         ],
       ),

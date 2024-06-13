@@ -21,6 +21,7 @@ class SettingsThemePage extends StatelessWidget {
             title: Text(context.l10n.settings_theme),
             centerTitle: false,
           ),
+          bottomNavigationBar: const FooterF2DWidget(),
           body: Column(
             children: [
               Padding(
@@ -68,9 +69,6 @@ class SettingsThemePage extends StatelessWidget {
                   ),
                 ),
               ),
-              const Spacer(),
-              const FooterF2DWidget(),
-              const SizedBox(height: 50),
             ],
           ),
         );

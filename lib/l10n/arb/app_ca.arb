@@ -147,5 +147,37 @@
     "error_loading_privacy_policy": "S'ha produït un error en carregar la política de privacitat",
     "@error_loading_privacy_policy": {
         "description": "Missatge d'error en carregar la política de privacitat"
+    },
+    "projects_title": "Projectes",
+    "@projects_title": {
+        "description": "Marcador de posició del títol de projectes"
+    },
+    "projects_subtitle": "Ací tens alguns dels projectes en els quals he treballat. Fes clic en les targetes per a obtindre més informació sobre cadascun.",
+    "@projects_subtitle": {
+        "description": "Marcador de posició del subtítol de projectes"
+    },
+    "projects_status": "{status, select, development{Desenvolupament} soon{Pronte} finished{Finalitzat} other{Un altre}}",
+    "@projects_status": {
+        "description": "Marcador de posició de l'estat de projectes"
+    },
+    "projects_time_expended": "Temps invertit:",
+    "@projects_time_expended": {
+        "description": "Marcador de posició del temps invertit en projectes"
+    },
+    "projects_open_website": "Obrir lloc web",
+    "@projects_open_website": {
+        "description": "Marcador de posició del botó d'obrir lloc web de projectes"
+    },
+    "projects_open_repository": "Obrir repositori de codi",
+    "@projects_open_repository": {
+        "description": "Marcador de posició del botó d'obrir repositori de codi de projectes"
+    },
+    "projects_details_screenshots": "Captures de pantalla",
+    "@projects_details_screenshots": {
+        "description": "Marcador de posició de les captures de pantalla de detalls de projectes"
+    },
+    "projects_details_technologies": "Tecnologies",
+    "@projects_details_technologies": {
+        "description": "Marcador de posició de les tecnologies de detalls de projectes"
     }
 }

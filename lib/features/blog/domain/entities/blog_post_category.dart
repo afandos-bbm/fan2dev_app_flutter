@@ -12,16 +12,8 @@ enum BlogPostCategory {
   entertainment,
   @JsonValue('HEALTH')
   health,
-  @JsonValue('SCIENCE')
-  science,
-  @JsonValue('SPORTS')
-  sports,
   @JsonValue('EDUCATION')
   education,
-  @JsonValue('TRAVEL')
-  travel,
-  @JsonValue('LIFESTYLE')
-  lifestyle,
   @JsonValue('OTHER')
   other,
 }
@@ -39,18 +31,29 @@ extension BlogPostCategoryX on BlogPostCategory {
         return 'Entertainment';
       case BlogPostCategory.health:
         return 'Health';
-      case BlogPostCategory.science:
-        return 'Science';
-      case BlogPostCategory.sports:
-        return 'Sports';
       case BlogPostCategory.education:
         return 'Education';
-      case BlogPostCategory.travel:
-        return 'Travel';
-      case BlogPostCategory.lifestyle:
-        return 'Lifestyle';
       case BlogPostCategory.other:
         return 'Other';
+    }
+  }
+
+  String get imageUrl {
+    switch (this) {
+      case BlogPostCategory.technology:
+        return 'assets/images/blog/categories/technology.jpg';
+      case BlogPostCategory.design:
+        return 'assets/images/blog/categories/design.jpg';
+      case BlogPostCategory.business:
+        return 'assets/images/blog/categories/business.jpg';
+      case BlogPostCategory.entertainment:
+        return 'assets/images/blog/categories/entertainment.jpg';
+      case BlogPostCategory.health:
+        return 'assets/images/blog/categories/health.jpg';
+      case BlogPostCategory.education:
+        return 'assets/images/blog/categories/education.jpg';
+      case BlogPostCategory.other:
+        return 'assets/images/blog/categories/other.jpg';
     }
   }
 }

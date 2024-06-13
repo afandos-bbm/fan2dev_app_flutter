@@ -1,6 +1,7 @@
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/features/blog/cubit/cubit.dart';
 import 'package:fan2dev/features/blog/data/data_sources/blog_firestore_remote_data_source.dart';
+import 'package:fan2dev/features/blog/domain/entities/blog_post_category.dart';
 import 'package:fan2dev/features/blog/view/widgets/blog_post_item.dart';
 import 'package:fan2dev/utils/utils.dart';
 import 'package:fan2dev/utils/widgets/generic_error_widget.dart';
@@ -33,12 +34,12 @@ class _BlogHomePageView extends StatelessWidget {
         return Column(
           children: [
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
             SizedBox(
               height: 70,
               child: ListView.builder(
-                itemCount: 5,
+                itemCount: BlogPostCategory.values.length,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return Card(
@@ -58,9 +59,12 @@ class _BlogHomePageView extends StatelessWidget {
                             left: 0,
                             right: 0,
                             bottom: 0,
-                            child: Image.asset(
-                              kLogoPath,
-                              fit: BoxFit.cover,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.asset(
+                                BlogPostCategory.values[index].imageUrl,
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
                           Positioned(
@@ -68,9 +72,17 @@ class _BlogHomePageView extends StatelessWidget {
                             left: 30,
                             right: 0,
                             child: Text(
-                              'Title',
-                              style:
-                                  context.currentTheme.textTheme.headlineSmall,
+                              BlogPostCategory.values[index].name,
+                              style: context
+                                  .currentTheme.textTheme.headlineSmall!
+                                  .copyWith(
+                                color: Colors.white,
+                                shadows: [
+                                  const Shadow(
+                                    blurRadius: 7,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -85,7 +97,9 @@ class _BlogHomePageView extends StatelessWidget {
               padding: const EdgeInsets.only(left: 20, top: 20),
               child: Text(
                 'Posts',
-                style: context.currentTheme.textTheme.headlineMedium,
+                style: context.currentTheme.textTheme.headlineMedium!.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             Flexible(

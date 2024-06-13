@@ -35,6 +35,13 @@ class ProjectsProjectDetailScreenshotsSectionWidget extends StatelessWidget {
               activeDotColor: kPrimaryColor,
               type: WormType.thin,
             ),
+            onDotClicked: (index) {
+              controller.animateToPage(
+                index,
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.easeInOut,
+              );
+            },
           ),
         ),
         const SizedBox(height: 10),

@@ -11,52 +11,16 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-
-/// Listens to all bloc and cubit instances and logs all transitions and errors.
-class AppBlocObserver extends BlocObserver {
-  const AppBlocObserver();
-
-  /// Logs all bloc and cubit creations.
-  @override
-  void onCreate(BlocBase<dynamic> bloc) {
-    l('', name: '🆕 onCreate - ${bloc.runtimeType}');
-    super.onCreate(bloc);
-  }
-
-  /// Logs all bloc and cubit transitions.
-  @override
-  void onChange(BlocBase<dynamic> bloc, Change<dynamic> change) {
-    l(
-      '${change.currentState.toString().findDifferences(
-            change.nextState.toString(),
-          )}',
-      name: '⛓️ onChange - ${bloc.runtimeType}',
-    );
-
-    super.onChange(bloc, change);
-  }
-
-  /// Logs all bloc and cubit errors.
-  @override
-  void onError(BlocBase<dynamic> bloc, Object error, StackTrace stackTrace) {
-    l(
-      '$error, $stackTrace',
-      name: '❌ onError - ${bloc.runtimeType}',
-      level: LogLevel.error,
-    );
-    super.onError(bloc, error, stackTrace);
-  }
-
-  @override
-  void onClose(BlocBase<dynamic> bloc) {
-    l('', name: '😵 onClose - ${bloc.runtimeType}');
-    super.onClose(bloc);
-  }
-}
+import 'package:talker_bloc_logger/talker_bloc_logger_observer.dart';
+import 'package:talker_bloc_logger/talker_bloc_logger_settings.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 /// Bootstraps the application with the given [builder].
 // Add cross-flavor configuration here
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+  /// Initializes the logger.
+  initLogger();
+
   /// Logs all Flutter errors to the console.
   FlutterError.onError = (details) {
     l(
@@ -100,7 +64,14 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   /// Initializes the bloc logger.
-  Bloc.observer = const AppBlocObserver();
+  Bloc.observer = TalkerBlocObserver(
+    talker: talker,
+    settings: const TalkerBlocLoggerSettings(
+      printCreations: true,
+      printClosings: true,
+      printChanges: true,
+    ),
+  );
 
   /// Initializes the service locator.
   await initGetIt();

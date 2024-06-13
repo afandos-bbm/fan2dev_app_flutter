@@ -51,6 +51,7 @@ class ProjectsProjectItemCardWidget extends StatelessWidget {
                                   project.screenShotAssetUrls.first,
                                   width: 100,
                                   height: 200,
+                                  fit: BoxFit.cover,
                                   errorBuilder: (context, error, stackTrace) {
                                     return Image.asset(
                                       kLogoPath,
@@ -63,7 +64,7 @@ class ProjectsProjectItemCardWidget extends StatelessWidget {
                             ),
                           ),
                           Expanded(
-                            flex: 2,
+                            flex: 3,
                             child: Padding(
                               padding: const EdgeInsets.only(
                                 left: 20,
@@ -200,13 +201,13 @@ class ProjectsProjectItemCardWidget extends StatelessWidget {
                               ),
                               child: Image.asset(
                                 project.logoAssetUrl,
-                                width: 40,
-                                height: 40,
+                                width: 20,
+                                height: 20,
                                 errorBuilder: (context, error, stackTrace) {
                                   return Image.asset(
                                     kLogoPath,
-                                    width: 40,
-                                    height: 40,
+                                    width: 20,
+                                    height: 20,
                                   );
                                 },
                               ),

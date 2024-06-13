@@ -52,6 +52,13 @@ class AboutImageCarrouselWidget extends StatelessWidget {
             activeDotColor: kPrimaryColor,
             verticalOffset: 10,
           ),
+          onDotClicked: (index) {
+            controller.animateToPage(
+              index,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeInOut,
+            );
+          },
         ),
         const SizedBox(height: 10),
       ],

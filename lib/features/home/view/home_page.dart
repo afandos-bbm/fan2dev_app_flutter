@@ -34,7 +34,7 @@ class _HomePageView extends StatelessWidget {
           backgroundColor: locator<ThemeService>().themeMode == ThemeMode.dark
               ? Colors.black
               : context.read<ThemeService>().themeData!.colorScheme.primary,
-          bottomSheet: const FooterF2DWidget(),
+          bottomNavigationBar: const FooterF2DWidget(),
           body: Column(
             children: [
               const SizedBox(height: 70),

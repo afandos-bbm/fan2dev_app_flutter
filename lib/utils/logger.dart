@@ -1,86 +1,121 @@
 import 'dart:developer';
 
+import 'package:fan2dev/core/configuration_service/configuration_service.dart';
+import 'package:flutter/foundation.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
-/// Levels of log messages
-enum LogLevel {
-  info,
-  debug,
-  error,
-  warning,
-}
-
-/// Extension on [LogLevel] to provide a color for each level
-/// when logging to the console.
-/// See [l] for more information.
-extension LogLevelExt on LogLevel {
-  String levelColor() {
-    switch (this) {
-      case LogLevel.info:
-        return '\x1B[37m';
-      case LogLevel.debug:
-        return '\x1B[34m';
-      case LogLevel.error:
-        return '\x1B[31m';
-      case LogLevel.warning:
-        return '\x1B[33m';
-    }
-  }
-}
-
-/// Resets the color of the console.
-/// See [l] for more information.
-String get _resetCode => '\x1B[0m';
+late Talker talker;
 
 /// Logger wrapper for the [log] function.
 /// Logs the given [message] to the console.
 /// Optionally, a [level] can be provided to color the message.
 /// Optionally, a [name] can be provided to identify the log message.
-/// Optionally, an [error] can be provided to log an error message.
+/// Optionally, an [exception] can be provided to log an error message.
 /// Optionally, a [stackTrace] can be provided to log a stacktrace.
 void l(
   String message, {
   LogLevel level = LogLevel.info,
   String? name,
-  Object? error,
+  Object? exception,
   StackTrace? stackTrace,
 }) {
-  if (level == LogLevel.error) {
-    Sentry.captureException(
-      error,
+  final loggerTitle =
+      name != null ? '${_getLevelTitle(level)} - $name' : _getLevelTitle(level);
+
+  if (!kDebugMode && (level == LogLevel.debug || level == LogLevel.verbose)) {
+    return;
+  }
+
+  talker.logTyped(
+    TalkerLog(
+      message,
+      logLevel: level,
+      title: loggerTitle,
       stackTrace: stackTrace,
+      exception: exception,
+      time: DateTime.now().toUtc(),
+    ),
+  );
+
+  if (kDebugMode) {
+    return;
+  }
+
+  if (level == LogLevel.error || level == LogLevel.critical) {
+    Sentry.captureMessage(
+      message,
+      level: _getSentryLevel(level),
       withScope: (scope) {
-        scope.setExtra('name', name);
-        scope.setExtra('message', message);
+        scope.setExtra('exception', exception);
+        scope.setExtra('stackTrace', stackTrace);
         scope.addBreadcrumb(
           Breadcrumb(
             message: message,
-            level: SentryLevel.error,
-            type: name,
+            category: loggerTitle,
           ),
         );
       },
     );
   }
+}
 
-  log(
-    '${level.levelColor()}$message$_resetCode',
-    name: name ?? '',
-    error: error != null ? '${level.levelColor()}$error$_resetCode' : null,
+void initLogger() {
+  talker = TalkerFlutter.init(
+    settings: TalkerSettings(
+      titles: _loggerTitles,
+      enabled: !ConfigurationService.i.currentFlavor.isProduction,
+    ),
   );
+}
 
-  if (stackTrace != null) {
-    log(
-      '${level.levelColor()}$stackTrace$_resetCode',
-      name: 'stackTrace',
-    );
+final _loggerTitles = {
+  TalkerLogType.info: 'ℹ️ Info',
+  TalkerLogType.debug: '🐛 Debug',
+  TalkerLogType.error: '❌ Error',
+  TalkerLogType.warning: '⚠️ Warning',
+  TalkerLogType.critical: '🚨 Critical',
+  TalkerLogType.exception: '🔥 Exception',
+  TalkerLogType.route: '🚦 Route',
+  TalkerLogType.httpError: '❌ HTTP Error',
+  TalkerLogType.httpRequest: '🌐 HTTP Request',
+  TalkerLogType.httpResponse: '✅ HTTP Response',
+  TalkerLogType.blocCreate: '🧱 Bloc Create',
+  TalkerLogType.blocClose: '🔨 Bloc Close',
+  TalkerLogType.blocTransition: '🔄 Bloc Transition',
+  TalkerLogType.blocEvent: '📦 Bloc Event',
+};
+
+String _getLevelTitle(LogLevel level) {
+  switch (level) {
+    case LogLevel.info:
+      return 'ℹ️ Info';
+    case LogLevel.debug:
+      return '🐛 Debug';
+    case LogLevel.error:
+      return '❌ Error';
+    case LogLevel.warning:
+      return '⚠️ Warning';
+    case LogLevel.critical:
+      return '🚨 Critical';
+    case LogLevel.verbose:
+      return '🔍 Verbose';
   }
 }
 
-/// Logger separator "-" for the [l] function.
-void logUpperLine({LogLevel level = LogLevel.info}) =>
-    l('———————————————————————————————————————————', level: level);
-
-/// Logger separator "_" for the [l] function.
-void logBottomLine({LogLevel level = LogLevel.info}) =>
-    l('___________________________________________', level: level);
+SentryLevel _getSentryLevel(LogLevel level) {
+  switch (level) {
+    case LogLevel.info:
+      return SentryLevel.info;
+    case LogLevel.debug:
+      return SentryLevel.debug;
+    case LogLevel.error:
+      return SentryLevel.error;
+    case LogLevel.warning:
+      return SentryLevel.warning;
+    case LogLevel.critical:
+      return SentryLevel.fatal;
+    case LogLevel.verbose:
+      return SentryLevel.debug;
+  }
+}

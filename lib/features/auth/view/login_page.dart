@@ -3,6 +3,7 @@ import 'package:fan2dev/utils/const.dart';
 import 'package:fan2dev/utils/logger.dart';
 import 'package:fan2dev/utils/widgets/footer_f2d_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -33,13 +34,16 @@ class _LoginPageView extends StatelessWidget {
 
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          context.pop();
-        },
-        child: const Icon(Icons.arrow_back_ios_new_outlined),
+      floatingActionButton: Padding(
+        padding: kIsWeb ? const EdgeInsets.only(top: 15) : EdgeInsets.zero,
+        child: FloatingActionButton(
+          onPressed: () {
+            context.pop();
+          },
+          child: const Icon(Icons.arrow_back_ios_new_outlined),
+        ),
       ),
-      bottomSheet: const FooterF2DWidget(),
+      bottomNavigationBar: const FooterF2DWidget(),
       body: Padding(
         padding: const EdgeInsets.all(30),
         child: Form(

@@ -148,7 +148,7 @@
     "@projects_subtitle": {
         "description": "Projects Subtitle Placeholder"
     },
-    "projects_status": "{status, select, development{Development} soon{Soon} finished{finished} other{Other}}",
+    "projects_status": "{status, select, development{Development} soon{Soon} finished{Finished} other{Other}}",
     "@projects_status": {
         "description": "Projects Status Placeholder"
     },
