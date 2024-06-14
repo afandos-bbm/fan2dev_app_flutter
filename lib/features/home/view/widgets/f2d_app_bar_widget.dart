@@ -42,9 +42,9 @@ class F2DAppBarWidget extends StatelessWidget {
                 return Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 5),
-                      child: Expanded(
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 5),
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(

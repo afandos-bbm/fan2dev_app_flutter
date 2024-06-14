@@ -17,16 +17,29 @@ class BlogPostDetailPage extends StatelessWidget {
     return FutureBuilder<Result<BlogPost, Exception>>(
       future: post,
       builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+
+        late Widget child;
+
         snapshot.data?.when(
           failure: (failure) {
-            return Center(
+            child = Center(
               child: Text(failure.toString()),
             );
           },
           success: (post) {
-            return Scaffold(
+            child = Scaffold(
               appBar: AppBar(
-                title: Text(post.title),
+                title: Text(
+                  post.title,
+                  style: context.currentTheme.textTheme.titleSmall!.copyWith(
+                    color: Colors.white,
+                  ),
+                ),
               ),
               body: SingleChildScrollView(
                 child: Column(
@@ -37,12 +50,6 @@ class BlogPostDetailPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            post.title,
-                            style:
-                                context.currentTheme.textTheme.headlineMedium,
-                          ),
-                          const SizedBox(height: 10),
                           Text(
                             post.createdAt.toLocal().toFormattedString,
                             style: context.currentTheme.textTheme.bodySmall!
@@ -65,14 +72,13 @@ class BlogPostDetailPage extends StatelessWidget {
             );
           },
           empty: () {
-            return const Center(
-              child: CircularProgressIndicator(),
+            child = const Center(
+              child: Text('No data'),
             );
           },
         );
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
+
+        return child;
       },
     );
   }
