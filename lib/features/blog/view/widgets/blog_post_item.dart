@@ -17,7 +17,7 @@ class BlogPostItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.push('/blog/${post.id}', extra: post);
+        context.go('/blog/${post.id}', extra: post);
       },
       child: Padding(
         padding: const EdgeInsets.all(8),

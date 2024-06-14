@@ -1,3 +1,4 @@
+import 'package:animated_toast_list/animated_toast_list.dart';
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/features/blog/cubit/cubit.dart';
 import 'package:fan2dev/features/blog/data/data_sources/blog_firestore_remote_data_source.dart';
@@ -7,6 +8,7 @@ import 'package:fan2dev/utils/utils.dart';
 import 'package:fan2dev/utils/widgets/generic_error_widget.dart';
 import 'package:fan2dev/utils/widgets/loading_widget.dart';
 import 'package:fan2dev/utils/widgets/paginated_list_view.dart';
+import 'package:fan2dev/utils/widgets/toast_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -52,40 +54,50 @@ class _BlogHomePageView extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         color: context.themeColors.primary.withOpacity(0.1),
                       ),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            top: 0,
-                            left: 0,
-                            right: 0,
-                            bottom: 0,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: Image.asset(
-                                BlogPostCategory.values[index].imageUrl,
-                                fit: BoxFit.cover,
+                      child: InkWell(
+                        onTap: () {
+                          context.showToast(
+                            ToastModel(
+                              message: 'Under development',
+                              type: ToastType.info,
+                            ),
+                          );
+                        },
+                        child: Stack(
+                          children: [
+                            Positioned(
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.asset(
+                                  BlogPostCategory.values[index].imageUrl,
+                                  fit: BoxFit.cover,
+                                ),
                               ),
                             ),
-                          ),
-                          Positioned(
-                            bottom: 10,
-                            left: 30,
-                            right: 0,
-                            child: Text(
-                              BlogPostCategory.values[index].name,
-                              style: context
-                                  .currentTheme.textTheme.headlineSmall!
-                                  .copyWith(
-                                color: Colors.white,
-                                shadows: [
-                                  const Shadow(
-                                    blurRadius: 7,
-                                  ),
-                                ],
+                            Positioned(
+                              bottom: 10,
+                              left: 30,
+                              right: 0,
+                              child: Text(
+                                BlogPostCategory.values[index].name,
+                                style: context
+                                    .currentTheme.textTheme.headlineSmall!
+                                    .copyWith(
+                                  color: Colors.white,
+                                  shadows: [
+                                    const Shadow(
+                                      blurRadius: 7,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );

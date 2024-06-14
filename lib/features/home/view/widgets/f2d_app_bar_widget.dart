@@ -42,116 +42,119 @@ class F2DAppBarWidget extends StatelessWidget {
                 return Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            TextButton(
-                              style: ButtonStyle(
-                                overlayColor: MaterialStateProperty.all(
-                                  Colors.transparent,
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 5),
+                      child: Expanded(
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: [
+                              TextButton(
+                                style: ButtonStyle(
+                                  overlayColor: MaterialStateProperty.all(
+                                    Colors.transparent,
+                                  ),
+                                  padding: MaterialStateProperty.all(
+                                    EdgeInsets.zero,
+                                  ),
+                                  minimumSize: MaterialStateProperty.all(
+                                    Size.zero,
+                                  ),
+                                  alignment: Alignment.bottomCenter,
+                                  enableFeedback: true,
                                 ),
-                                padding: MaterialStateProperty.all(
-                                  EdgeInsets.zero,
+                                child: Text(
+                                  context.l10n.menu_blog,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: context
+                                                .watch<HomePageCubit>()
+                                                .state
+                                                .index ==
+                                            0
+                                        ? Colors.white
+                                        : Colors.white70,
+                                  ),
                                 ),
-                                minimumSize: MaterialStateProperty.all(
-                                  Size.zero,
-                                ),
-                                alignment: Alignment.bottomCenter,
-                                enableFeedback: true,
+                                onPressed: () {
+                                  context
+                                      .read<HomePageCubit>()
+                                      .changeBottomNavBar(0);
+                                  context.go('/blog');
+                                },
                               ),
-                              child: Text(
-                                context.l10n.menu_blog,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: context
-                                              .watch<HomePageCubit>()
-                                              .state
-                                              .index ==
-                                          0
-                                      ? Colors.white
-                                      : Colors.white70,
+                              const SizedBox(width: 10),
+                              TextButton(
+                                child: Text(
+                                  context.l10n.menu_projects,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: context
+                                                .watch<HomePageCubit>()
+                                                .state
+                                                .index ==
+                                            1
+                                        ? Colors.white
+                                        : Colors.white70,
+                                  ),
                                 ),
+                                onPressed: () {
+                                  context
+                                      .read<HomePageCubit>()
+                                      .changeBottomNavBar(1);
+                                  context.go('/projects');
+                                },
                               ),
-                              onPressed: () {
-                                context
-                                    .read<HomePageCubit>()
-                                    .changeBottomNavBar(0);
-                                context.go('/blog');
-                              },
-                            ),
-                            const SizedBox(width: 10),
-                            TextButton(
-                              child: Text(
-                                context.l10n.menu_projects,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: context
-                                              .watch<HomePageCubit>()
-                                              .state
-                                              .index ==
-                                          1
-                                      ? Colors.white
-                                      : Colors.white70,
+                              const SizedBox(width: 10),
+                              TextButton(
+                                child: Text(
+                                  context.l10n.menu_about,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: context
+                                                .watch<HomePageCubit>()
+                                                .state
+                                                .index ==
+                                            2
+                                        ? Colors.white
+                                        : Colors.white70,
+                                  ),
                                 ),
+                                onPressed: () {
+                                  context
+                                      .read<HomePageCubit>()
+                                      .changeBottomNavBar(2);
+                                  context.go('/about');
+                                },
                               ),
-                              onPressed: () {
-                                context
-                                    .read<HomePageCubit>()
-                                    .changeBottomNavBar(1);
-                                context.go('/projects');
-                              },
-                            ),
-                            const SizedBox(width: 10),
-                            TextButton(
-                              child: Text(
-                                context.l10n.menu_about,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: context
-                                              .watch<HomePageCubit>()
-                                              .state
-                                              .index ==
-                                          2
-                                      ? Colors.white
-                                      : Colors.white70,
+                              const SizedBox(width: 10),
+                              TextButton(
+                                child: Text(
+                                  context.l10n.menu_contact,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: context
+                                                .watch<HomePageCubit>()
+                                                .state
+                                                .index ==
+                                            3
+                                        ? Colors.white
+                                        : Colors.white70,
+                                  ),
                                 ),
+                                onPressed: () {
+                                  context
+                                      .read<HomePageCubit>()
+                                      .changeBottomNavBar(3);
+                                  context.go('/contact');
+                                },
                               ),
-                              onPressed: () {
-                                context
-                                    .read<HomePageCubit>()
-                                    .changeBottomNavBar(2);
-                                context.go('/about');
-                              },
-                            ),
-                            const SizedBox(width: 10),
-                            TextButton(
-                              child: Text(
-                                context.l10n.menu_contact,
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  color: context
-                                              .watch<HomePageCubit>()
-                                              .state
-                                              .index ==
-                                          3
-                                      ? Colors.white
-                                      : Colors.white70,
-                                ),
-                              ),
-                              onPressed: () {
-                                context
-                                    .read<HomePageCubit>()
-                                    .changeBottomNavBar(3);
-                                context.go('/contact');
-                              },
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),

@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fan2dev/features/about/cubit/about_cubit/about_cubit.dart';
 import 'package:fan2dev/features/about/view/widgets/about_image_carrousel_widget.dart';
@@ -51,7 +50,7 @@ class AboutHomePageView extends StatelessWidget {
               SizedBox(
                 width: ResponsiveWidget.isMobile(context)
                     ? MediaQuery.of(context).size.width
-                    : 520,
+                    : 620,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [

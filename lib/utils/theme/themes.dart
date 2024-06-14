@@ -11,6 +11,55 @@ final Map<CurrentTheme, ThemeData> themes = {
 
 const kPrimaryColor = Colors.cyan;
 
+// Info
+const kInfoSwatch = MaterialColor(
+  0xFF006FB4,
+  <int, Color>{
+    120: Color(0xFF005990),
+    110: Color(0xFF0064A2),
+    100: Color(0xFF006FB4),
+    50: Color(0xFF80B7DA),
+    25: Color(0xFFBFDBEC),
+  },
+);
+
+// Success
+const kSuccessSwatch = MaterialColor(
+  0xFF467A39,
+  <int, Color>{
+    120: Color(0xFF38622E),
+    110: Color(0xFF3F6E33),
+    100: Color(0xFF467A39),
+    50: Color(0xFFA3BD9C),
+    25: Color(0xFFD1DECD),
+  },
+);
+
+// Warning
+const kWarningSwatch = MaterialColor(
+  0xFFF29527,
+  <int, Color>{
+    140: Color(0xFF915917),
+    120: Color(0xFFC2771F),
+    110: Color(0xFFDA8623),
+    100: Color(0xFFF29527),
+    50: Color(0xFFF9CA93),
+    25: Color(0xFFFCE5C9),
+  },
+);
+
+// Danger
+const kDangerSwatch = MaterialColor(
+  0xFFDA2131,
+  <int, Color>{
+    120: Color(0xFFAE1A27),
+    110: Color(0xFFC41E2C),
+    100: Color(0xFFDA2131),
+    50: Color(0xFFED9098),
+    25: Color(0xFFF6C8CC),
+  },
+);
+
 /// Light theme
 final ThemeData _lightTheme = ThemeData(
   pageTransitionsTheme: const PageTransitionsTheme(

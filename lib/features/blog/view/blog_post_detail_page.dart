@@ -70,7 +70,9 @@ class BlogPostDetailPage extends StatelessWidget {
             );
           },
         );
-        return const SizedBox();
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
       },
     );
   }
