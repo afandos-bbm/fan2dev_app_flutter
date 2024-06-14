@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fan2dev/features/contact/domain/entities/contact_form/contact_form.dart';
-import 'package:fan2dev/utils/logger.dart';
 import 'package:fan2dev/utils/result.dart';
 
 abstract class ContactFirestoreFormSubmissionsRemoteDataSource {
@@ -28,7 +27,7 @@ class ContactFirestoreFormSubmissionsRemoteDataSourceImpl
     try {
       final formSubmission = ContactForm(
         email: email,
-        subject: 'New message from $name [Via Fan2Dev]',
+        subject: 'New message from $name',
         message: message,
         createdAt: DateTime.now().toUtc().toString(),
       );
@@ -36,9 +35,7 @@ class ContactFirestoreFormSubmissionsRemoteDataSourceImpl
       final formSubmissions =
           FirebaseFirestore.instance.collection('formSubmissions');
 
-      final result = await formSubmissions.add(formSubmission.toJson());
-
-      l(result.toString());
+      await formSubmissions.add(formSubmission.toJson());
 
       return const Result.empty();
     } catch (e) {

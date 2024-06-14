@@ -16,6 +16,8 @@ enum BlogPostCategory {
   education,
   @JsonValue('OTHER')
   other,
+  @JsonValue('ALL')
+  all,
 }
 
 extension BlogPostCategoryX on BlogPostCategory {
@@ -35,6 +37,8 @@ extension BlogPostCategoryX on BlogPostCategory {
         return 'Education';
       case BlogPostCategory.other:
         return 'Other';
+      case BlogPostCategory.all:
+        return 'All';
     }
   }
 
@@ -54,6 +58,29 @@ extension BlogPostCategoryX on BlogPostCategory {
         return 'assets/images/blog/categories/education.jpg';
       case BlogPostCategory.other:
         return 'assets/images/blog/categories/other.jpg';
+      case BlogPostCategory.all:
+        return 'assets/images/blog/categories/all.jpg';
+    }
+  }
+
+  String get value {
+    switch (this) {
+      case BlogPostCategory.technology:
+        return 'TECHNOLOGY';
+      case BlogPostCategory.design:
+        return 'DESIGN';
+      case BlogPostCategory.business:
+        return 'BUSINESS';
+      case BlogPostCategory.entertainment:
+        return 'ENTERTAINMENT';
+      case BlogPostCategory.health:
+        return 'HEALTH';
+      case BlogPostCategory.education:
+        return 'EDUCATION';
+      case BlogPostCategory.other:
+        return 'OTHER';
+      case BlogPostCategory.all:
+        return 'ALL';
     }
   }
 }

@@ -1,11 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fan2dev/features/blog/domain/domain.dart';
+import 'package:fan2dev/features/blog/domain/entities/blog_post_category.dart';
 import 'package:fan2dev/utils/result.dart';
 
 abstract class BlogFirestoreRemoteDataSource {
   Future<Result<List<BlogPost>, Exception>> getPosts({
     required int start,
     required int limit,
+    required BlogPostCategory category,
   });
 
   Future<Result<BlogPost, Exception>> getPostById({required String id});
@@ -23,13 +25,25 @@ class BlogFirestoreRemoteDataSourceImpl
   Future<Result<List<BlogPost>, Exception>> getPosts({
     required int start,
     required int limit,
+    required BlogPostCategory category,
   }) async {
     try {
-      final posts = await firebaseFirestore
-          .collection('blogPosts')
-          .orderBy('createdAt', descending: true)
-          .limit(limit)
-          .get();
+      late QuerySnapshot<Map<String, dynamic>> posts;
+
+      if (category != BlogPostCategory.all) {
+        posts = await firebaseFirestore
+            .collection('blogPosts')
+            .where('category', isEqualTo: category.value)
+            .orderBy('createdAt', descending: true)
+            .limit(limit)
+            .get();
+      } else {
+        posts = await firebaseFirestore
+            .collection('blogPosts')
+            .orderBy('createdAt', descending: true)
+            .limit(limit)
+            .get();
+      }
 
       final blogPosts = posts.docs
           .map((post) => BlogPost.fromJson({...post.data(), 'id': post.id}))

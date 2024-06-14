@@ -4,6 +4,7 @@ import 'package:fan2dev/core/dio_client/dio_client.dart';
 import 'package:fan2dev/core/shared_preferences_service/shared_preferences_service.dart';
 import 'package:fan2dev/core/theme_service/theme_service.dart';
 import 'package:fan2dev/features/about/data/data_sources/about_firebase_storage_remote_data_source.dart';
+import 'package:fan2dev/features/backoffice/data/data_sources/backoffice_firestore_remote_data_source.dart';
 import 'package:fan2dev/features/blog/data/data.dart';
 import 'package:fan2dev/features/contact/data/data_sources/contact_firestore_form_submissions_remote_data_source.dart';
 import 'package:fan2dev/features/projects/data/data_sources/projects_local_data_source.dart';
@@ -48,5 +49,10 @@ Future<void> initGetIt() async {
   );
   locator.registerLazySingleton<ProjectsLocalDataSource>(
     LocalDataSourceImpl.new,
+  );
+  locator.registerLazySingleton<BackofficeFirestoreRemoteDataSource>(
+    () => BackofficeFirestoreRemoteDataSourceImpl(
+      firebaseFirestore: FirebaseFirestore.instance,
+    ),
   );
 }

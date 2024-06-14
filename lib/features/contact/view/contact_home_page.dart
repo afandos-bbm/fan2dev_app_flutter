@@ -1,9 +1,11 @@
+import 'package:animated_toast_list/animated_toast_list.dart';
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/features/contact/data/data_sources/contact_firestore_form_submissions_remote_data_source.dart';
 import 'package:fan2dev/l10n/l10n.dart';
-import 'package:fan2dev/utils/const.dart';
-import 'package:fan2dev/utils/widgets/responsive_widget.dart';
+import 'package:fan2dev/utils/utils.dart';
+import 'package:fan2dev/utils/widgets/toast_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:talker/talker.dart';
 
 class ContactHomePage extends StatelessWidget {
   ContactHomePage({super.key});
@@ -134,61 +136,46 @@ class ContactHomePage extends StatelessWidget {
                                   message: message,
                                 );
 
-                                result.whenOrNull(
+                                result.when(
                                   success: (_) {
-                                    showBottomSheet(
-                                      context: context,
-                                      builder: (_) {
-                                        return ColoredBox(
-                                          color: Colors.white,
-                                          child: Padding(
-                                            padding: const EdgeInsets.all(20),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Text(
-                                                  context.l10n
-                                                      .contact_success_title,
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headlineMedium,
-                                                  textAlign: TextAlign.start,
-                                                ),
-                                                const SizedBox(height: 10),
-                                                Text(
-                                                  context.l10n
-                                                      .contact_success_subtitle,
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyMedium,
-                                                  textAlign: TextAlign.start,
-                                                ),
-                                                const SizedBox(height: 10),
-                                                Align(
-                                                  alignment:
-                                                      Alignment.centerRight,
-                                                  child: ElevatedButton(
-                                                    onPressed: () {
-                                                      Navigator.pop(
-                                                        context,
-                                                      );
-                                                    },
-                                                    child: Text(
-                                                      context.l10n
-                                                          .contact_success_button,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        );
-                                      },
+                                    _nameController.clear();
+                                    _emailController.clear();
+                                    _messageController.clear();
+                                    context.showToast(
+                                      ToastModel(
+                                        message:
+                                            '${context.l10n.contact_success_title} ${context.l10n.contact_success_subtitle}',
+                                        type: ToastType.success,
+                                      ),
                                     );
                                   },
-                                  failure: (error) {},
+                                  failure: (error) {
+                                    context.showToast(
+                                      ToastModel(
+                                        message: error.toString(),
+                                        type: ToastType.error,
+                                      ),
+                                    );
+                                    l(
+                                      error.toString(),
+                                      level: LogLevel.error,
+                                      exception: error,
+                                      stackTrace: StackTrace.current,
+                                      name: 'sendContactForm',
+                                    );
+                                  },
+                                  empty: () {
+                                    _nameController.clear();
+                                    _emailController.clear();
+                                    _messageController.clear();
+                                    context.showToast(
+                                      ToastModel(
+                                        message:
+                                            '${context.l10n.contact_success_title} ${context.l10n.contact_success_subtitle}',
+                                        type: ToastType.success,
+                                      ),
+                                    );
+                                  },
                                 );
                               },
                               child: Text(context.l10n.contact_send),

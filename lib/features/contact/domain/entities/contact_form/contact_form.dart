@@ -10,6 +10,7 @@ class ContactForm extends Equatable {
     required this.subject,
     required this.message,
     required this.createdAt,
+    this.id,
     this.viewed = false,
   });
 
@@ -18,6 +19,7 @@ class ContactForm extends Equatable {
 
   Map<String, dynamic> toJson() => _$ContactFormToJson(this);
 
+  final String? id;
   final String email;
   final String subject;
   final String message;
@@ -25,5 +27,5 @@ class ContactForm extends Equatable {
   final String createdAt;
 
   @override
-  List<Object?> get props => [email, subject, message];
+  List<Object?> get props => [id, email, subject, message, viewed, createdAt];
 }

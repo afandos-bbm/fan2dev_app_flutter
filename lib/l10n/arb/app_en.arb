@@ -179,5 +179,13 @@
     "error_loading_privacy_policy": "Error loading privacy policy",
     "@error_loading_privacy_policy": {
         "description": "Error Loading Privacy Policy Placeholder"
+    },
+    "blog_posts": "Posts",
+    "@blog_posts": {
+        "description": "Blog Posts Placeholder"
+    },
+    "info_no_data": "No data available",
+    "@info_no_data": {
+        "description": "Info No Data Placeholder"
     }
 }

@@ -179,5 +179,9 @@
     "projects_details_technologies": "Tecnologies",
     "@projects_details_technologies": {
         "description": "Marcador de posició de les tecnologies de detalls de projectes"
+    },
+    "info_no_data": "No hi ha dades per mostrar",
+    "@info_no_data": {
+        "description": "Missatge d'informació quan no hi ha dades per mostrar"
     }
 }

@@ -179,5 +179,9 @@
     "projects_details_technologies": "Tecnologías",
     "@projects_details_technologies": {
         "description": "Marcador de posición de las tecnologías de detalles de proyectos"
+    },
+    "info_no_data": "No hay datos disponibles",
+    "@info_no_data": {
+        "description": "Mensaje de información de no hay datos"
     }
 }

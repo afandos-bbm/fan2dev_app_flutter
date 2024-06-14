@@ -1,8 +1,9 @@
 import 'package:fan2dev/features/blog/domain/domain.dart';
 import 'package:fan2dev/utils/extensions/datetime_extensions.dart';
-import 'package:fan2dev/utils/result.dart';
-import 'package:fan2dev/utils/theme/themes.dart';
+import 'package:fan2dev/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
+import 'package:go_router/go_router.dart';
 
 class BlogPostDetailPage extends StatelessWidget {
   const BlogPostDetailPage({
@@ -32,44 +33,58 @@ class BlogPostDetailPage extends StatelessWidget {
             );
           },
           success: (post) {
-            child = Scaffold(
-              appBar: AppBar(
-                title: Text(
-                  post.title,
-                  style: context.currentTheme.textTheme.titleSmall!.copyWith(
-                    color: Colors.white,
+            child = Column(
+                children: [
+                  const SizedBox(height: 10),
+                  SizedBox(
+                    height: 50,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            context.go('/blog');
+                          },
+                          child: const Padding(
+                            padding: EdgeInsets.only(left: 20),
+                            child: Icon(Icons.arrow_back),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 20),
+                          child:
+                              Text(post.createdAt.toLocal().toFormattedString),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ),
-              body: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8),
+                  const SizedBox(height: 10),
+                  Flexible(
+                    child: SingleChildScrollView(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
                         children: [
-                          Text(
-                            post.createdAt.toLocal().toFormattedString,
-                            style: context.currentTheme.textTheme.bodySmall!
-                                .copyWith(
-                              color: context.themeColors.onSurface
-                                  .withOpacity(0.6),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            child: Text(
+                              post.title,
+                              style:
+                                  context.currentTheme.textTheme.headlineMedium,
                             ),
                           ),
-                          const SizedBox(height: 10),
-                          Text(
-                            post.content,
-                            style: context.currentTheme.textTheme.bodyMedium,
+                          Markdown(
+                            data: post.content.removeLineBreaks,
+                            shrinkWrap: true,
+                            selectable: true,
+                            softLineBreak: true,
+                            physics: const NeverScrollableScrollPhysics(),
                           ),
                         ],
                       ),
                     ),
-                  ],
-                ),
-              ),
-            );
+                  ),
+                ],
+              );
           },
           empty: () {
             child = const Center(

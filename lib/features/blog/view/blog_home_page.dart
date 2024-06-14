@@ -1,14 +1,13 @@
-import 'package:animated_toast_list/animated_toast_list.dart';
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/features/blog/cubit/cubit.dart';
 import 'package:fan2dev/features/blog/data/data_sources/blog_firestore_remote_data_source.dart';
 import 'package:fan2dev/features/blog/domain/entities/blog_post_category.dart';
 import 'package:fan2dev/features/blog/view/widgets/blog_post_item.dart';
+import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/utils.dart';
 import 'package:fan2dev/utils/widgets/generic_error_widget.dart';
 import 'package:fan2dev/utils/widgets/loading_widget.dart';
 import 'package:fan2dev/utils/widgets/paginated_list_view.dart';
-import 'package:fan2dev/utils/widgets/toast_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -41,7 +40,7 @@ class _BlogHomePageView extends StatelessWidget {
             SizedBox(
               height: 70,
               child: ListView.builder(
-                itemCount: BlogPostCategory.values.length,
+                itemCount: BlogPostCategory.values.length - 1,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) {
                   return Card(
@@ -56,12 +55,16 @@ class _BlogHomePageView extends StatelessWidget {
                       ),
                       child: InkWell(
                         onTap: () {
-                          context.showToast(
-                            ToastModel(
-                              message: 'Under development',
-                              type: ToastType.info,
-                            ),
-                          );
+                          final selectedCategory = state.category;
+
+                          if (selectedCategory ==
+                              BlogPostCategory.values[index]) {
+                            context.read<BlogCubit>().getPosts();
+                            return;
+                          }
+                          context.read<BlogCubit>().getPosts(
+                                category: BlogPostCategory.values[index],
+                              );
                         },
                         child: Stack(
                           children: [
@@ -96,6 +99,31 @@ class _BlogHomePageView extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            if (state.category ==
+                                BlogPostCategory.values[index])
+                              Positioned(
+                                top: 0,
+                                right: 0,
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    bottomLeft: Radius.circular(10),
+                                    topRight: Radius.circular(10),
+                                  ),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                      color: context.themeColors.primary,
+                                      borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(10),
+                                      ),
+                                    ),
+                                    child: const Icon(
+                                      Icons.check,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
                           ],
                         ),
                       ),
@@ -108,7 +136,7 @@ class _BlogHomePageView extends StatelessWidget {
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.only(left: 20, top: 20),
               child: Text(
-                'Posts',
+                context.l10n.blog_posts,
                 style: context.currentTheme.textTheme.headlineMedium!.copyWith(
                   fontWeight: FontWeight.bold,
                 ),
@@ -126,16 +154,19 @@ class _BlogHomePageView extends StatelessWidget {
                 },
                 isError: state.state == BlogCubitStates.error,
                 loadingBuilder: (context) {
-                  return const LoadingWidget();
+                  return SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.5,
+                    child: const LoadingWidget(),
+                  );
                 },
                 isLoading: state.state == BlogCubitStates.loading,
                 padding: const EdgeInsets.all(20),
                 emptyBuilder: (context) {
-                  return const Center(
+                  return Center(
                     child: Column(
                       children: [
-                        Icon(Icons.info),
-                        Text('No posts found'),
+                        const Icon(Icons.info),
+                        Text(context.l10n.info_no_data),
                       ],
                     ),
                   );

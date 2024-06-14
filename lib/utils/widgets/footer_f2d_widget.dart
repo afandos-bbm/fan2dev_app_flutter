@@ -16,10 +16,6 @@ class FooterF2DWidget extends StatelessWidget {
         color: locator<ThemeService>().themeMode == ThemeMode.dark
             ? Colors.black
             : context.read<ThemeService>().themeData!.colorScheme.primary,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(15),
-          topRight: Radius.circular(15),
-        ),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

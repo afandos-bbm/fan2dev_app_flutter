@@ -5,6 +5,7 @@ enum BlogCubitStates { initial, loading, loaded, error, reachedMax }
 class BlogCubitState extends Equatable {
   const BlogCubitState({
     this.state = BlogCubitStates.initial,
+    this.category = BlogPostCategory.all,
     this.posts = const [],
     this.postsPagination = 0,
     this.post,
@@ -13,10 +14,12 @@ class BlogCubitState extends Equatable {
 
   final BlogCubitStates state;
   final List<BlogPost> posts;
+  final BlogPostCategory category;
   final int postsPagination;
   final BlogPost? post;
   final AppError? error;
 
   @override
-  List<Object?> get props => [state, posts, postsPagination, post, error];
+  List<Object?> get props =>
+      [state, posts, category, postsPagination, post, error];
 }

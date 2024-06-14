@@ -37,6 +37,14 @@ extension StringExt on String {
     return '${this[0].toUpperCase()}${substring(1)}';
   }
 
+  /// Change #*#LINE_BREAK#*# to line break
+  String get removeLineBreaks => replaceAll('#*#LINE_BREAK#*#', '\n');
+
+  /// Use correct elipsis character
+  String useCorrectEllipsis() {
+    return replaceAll('', '\u200B');
+  }
+
   /// Returns the string only with the first 30 characters
   String get getFirstCharacters => substring(0, min(length, 30));
 

@@ -22,7 +22,7 @@ class BlogPostItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: SizedBox(
-          height: 170,
+          height: ResponsiveWidget.isMobile(context) ? 210 : 170,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -31,19 +31,26 @@ class BlogPostItem extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               Text(
-                post.title,
+                post.title.useCorrectEllipsis(),
                 style: context.currentTheme.textTheme.headlineSmall,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
+                softWrap: true,
+                strutStyle: const StrutStyle(
+                  height: 1.5,
+                ),
               ),
               Text(
-                post.content,
+                post.subtitle.useCorrectEllipsis(),
                 style: context.currentTheme.textTheme.bodySmall!.copyWith(
                   color: context.themeColors.onSurface.withOpacity(0.6),
                 ),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 3,
                 softWrap: true,
+                strutStyle: const StrutStyle(
+                  height: 1.5,
+                ),
               ),
               const Spacer(),
               Text(

@@ -10,6 +10,7 @@ class BlogPost extends Equatable {
   const BlogPost({
     required this.id,
     required this.title,
+    required this.subtitle,
     required this.content,
     required this.category,
     required this.createdAt,
@@ -22,6 +23,7 @@ class BlogPost extends Equatable {
 
   final String id;
   final String title;
+  final String subtitle;
   final String content;
   final BlogPostCategory category;
   @JsonKey(fromJson: _dateTimeFromTimestamp)
@@ -32,6 +34,7 @@ class BlogPost extends Equatable {
   BlogPost copyWith({
     String? id,
     String? title,
+    String? subtitle,
     String? content,
     BlogPostCategory? category,
     DateTime? createdAt,
@@ -40,6 +43,7 @@ class BlogPost extends Equatable {
     return BlogPost(
       id: id ?? this.id,
       title: title ?? this.title,
+      subtitle: subtitle ?? this.subtitle,
       content: content ?? this.content,
       category: category ?? this.category,
       createdAt: createdAt ?? this.createdAt,
@@ -49,7 +53,7 @@ class BlogPost extends Equatable {
 
   @override
   List<Object?> get props =>
-      [id, title, content, category, createdAt, updatedAt];
+      [id, title, subtitle, content, category, createdAt, updatedAt];
 
   static DateTime _dateTimeFromTimestamp(Timestamp? timestamp) {
     return DateTime.fromMillisecondsSinceEpoch(

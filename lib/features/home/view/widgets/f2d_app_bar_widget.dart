@@ -19,7 +19,7 @@ class F2DAppBarWidget extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 5),
             child: InkWell(
               onTap: () {
-                context.push('/log-in');
+                context.go('/backoffice');
               },
               child: CircleAvatar(
                 radius: 18,

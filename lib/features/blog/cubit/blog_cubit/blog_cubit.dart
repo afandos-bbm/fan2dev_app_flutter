@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:fan2dev/features/blog/data/data_sources/blog_firestore_remote_data_source.dart';
 import 'package:fan2dev/features/blog/domain/domain.dart';
+import 'package:fan2dev/features/blog/domain/entities/blog_post_category.dart';
 import 'package:fan2dev/utils/errors/error.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,16 +15,32 @@ class BlogCubit extends Cubit<BlogCubitState> {
   final BlogFirestoreRemoteDataSource blogFirestoreRemoteDataSource;
   final int postPageLimit = 10;
 
-  Future<void> getPosts() async {
-    emit(
-      const BlogCubitState(
-        state: BlogCubitStates.loading,
-      ),
-    );
+  Future<void> getPosts({
+    BlogPostCategory category = BlogPostCategory.all,
+  }) async {
+    final lastCategory = state.category;
+    if (lastCategory != category) {
+      emit(
+        BlogCubitState(
+          state: BlogCubitStates.loading,
+          category: category,
+        ),
+      );
+    } else {
+      emit(
+        BlogCubitState(
+          state: BlogCubitStates.loading,
+          posts: state.posts,
+          postsPagination: state.postsPagination,
+          category: category,
+        ),
+      );
+    }
 
     final result = await blogFirestoreRemoteDataSource.getPosts(
       start: state.postsPagination + postPageLimit,
       limit: postPageLimit,
+      category: category,
     );
 
     result.when(
@@ -34,6 +51,7 @@ class BlogCubit extends Cubit<BlogCubitState> {
               state: BlogCubitStates.reachedMax,
               posts: state.posts + data,
               postsPagination: state.postsPagination + postPageLimit,
+              category: category,
             ),
           );
           return;
@@ -44,6 +62,7 @@ class BlogCubit extends Cubit<BlogCubitState> {
             state: BlogCubitStates.loaded,
             posts: state.posts + data,
             postsPagination: state.postsPagination + postPageLimit,
+            category: category,
           ),
         );
       },

@@ -30,43 +30,45 @@ class _HomePageView extends StatelessWidget {
     return ListenableBuilder(
       listenable: locator<ThemeService>(),
       builder: (context, _) {
-        return Scaffold(
-          backgroundColor: locator<ThemeService>().themeMode == ThemeMode.dark
-              ? Colors.black
-              : context.read<ThemeService>().themeData!.colorScheme.primary,
-          bottomNavigationBar: const FooterF2DWidget(),
-          body: Column(
-            children: [
-              const SizedBox(height: 70),
-              const F2DAppBarWidget(),
-              const SizedBox(height: 5),
-              Flexible(
-                child: Card(
-                  surfaceTintColor:
-                      locator<ThemeService>().themeMode == ThemeMode.dark
-                          ? Colors.grey[900]
-                          : Colors.grey[200],
-                  margin: EdgeInsets.zero,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15),
+        return SafeArea(
+          child: Scaffold(
+            backgroundColor: locator<ThemeService>().themeMode == ThemeMode.dark
+                ? Colors.black
+                : context.read<ThemeService>().themeData!.colorScheme.primary,
+            bottomNavigationBar: const FooterF2DWidget(),
+            body: Column(
+              children: [
+                const SizedBox(height: 5),
+                const F2DAppBarWidget(),
+                const SizedBox(height: 5),
+                Flexible(
+                  child: Card(
+                    surfaceTintColor:
+                        locator<ThemeService>().themeMode == ThemeMode.dark
+                            ? Colors.grey[900]
+                            : Colors.grey[200],
+                    margin: EdgeInsets.zero,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15),
+                      ),
                     ),
-                  ),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15),
-                    ),
-                    child: BlocBuilder<HomePageCubit, HomePageState>(
-                      builder: (context, state) {
-                        return child;
-                      },
+                    child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15),
+                      ),
+                      child: BlocBuilder<HomePageCubit, HomePageState>(
+                        builder: (context, state) {
+                          return child;
+                        },
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },

@@ -7,6 +7,7 @@ import 'package:fan2dev/features/language/language.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/theme/themes.dart';
 import 'package:fan2dev/utils/widgets/toast_widget.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
@@ -36,6 +37,7 @@ class MateApp extends StatelessWidget {
                   return MaterialApp.router(
                     title: 'fan2dev',
                     debugShowCheckedModeBanner: false,
+                    scrollBehavior: _Fan2devCustomScrollBehavior(),
                     localizationsDelegates: const [
                       ...AppLocalizations.localizationsDelegates,
                       LocaleNamesLocalizationsDelegate(),
@@ -73,4 +75,13 @@ ToastWidget _buildToast(
       );
     },
   );
+}
+
+class _Fan2devCustomScrollBehavior extends MaterialScrollBehavior {
+  // Override behavior methods and getters like dragDevices
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }

@@ -121,7 +121,6 @@ class SettingsHomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 50),
             ],
           ),
         );
