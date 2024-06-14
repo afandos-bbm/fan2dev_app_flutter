@@ -10,14 +10,12 @@ RUN apt-get update
 RUN apt-get install -y curl git wget unzip libgconf-2-4 gdb libstdc++6 libglu1-mesa fonts-droid-fallback python3 sed
 
 # Clone the flutter repo
-RUN git clone https://github.com/flutter/flutter.git /usr/local/flutter
+RUN git clone -b "3.19.6" https://github.com/flutter/flutter.git /usr/local/flutter
 
 # Set flutter path
 ENV PATH="${PATH}:/usr/local/flutter/bin:/usr/local/flutter/bin/cache/dart-sdk/bin"
 
 # Run flutter standard commands
-RUN flutter channel stable
-RUN flutter upgrade
 RUN flutter config --enable-web
 RUN flutter doctor -v
 
