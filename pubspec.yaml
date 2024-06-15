@@ -48,6 +48,7 @@ dependencies:
   talker: ^4.2.4
   animated_toast_list: ^1.0.2
   flutter_markdown: ^0.7.2
+  colorful_safe_area: ^1.0.0
 
 dev_dependencies:
   bloc_test: ^9.1.5

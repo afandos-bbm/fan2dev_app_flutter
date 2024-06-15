@@ -35,10 +35,10 @@ class _LoginPageView extends StatelessWidget {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.startTop,
       floatingActionButton: Padding(
-        padding: kIsWeb ? const EdgeInsets.only(top: 15) : EdgeInsets.zero,
+        padding: const EdgeInsets.only(top: 15),
         child: FloatingActionButton(
           onPressed: () {
-            context.pop();
+            context.go('/');
           },
           child: const Icon(Icons.arrow_back_ios_new_outlined),
         ),

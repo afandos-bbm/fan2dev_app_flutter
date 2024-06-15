@@ -38,6 +38,7 @@ class _BackofficeHomePageView extends StatelessWidget {
             onPressed: () {
               context.go('/');
             },
+            heroTag: null,
             child: const Icon(Icons.home),
           ),
           const SizedBox(width: 10),
@@ -47,6 +48,7 @@ class _BackofficeHomePageView extends StatelessWidget {
               context.go('/');
             },
             backgroundColor: Colors.red,
+            heroTag: null,
             child: const Icon(Icons.logout),
           ),
         ],

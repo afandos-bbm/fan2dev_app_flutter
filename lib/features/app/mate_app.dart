@@ -1,4 +1,5 @@
 import 'package:animated_toast_list/animated_toast_list.dart';
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/core/provider_store/provider_store.dart';
 import 'package:fan2dev/core/router/app_router.dart';
@@ -48,6 +49,14 @@ class MateApp extends StatelessWidget {
                     themeMode: locator<ThemeService>().themeMode,
                     locale: selectedLocale,
                     routerConfig: router,
+                    builder: (context, child) {
+                      return ColorfulSafeArea(
+                        color:
+                            context.currentTheme.colorScheme.primaryContainer,
+                        bottom: false,
+                        child: child!,
+                      );
+                    },
                   );
                 },
               );
