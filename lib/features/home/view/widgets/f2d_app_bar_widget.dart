@@ -20,6 +20,7 @@ class F2DAppBarWidget extends StatelessWidget {
             child: InkWell(
               onTap: () {
                 context.go('/backoffice');
+                
               },
               child: CircleAvatar(
                 radius: 18,

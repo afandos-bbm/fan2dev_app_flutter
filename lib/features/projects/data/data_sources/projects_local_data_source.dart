@@ -8,6 +8,7 @@ List<ProjectsProjectTechnology> _technologies = [
     type: ProjectsProjectTechnologyType.language,
     objective: ProjectsProjectTechnologyObjective.backend,
     logoAssetUrl: 'assets/icons/technologies/dart.svg',
+    url: 'https://dart.dev/',
   ),
   const ProjectsProjectTechnology(
     id: 1,
@@ -15,6 +16,7 @@ List<ProjectsProjectTechnology> _technologies = [
     type: ProjectsProjectTechnologyType.framework,
     objective: ProjectsProjectTechnologyObjective.mobile,
     logoAssetUrl: 'assets/icons/technologies/flutter.svg',
+    url: 'https://flutter.dev/',
   ),
   const ProjectsProjectTechnology(
     id: 2,
@@ -22,6 +24,7 @@ List<ProjectsProjectTechnology> _technologies = [
     type: ProjectsProjectTechnologyType.database,
     objective: ProjectsProjectTechnologyObjective.backend,
     logoAssetUrl: 'assets/icons/technologies/firebase.svg',
+    url: 'https://firebase.google.com/',
   ),
   const ProjectsProjectTechnology(
     id: 3,
@@ -29,6 +32,7 @@ List<ProjectsProjectTechnology> _technologies = [
     type: ProjectsProjectTechnologyType.tool,
     objective: ProjectsProjectTechnologyObjective.frontend,
     logoAssetUrl: 'assets/icons/technologies/git.svg',
+    url: 'https://git-scm.com/',
   ),
   const ProjectsProjectTechnology(
     id: 4,
@@ -36,6 +40,7 @@ List<ProjectsProjectTechnology> _technologies = [
     type: ProjectsProjectTechnologyType.tool,
     objective: ProjectsProjectTechnologyObjective.frontend,
     logoAssetUrl: 'assets/icons/technologies/github.svg',
+    url: 'https://github.com/',
   ),
   const ProjectsProjectTechnology(
     id: 5,
@@ -43,6 +48,7 @@ List<ProjectsProjectTechnology> _technologies = [
     type: ProjectsProjectTechnologyType.framework,
     objective: ProjectsProjectTechnologyObjective.backend,
     logoAssetUrl: 'assets/icons/technologies/expressjs.svg',
+    url: 'https://expressjs.com/',
   ),
   const ProjectsProjectTechnology(
     id: 6,
@@ -50,6 +56,7 @@ List<ProjectsProjectTechnology> _technologies = [
     type: ProjectsProjectTechnologyType.framework,
     objective: ProjectsProjectTechnologyObjective.backend,
     logoAssetUrl: 'assets/icons/technologies/nodejs.svg',
+    url: 'https://nodejs.org/',
   ),
   const ProjectsProjectTechnology(
     id: 7,
@@ -57,6 +64,7 @@ List<ProjectsProjectTechnology> _technologies = [
     type: ProjectsProjectTechnologyType.language,
     objective: ProjectsProjectTechnologyObjective.backend,
     logoAssetUrl: 'assets/icons/technologies/typescript.svg',
+    url: 'https://www.typescriptlang.org/',
   ),
   const ProjectsProjectTechnology(
     id: 8,
@@ -64,6 +72,7 @@ List<ProjectsProjectTechnology> _technologies = [
     type: ProjectsProjectTechnologyType.database,
     objective: ProjectsProjectTechnologyObjective.backend,
     logoAssetUrl: 'assets/icons/technologies/mariadb.svg',
+    url: 'https://mariadb.org/',
   ),
 ];
 

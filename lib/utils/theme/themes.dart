@@ -160,7 +160,17 @@ final ThemeData _darkTheme = ThemeData(
     border: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(20)),
     ),
-    focusedBorder: OutlineInputBorder(),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(20)),
+      borderSide: BorderSide(color: Colors.white),
+    ),
+    floatingLabelStyle: TextStyle(
+      color: Colors.white,
+    ),
+    errorStyle: TextStyle(
+      color: Colors.red,
+      fontSize: 12,
+    ),
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(

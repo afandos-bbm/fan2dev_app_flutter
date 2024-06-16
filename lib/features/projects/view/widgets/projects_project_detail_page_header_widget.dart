@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:fan2dev/features/projects/projects.dart';
 import 'package:fan2dev/utils/const.dart';
 import 'package:fan2dev/utils/theme/themes.dart';
@@ -45,7 +46,7 @@ class ProjectsProjectDetailPageHeaderWidget extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 10),
-              Text(
+              AutoSizeText(
                 projectName,
                 style: context.currentTheme.textTheme.titleLarge,
               ),
@@ -54,7 +55,7 @@ class ProjectsProjectDetailPageHeaderWidget extends StatelessWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
-              color: context.currentTheme.colorScheme.secondary,
+              color: Colors.transparent,
               borderRadius: BorderRadius.circular(10),
             ),
             child: ProjectsProjectItemCardChipWidget(

@@ -47,7 +47,7 @@ class FooterF2DWidget extends StatelessWidget {
             ],
           ),
           const SizedBox(
-            height: kIsWeb ? 15 : 30,
+            height: 15,
           ),
         ],
       ),

@@ -31,23 +31,23 @@ class BlogPostItem extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               Text(
-                post.title.useCorrectEllipsis(),
+                post.title,
                 style: context.currentTheme.textTheme.headlineSmall,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                softWrap: true,
+                softWrap: false,
                 strutStyle: const StrutStyle(
                   height: 1.5,
                 ),
               ),
               Text(
-                post.subtitle.useCorrectEllipsis(),
+                post.subtitle,
                 style: context.currentTheme.textTheme.bodySmall!.copyWith(
                   color: context.themeColors.onSurface.withOpacity(0.6),
                 ),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 3,
-                softWrap: true,
+                softWrap: false,
                 strutStyle: const StrutStyle(
                   height: 1.5,
                 ),

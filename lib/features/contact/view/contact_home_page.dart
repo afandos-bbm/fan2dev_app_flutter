@@ -14,7 +14,7 @@ class ContactHomePage extends StatelessWidget {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _messageController = TextEditingController();
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  static final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -120,6 +120,8 @@ class ContactHomePage extends StatelessWidget {
                             alignment: Alignment.centerRight,
                             child: ElevatedButton(
                               onPressed: () async {
+                                FocusScope.of(context).unfocus();
+
                                 final name = _nameController.text;
                                 final email = _emailController.text;
                                 final message = _messageController.text;

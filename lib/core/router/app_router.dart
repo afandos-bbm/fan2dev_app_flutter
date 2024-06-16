@@ -9,6 +9,8 @@ import 'package:fan2dev/features/blog/domain/domain.dart';
 import 'package:fan2dev/features/blog/view/blog_post_detail_page.dart';
 import 'package:fan2dev/features/contact/contact.dart';
 import 'package:fan2dev/features/home/home.dart';
+import 'package:fan2dev/features/onboarding/view/ob_first_page.dart';
+import 'package:fan2dev/features/onboarding/view/ob_second_page.dart';
 import 'package:fan2dev/features/projects/projects.dart';
 import 'package:fan2dev/features/settings/settings.dart';
 import 'package:fan2dev/utils/logger.dart';
@@ -38,17 +40,38 @@ final _shellNavigatorKey = GlobalKey<NavigatorState>();
 /// The routes property of [GoRoute] is an optional parameter that allows
 /// nesting additional routes under the parent route.
 ///
-final router = GoRouter(
+final GoRouter router = GoRouter(
   navigatorKey: _rootNavigatorKey,
-  initialLocation: '/blog',
+  initialLocation: '/onboarding/1',
   observers: [_NavigationLoggerObserver()],
+  errorBuilder: (context, state) {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      router.go('/');
+    });
+
+    return const SizedBox.shrink();
+  },
+  redirect: (context, state) {
+    final hasDoneOnboarding =
+        locator<SharedPreferencesService>().hasDoneOnboarding;
+
+    final isOnboardingRoute = state.uri.pathSegments.contains('onboarding');
+
+    if (!hasDoneOnboarding && !isOnboardingRoute) {
+      return '/onboarding/1';
+    }
+
+    if (hasDoneOnboarding && isOnboardingRoute) {
+      return '/';
+    }
+
+    return null;
+  },
   routes: [
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
-      pageBuilder: (context, state, child) => NoTransitionPage(
-        child: HomePage(
-          child: child,
-        ),
+      builder: (context, state, child) => HomePage(
+        child: child,
       ),
       routes: [
         GoRoute(
@@ -307,6 +330,16 @@ final router = GoRouter(
       path: '/privacy-policy',
       parentNavigatorKey: _rootNavigatorKey,
       builder: (context, state) => const PrivacyPolicyPage(),
+    ),
+    GoRoute(
+      path: '/onboarding/1',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const ObFirstPage(),
+    ),
+    GoRoute(
+      path: '/onboarding/2',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const ObSecondPage(),
     ),
   ],
 );

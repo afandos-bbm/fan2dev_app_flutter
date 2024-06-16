@@ -12,6 +12,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localized_locales/flutter_localized_locales.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
 /// MaterialApp widget that initializes the app.
@@ -51,9 +52,9 @@ class MateApp extends StatelessWidget {
                     routerConfig: router,
                     builder: (context, child) {
                       return ColorfulSafeArea(
-                        color:
-                            context.currentTheme.colorScheme.primaryContainer,
-                        bottom: false,
+                        color: locator<ThemeService>().isLightMode
+                            ? context.currentTheme.colorScheme.primaryContainer
+                            : Colors.black,
                         child: child!,
                       );
                     },

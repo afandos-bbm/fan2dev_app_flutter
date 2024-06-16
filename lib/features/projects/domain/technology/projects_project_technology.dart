@@ -15,6 +15,7 @@ class ProjectsProjectTechnology extends Equatable {
     required this.type,
     required this.objective,
     required this.logoAssetUrl,
+    required this.url,
   });
 
   factory ProjectsProjectTechnology.fromJson(Map<String, dynamic> json) =>
@@ -27,12 +28,14 @@ class ProjectsProjectTechnology extends Equatable {
   final ProjectsProjectTechnologyType type;
   final ProjectsProjectTechnologyObjective objective;
   final String logoAssetUrl;
+  final String url;
 
   ProjectsProjectTechnology copyWith({
     String? name,
     ProjectsProjectTechnologyType? type,
     ProjectsProjectTechnologyObjective? objective,
     String? logoAssetUrl,
+    String? url,
   }) {
     return ProjectsProjectTechnology(
       id: id,
@@ -40,6 +43,7 @@ class ProjectsProjectTechnology extends Equatable {
       type: type ?? this.type,
       objective: objective ?? this.objective,
       logoAssetUrl: logoAssetUrl ?? this.logoAssetUrl,
+      url: url ?? this.url,
     );
   }
 
@@ -50,5 +54,6 @@ class ProjectsProjectTechnology extends Equatable {
         type,
         objective,
         logoAssetUrl,
+        url,
       ];
 }

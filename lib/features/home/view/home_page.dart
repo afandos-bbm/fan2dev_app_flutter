@@ -1,8 +1,14 @@
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/core/theme_service/theme_service.dart';
+import 'package:fan2dev/features/about/about.dart';
+import 'package:fan2dev/features/blog/blog.dart';
+import 'package:fan2dev/features/contact/contact.dart';
 import 'package:fan2dev/features/home/cubit/home_page_cubit/home_page_cubit.dart';
 import 'package:fan2dev/features/home/view/widgets/f2d_app_bar_widget.dart';
+import 'package:fan2dev/features/projects/view/projects_home_page.dart';
+import 'package:fan2dev/utils/utils.dart';
 import 'package:fan2dev/utils/widgets/footer_f2d_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -33,13 +39,17 @@ class _HomePageView extends StatelessWidget {
         return Scaffold(
           backgroundColor: locator<ThemeService>().themeMode == ThemeMode.dark
               ? Colors.black
-              : context.read<ThemeService>().themeData!.colorScheme.primary,
-          bottomNavigationBar: const FooterF2DWidget(),
+              : context.themeColors.primary,
+          bottomNavigationBar: kIsWeb ? const FooterF2DWidget() : null,
           body: Column(
             children: [
-              const SizedBox(height: 5),
-              const F2DAppBarWidget(),
-              const SizedBox(height: 5),
+              if (!kIsWeb)
+                const FooterF2DWidget()
+              else ...[
+                const SizedBox(height: 5),
+                const F2DAppBarWidget(),
+                const SizedBox(height: 5),
+              ],
               Flexible(
                 child: Card(
                   surfaceTintColor:
@@ -47,17 +57,29 @@ class _HomePageView extends StatelessWidget {
                           ? Colors.grey[900]
                           : Colors.grey[200],
                   margin: EdgeInsets.zero,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15),
-                    ),
-                  ),
+                  shape: kIsWeb
+                      ? const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(15),
+                            topRight: Radius.circular(15),
+                          ),
+                        )
+                      : const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(15),
+                            bottomRight: Radius.circular(15),
+                          ),
+                        ),
                   child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(15),
-                      topRight: Radius.circular(15),
-                    ),
+                    borderRadius: kIsWeb
+                        ? const BorderRadius.only(
+                            topLeft: Radius.circular(15),
+                            topRight: Radius.circular(15),
+                          )
+                        : const BorderRadius.only(
+                            bottomLeft: Radius.circular(15),
+                            bottomRight: Radius.circular(15),
+                          ),
                     child: BlocBuilder<HomePageCubit, HomePageState>(
                       builder: (context, state) {
                         return child;
@@ -66,6 +88,11 @@ class _HomePageView extends StatelessWidget {
                   ),
                 ),
               ),
+              if (!kIsWeb) ...[
+                const SizedBox(height: 5),
+                const F2DAppBarWidget(),
+                const SizedBox(height: 5),
+              ],
             ],
           ),
         );

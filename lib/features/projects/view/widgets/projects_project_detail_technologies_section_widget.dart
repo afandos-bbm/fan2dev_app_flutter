@@ -1,8 +1,11 @@
+import 'package:fan2dev/core/theme_service/theme_service.dart';
 import 'package:fan2dev/features/projects/domain/technology/projects_project_technology.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class ProjectsProjectDetailTechnologiesSectionWidget extends StatelessWidget {
   const ProjectsProjectDetailTechnologiesSectionWidget({
@@ -33,82 +36,105 @@ class ProjectsProjectDetailTechnologiesSectionWidget extends StatelessWidget {
           itemBuilder: (context, index) {
             return SizedBox(
               height: 150,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                color: Theme.of(context).colorScheme.surface,
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: SizedBox(
-                          height: 30,
-                          child: Row(
-                            children: [
-                              CircleAvatar(
-                                backgroundColor: Colors.transparent,
-                                child: SvgPicture.asset(
-                                  technologies[index].logoAssetUrl,
-                                  width: 30,
-                                  height: 30,
+              child: InkWell(
+                onTap: () {
+                  launchUrlString(technologies[index].url);
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  color: Theme.of(context).colorScheme.surface,
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: SizedBox(
+                            height: 30,
+                            child: Row(
+                              children: [
+                                CircleAvatar(
+                                  backgroundColor: Colors.transparent,
+                                  child: SvgPicture.asset(
+                                    technologies[index].logoAssetUrl,
+                                    width: 30,
+                                    height: 30,
+                                    colorFilter: (technologies[index].id == 5 ||
+                                                technologies[index].id == 4) &&
+                                            context
+                                                .read<ThemeService>()
+                                                .isDarkMode
+                                        ? const ColorFilter.mode(
+                                            Colors.white,
+                                            BlendMode.srcIn,
+                                          )
+                                        : null,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(width: 5),
-                              Text(
-                                technologies[index].name,
-                                style: Theme.of(context).textTheme.bodyMedium,
-                              ),
-                            ],
+                                const SizedBox(width: 5),
+                                Text(
+                                  technologies[index].name,
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Chip(
-                            padding: EdgeInsets.zero,
-                            elevation: 2,
-                            side: BorderSide(
-                              color: kPrimaryColor[200]!,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Chip(
+                              padding: EdgeInsets.zero,
+                              elevation: 2,
+                              backgroundColor: Theme.of(context)
+                                  .colorScheme
+                                  .primaryContainer
+                                  .withOpacity(0.02),
+                              side: BorderSide(
+                                color: kPrimaryColor[200]!,
+                              ),
+                              labelPadding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                              ),
+                              label: Text(
+                                technologies[index].type.name.capitalize(),
+                                style: Theme.of(context).textTheme.labelSmall,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
                             ),
-                            labelPadding: const EdgeInsets.symmetric(
-                              horizontal: 8,
+                            const SizedBox(height: 5),
+                            Chip(
+                              padding: EdgeInsets.zero,
+                              elevation: 2,
+                              backgroundColor: Theme.of(context)
+                                  .colorScheme
+                                  .onSurface
+                                  .withOpacity(0.02),
+                              side: BorderSide(
+                                color: kPrimaryColor[200]!,
+                              ),
+                              labelPadding: const EdgeInsets.symmetric(
+                                horizontal: 8,
+                              ),
+                              label: Text(
+                                technologies[index].objective.name.capitalize(),
+                                style: Theme.of(context).textTheme.labelSmall,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
                             ),
-                            label: Text(
-                              technologies[index].type.name.capitalize(),
-                              style: Theme.of(context).textTheme.labelSmall,
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                          const SizedBox(height: 5),
-                          Chip(
-                            padding: EdgeInsets.zero,
-                            elevation: 2,
-                            side: BorderSide(
-                              color: kPrimaryColor[200]!,
-                            ),
-                            labelPadding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                            ),
-                            label: Text(
-                              technologies[index].objective.name.capitalize(),
-                              style: Theme.of(context).textTheme.labelSmall,
-                            ),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
