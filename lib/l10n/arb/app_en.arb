@@ -120,6 +120,14 @@
     "@settings_privacy_policy": {
         "description": "Settings Privacy Policy Placeholder"
     },
+    "settings_notifications": "Notifications",
+    "@settings_notifications": {
+        "description": "Settings Notifications Placeholder"
+    },
+    "settings_notifications_enabled": "{enabled, select, true{Enabled} false{Disabled} other{Unknown}}",
+    "@settings_notifications_enabled": {
+        "description": "Settings Notifications Enabled Placeholder"
+    },
     "about_title": "Hi, my name is Alejandro Fandos",
     "@about_title": {
         "description": "About Title Placeholder"
@@ -187,5 +195,41 @@
     "info_no_data": "No data available",
     "@info_no_data": {
         "description": "Info No Data Placeholder"
+    },
+    "ob_welcome_title": "Welcome to my app!",
+    "@ob_welcome_title": {
+        "description": "Onboarding Welcome Title Placeholder"
+    },
+    "ob_welcome_subtitle": "I'm excited to have you here. Let's get started!\n",
+    "@ob_welcome_subtitle": {
+        "description": "Onboarding Welcome Subtitle Placeholder"
+    },
+    "ob_welcome_disclaimer": "Remember that we have support for multiple languages and themes, and support for IOS, Android, and Web.",
+    "@ob_welcome_disclaimer": {
+        "description": "Onboarding Welcome Disclaimer Placeholder"
+    },
+    "ob_posts_title": "Multiple sections",
+    "@ob_posts_title": {
+        "description": "Onboarding Posts Title Placeholder"
+    },
+    "ob_posts_subtitle": "Blog, projects, about, and contact sections. All in one place.",
+    "@ob_posts_subtitle": {
+        "description": "Onboarding Posts Subtitle Placeholder"
+    },
+    "ob_notifications_title": "Stay informed",
+    "@ob_notifications_title": {
+        "description": "Onboarding Notifications Title Placeholder"
+    },
+    "ob_notifications_subtitle": "Receive notifications about new posts, projects, and updates.",
+    "@ob_notifications_subtitle": {
+        "description": "Onboarding Notifications Subtitle Placeholder"
+    },
+    "ob_notifications_disclaimer": "You can enable or disable notifications in the settings section.",
+    "@ob_notifications_disclaimer": {
+        "description": "Onboarding Notifications Disclaimer Placeholder"
+    },
+    "ob_notifications_button": "Enable notifications",
+    "@ob_notifications_button": {
+        "description": "Onboarding Notifications Button Placeholder"
     }
 }

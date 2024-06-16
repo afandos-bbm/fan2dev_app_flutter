@@ -36,7 +36,7 @@ dependencies:
   retrofit: ^4.0.3
   dio: ^5.4.0
   cloud_firestore: ^4.13.6
-  flutter_animate: ^4.3.0
+  flutter_animate: ^4.5.0
   smooth_page_indicator: ^1.1.0
   url_launcher: ^6.2.4
   firebase_storage: ^11.6.0
@@ -50,6 +50,8 @@ dependencies:
   flutter_markdown: ^0.7.2
   colorful_safe_area: ^1.0.0
   auto_size_text: ^3.0.0
+  gif: ^2.3.0
+  firebase_messaging: ^14.9.4
 
 dev_dependencies:
   bloc_test: ^9.1.5
@@ -77,3 +79,4 @@ flutter:
     - assets/icons/
     - assets/icons/technologies/
     - assets/texts/
+    - assets/animations/

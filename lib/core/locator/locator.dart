@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
 import 'package:fan2dev/core/dio_client/dio_client.dart';
+import 'package:fan2dev/core/firebase_client/firebase_client.dart';
+import 'package:fan2dev/core/notification_service/notification_service.dart';
 import 'package:fan2dev/core/shared_preferences_service/shared_preferences_service.dart';
 import 'package:fan2dev/core/theme_service/theme_service.dart';
 import 'package:fan2dev/features/about/data/data_sources/about_firebase_storage_remote_data_source.dart';
@@ -28,7 +30,16 @@ Future<void> initGetIt() async {
   locator.registerLazySingleton<ThemeService>(ThemeService.new);
   locator.registerLazySingleton<DeviceInfo>(DeviceInfo.new);
 
+  // * Network
+  locator.registerSingleton<FirebaseClient>(
+    await FirebaseClient.initFirebaseClient(),
+  );
   locator.registerSingleton<DioClient>(DioClient(Dio())..initDio());
+
+  // * Notifications
+  locator.registerSingletonAsync<NotificationService>(
+    NotificationService.initNotificationService,
+  );
 
   // * Data sources
   locator

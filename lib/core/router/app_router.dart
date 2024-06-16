@@ -9,10 +9,12 @@ import 'package:fan2dev/features/blog/domain/domain.dart';
 import 'package:fan2dev/features/blog/view/blog_post_detail_page.dart';
 import 'package:fan2dev/features/contact/contact.dart';
 import 'package:fan2dev/features/home/home.dart';
-import 'package:fan2dev/features/onboarding/view/ob_first_page.dart';
-import 'package:fan2dev/features/onboarding/view/ob_second_page.dart';
+import 'package:fan2dev/features/onboarding/view/ob_notifications_page.dart';
+import 'package:fan2dev/features/onboarding/view/ob_posts_page.dart';
+import 'package:fan2dev/features/onboarding/view/ob_welcome_page.dart';
 import 'package:fan2dev/features/projects/projects.dart';
 import 'package:fan2dev/features/settings/settings.dart';
+import 'package:fan2dev/features/settings/view/settings_notifications.dart';
 import 'package:fan2dev/utils/logger.dart';
 import 'package:fan2dev/utils/result.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -310,6 +312,11 @@ final GoRouter router = GoRouter(
           parentNavigatorKey: _rootNavigatorKey,
           builder: (context, state) => const SettingsThemePage(),
         ),
+        GoRoute(
+          path: 'notifications',
+          parentNavigatorKey: _rootNavigatorKey,
+          builder: (context, state) => const SettingsNotificationsPage(),
+        ),
       ],
     ),
     GoRoute(
@@ -334,12 +341,17 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/onboarding/1',
       parentNavigatorKey: _rootNavigatorKey,
-      builder: (context, state) => const ObFirstPage(),
+      builder: (context, state) => const ObWelcomePage(),
     ),
     GoRoute(
       path: '/onboarding/2',
       parentNavigatorKey: _rootNavigatorKey,
-      builder: (context, state) => const ObSecondPage(),
+      builder: (context, state) => const ObPostsPage(),
+    ),
+    GoRoute(
+      path: '/onboarding/3',
+      parentNavigatorKey: _rootNavigatorKey,
+      builder: (context, state) => const ObNotificationsPage(),
     ),
   ],
 );

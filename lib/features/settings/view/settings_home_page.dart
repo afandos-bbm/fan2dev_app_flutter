@@ -1,4 +1,5 @@
 import 'package:fan2dev/core/locator/locator.dart';
+import 'package:fan2dev/core/notification_service/notification_service.dart';
 import 'package:fan2dev/core/theme_service/theme_service.dart';
 import 'package:fan2dev/features/language/cubit/language_cubit.dart';
 import 'package:fan2dev/l10n/l10n.dart';
@@ -15,6 +16,7 @@ class SettingsHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var isChangingNotifications = false;
     return ListenableBuilder(
       listenable: locator<ThemeService>(),
       builder: (context, _) {
@@ -97,6 +99,34 @@ class SettingsHomePage extends StatelessWidget {
                         ),
                         onTap: () {
                           context.push('/settings/theme');
+                        },
+                      ),
+                      ListenableBuilder(
+                        listenable: locator<NotificationService>(),
+                        builder: (context, _) {
+                          return ListTile(
+                            title: Text(context.l10n.settings_notifications),
+                            leading: const Icon(Icons.notifications),
+                            // add a boolean to check if notifications are enabled
+                            trailing: Switch(
+                              value: locator<NotificationService>()
+                                  .hasNotificationsEnabled,
+                              onChanged: (value) async {
+                                if (isChangingNotifications) return;
+                                isChangingNotifications = true;
+                                await locator<NotificationService>()
+                                    .toggleNotifications();
+                                isChangingNotifications = false;
+                              },
+                            ),
+                            onTap: () async {
+                              if (isChangingNotifications) return;
+                              isChangingNotifications = true;
+                              await locator<NotificationService>()
+                                  .toggleNotifications();
+                              isChangingNotifications = false;
+                            },
+                          );
                         },
                       ),
                     ],

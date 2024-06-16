@@ -1,13 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fan2dev/core/locator/locator.dart';
-import 'package:fan2dev/firebase_options.dart';
 import 'package:fan2dev/utils/utils.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -75,17 +70,6 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
 
   /// Initializes the service locator.
   await initGetIt();
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  FirebaseFirestore.instance.settings = const Settings(
-    persistenceEnabled: true,
-  );
-
-  if (kIsWeb) {
-    await FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
-  }
 
   /// Initializes the URL strategy for the web.
   usePathUrlStrategy();

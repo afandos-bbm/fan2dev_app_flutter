@@ -120,6 +120,14 @@
     "@settings_privacy_policy": {
         "description": "Marcador de posición de la política de privacidad de configuración"
     },
+    "settings_notifications": "Notificaciones",
+    "@settings_notifications": {
+        "description": "Marcador de posición de las notificaciones de configuración"
+    },
+    "settings_notifications_enabled": "{enabled, select, true{Habilitadas} false{Deshabilitadas} other{Desconocido}}",
+    "@settings_notifications_enabled": {
+        "description": "Marcador de posición de las notificaciones habilitadas de configuración"
+    },
     "about_title": "Hola, me llamo Alejandro Fandos",
     "@about_title": {
         "description": "Marcador de posición del título Acerca de"
@@ -183,5 +191,41 @@
     "info_no_data": "No hay datos disponibles",
     "@info_no_data": {
         "description": "Mensaje de información de no hay datos"
+    },
+    "ob_welcome_title": "¡Bienvenido a mi aplicación!",
+    "@ob_welcome_title": {
+        "description": "Marcador de posición del título de bienvenida de Onboarding"
+    },
+    "ob_welcome_subtitle": "¡Estoy emocionado de tenerte aquí! ¡Vamos a empezar!\n",
+    "@ob_welcome_subtitle": {
+        "description": "Marcador de posición del subtítulo de bienvenida de Onboarding"
+    },
+    "ob_welcome_disclaimer": "Recuerda que tenemos soporte para múltiples idiomas y temas, y soporte para IOS, Android y Web.",
+    "@ob_welcome_disclaimer": {
+        "description": "Marcador de posición del descargo de responsabilidad de bienvenida de Onboarding"
+    },
+    "ob_posts_title": "Múltiples secciones",
+    "@ob_posts_title": {
+        "description": "Marcador de posición del título de publicaciones de Onboarding"
+    },
+    "ob_posts_subtitle": "Secciones de blog, proyectos, acerca de y contacto. Todo en un solo lugar.",
+    "@ob_posts_subtitle": {
+        "description": "Marcador de posición del subtítulo de publicaciones de Onboarding"
+    },
+    "ob_notifications_title": "Mantente informado",
+    "@ob_notifications_title": {
+        "description": "Marcador de posición del título de notificaciones de Onboarding"
+    },
+    "ob_notifications_subtitle": "Recibe notificaciones sobre nuevas publicaciones, proyectos y actualizaciones.",
+    "@ob_notifications_subtitle": {
+        "description": "Marcador de posición del subtítulo de notificaciones de Onboarding"
+    },
+    "ob_notifications_disclaimer": "Puedes habilitar o deshabilitar las notificaciones en la sección de configuración.",
+    "@ob_notifications_disclaimer": {
+        "description": "Marcador de posición del descargo de responsabilidad de notificaciones de Onboarding"
+    },
+    "ob_notifications_button": "Habilitar notificaciones",
+    "@ob_notifications_button": {
+        "description": "Marcador de posición del botón de habilitar notificaciones de Onboarding"
     }
 }

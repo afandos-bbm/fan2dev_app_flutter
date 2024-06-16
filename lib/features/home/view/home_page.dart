@@ -1,13 +1,8 @@
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/core/theme_service/theme_service.dart';
-import 'package:fan2dev/features/about/about.dart';
-import 'package:fan2dev/features/blog/blog.dart';
-import 'package:fan2dev/features/contact/contact.dart';
 import 'package:fan2dev/features/home/cubit/home_page_cubit/home_page_cubit.dart';
 import 'package:fan2dev/features/home/view/widgets/f2d_app_bar_widget.dart';
-import 'package:fan2dev/features/projects/view/projects_home_page.dart';
 import 'package:fan2dev/utils/utils.dart';
-import 'package:fan2dev/utils/widgets/footer_f2d_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

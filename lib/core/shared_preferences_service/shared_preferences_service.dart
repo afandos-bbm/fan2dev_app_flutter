@@ -18,6 +18,8 @@ class SharedPreferencesService {
   static const String themeModeKey = 'themeModeKey';
   static const String selectedLanguageKey = 'selectedLanguageKey';
   static const String hasDoneOnboardingKey = 'hasDoneOnboardingKey';
+  static const String notificationsTokenKey = 'notificationsTokenKey';
+  static const String isDarkModeKey = 'hasNotificationsEnabledKey';
 
   set themeMode(String value) => _saveToSharedPreferences(themeModeKey, value);
   String get themeMode => _getStringValueFromSharedPreferences(themeModeKey);
@@ -31,6 +33,16 @@ class SharedPreferencesService {
       _saveToSharedPreferences(hasDoneOnboardingKey, value);
   bool get hasDoneOnboarding =>
       _getBoolValueFromSharedPreferences(hasDoneOnboardingKey);
+
+  set notificationsToken(String value) =>
+      _saveToSharedPreferences(notificationsTokenKey, value);
+  String get notificationsToken =>
+      _getStringValueFromSharedPreferences(notificationsTokenKey);
+
+  set hasNotificationsEnabled(bool value) =>
+      _saveToSharedPreferences(isDarkModeKey, value);
+  bool get hasNotificationsEnabled =>
+      _getBoolValueFromSharedPreferences(isDarkModeKey);
 
   /// Saves a value to shared preferences based on the proved key.
   ///

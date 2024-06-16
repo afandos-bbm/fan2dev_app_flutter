@@ -120,6 +120,14 @@
     "@settings_privacy_policy": {
         "description": "Marcador de posició de la política de privacitat de configuració"
     },
+    "settings_notifications": "Notificacions",
+    "@settings_notifications": {
+        "description": "Marcador de posició de les notificacions de configuració"
+    },
+    "settings_notifications_enabled": "{enabled, select, true{Activat} false{Desactivat} other{Desconegut}}",
+    "@settings_notifications_enabled": {
+        "description": "Marcador de posició de les notificacions de configuració habilitades"
+    },
     "about_title": "Hola, em dic Alejandro Fandos",
     "@about_title": {
         "description": "Marcador de posició del títol Sobre"
@@ -183,5 +191,41 @@
     "info_no_data": "No hi ha dades per mostrar",
     "@info_no_data": {
         "description": "Missatge d'informació quan no hi ha dades per mostrar"
+    },
+    "ob_welcome_title": "Benvingut a la meua aplicació!",
+    "@ob_welcome_title": {
+        "description": "Marcador de posició del títol de benvinguda de Onboarding"
+    },
+    "ob_welcome_subtitle": "Estic emocionat de tenir-te ací! Comencem!\n",
+    "@ob_welcome_subtitle": {
+        "description": "Marcador de posició del subtítol de benvinguda de Onboarding"
+    },
+    "ob_welcome_disclaimer": "Recorda que tenim suport per a múltiples idiomes i temes, i suport per a IOS, Android i Web.",
+    "@ob_welcome_disclaimer": {
+        "description": "Marcador de posició del descàrrec de responsabilitat de benvinguda de Onboarding"
+    },
+    "ob_posts_title": "Múltiples seccions",
+    "@ob_posts_title": {
+        "description": "Marcador de posició del títol de publicacions de Onboarding"
+    },
+    "ob_posts_subtitle": "Seccions de blog, projectes, sobre i contacte. Tot en un sol lloc.",
+    "@ob_posts_subtitle": {
+        "description": "Marcador de posició del subtítol de publicacions de Onboarding"
+    },
+    "ob_notifications_title": "Mantén-te informat",
+    "@ob_notifications_title": {
+        "description": "Marcador de posició del títol de notificacions de Onboarding"
+    },
+    "ob_notifications_subtitle": "Rebre notificacions sobre noves publicacions, projectes i actualitzacions.",
+    "@ob_notifications_subtitle": {
+        "description": "Marcador de posició del subtítol de notificacions de Onboarding"
+    },
+    "ob_notifications_disclaimer": "Pots habilitar o deshabilitar les notificacions a la secció de configuració.",
+    "@ob_notifications_disclaimer": {
+        "description": "Marcador de posició del descàrrec de responsabilitat de notificacions de Onboarding"
+    },
+    "ob_notifications_button": "Activar notificacions",
+    "@ob_notifications_button": {
+        "description": "Marcador de posició del botó d'activació de notificacions de Onboarding"
     }
 }

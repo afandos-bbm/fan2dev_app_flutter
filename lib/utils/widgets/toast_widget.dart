@@ -50,13 +50,19 @@ class ToastWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final textStyle = Theme.of(context)
-        .textTheme
-        .titleMedium!
-        .copyWith(color: context.themeColors.onSecondaryContainer);
+    final textStyle = Theme.of(context).textTheme.titleMedium;
 
     return Container(
-      color: Colors.transparent,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(12)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 10,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
       padding: const EdgeInsets.only(top: 5),
       child: FadeTransition(
         opacity: animation,
@@ -97,9 +103,8 @@ class ToastWidget extends StatelessWidget {
                         ),
                       ),
                       IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.close,
-                          color: context.themeColors.onSecondaryContainer,
                         ),
                         onPressed: () => onTap?.call(),
                       ),

@@ -36,9 +36,6 @@ class BlogPostItem extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 softWrap: false,
-                strutStyle: const StrutStyle(
-                  height: 1.5,
-                ),
               ),
               Text(
                 post.subtitle,
