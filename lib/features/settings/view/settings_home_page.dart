@@ -136,7 +136,55 @@ class SettingsHomePage extends StatelessWidget {
               const Spacer(),
               Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(15),
+                  padding: const EdgeInsets.only(top: 15, left: 15, right: 15),
+                  child: TextButton(
+                    onPressed: () {
+                      showDialog<void>(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            backgroundColor: context.themeColors.background,
+                            surfaceTintColor: context.themeColors.background,
+                            icon: Icon(
+                              Icons.info,
+                              color: context.themeColors.onBackground,
+                            ),
+                            content: Text(
+                              context.l10n.settings_licenses_text,
+                              style: context.currentTheme.textTheme.bodyLarge,
+                            ),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text(
+                                  context.l10n.global_close,
+                                  style: TextStyle(
+                                    color: context.themeColors.primary,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    child: Text(
+                      context.l10n.settings_licenses,
+                      style: TextStyle(
+                        color: context.themeColors.primary,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Center(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.only(bottom: 15, left: 15, right: 15),
                   child: TextButton(
                     onPressed: () {
                       context.push('/privacy-policy');

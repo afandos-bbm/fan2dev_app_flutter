@@ -128,6 +128,14 @@
     "@settings_notifications_enabled": {
         "description": "Marcador de posición de las notificaciones habilitadas de configuración"
     },
+    "settings_licenses": "Licencias",
+    "@settings_licenses": {
+        "description": "Marcador de posición de las licencias de configuración"
+    },
+    "settings_licenses_text": "Esta aplicación utiliza las siguientes bibliotecas y herramientas:\n\nIlustraciones de Onboarding por Storyset.",
+    "@settings_licenses_text": {
+        "description": "Texto de licencias de configuración"
+    },
     "about_title": "Hola, me llamo Alejandro Fandos",
     "@about_title": {
         "description": "Marcador de posición del título Acerca de"
@@ -227,5 +235,9 @@
     "ob_notifications_button": "Habilitar notificaciones",
     "@ob_notifications_button": {
         "description": "Marcador de posición del botón de habilitar notificaciones de Onboarding"
+    },
+    "global_close": "Cerrar",
+    "@global_close": {
+        "description": "Marcador de posición del botón de cerrar global"
     }
 }

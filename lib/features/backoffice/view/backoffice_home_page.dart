@@ -142,6 +142,14 @@ class _BackofficeHomePageView extends StatelessWidget {
                 'Administración de posts',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
+              const SizedBox(height: 20),
+              Center(
+                child: Text(
+                  'En construcción... 🚧',
+                  style: Theme.of(context).textTheme.titleMedium,
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ],
           ),
         ),

@@ -132,13 +132,13 @@ List<ProjectsProject> _projectList = [
   ),
   ProjectsProject(
     id: 2,
-    name: 'TaskBag',
-    logoAssetUrl: 'assets/images/app_logo.png',
+    name: 'Dream Diary',
+    logoAssetUrl: 'assets/images/projects/dream_diary/dream_diary_logo.png',
     description:
-        'TaskBag es una increíble aplicación de gestión de tareas que te permite organizar tu vida de manera eficiente.',
+        'Dream Diary es una aplicación de gestión de sueños que te permite registrar tus sueños y analizarlos.',
     longDescription:
-        'La idea de TaskBag es que puedas organizar tu vida de manera eficiente. TaskBag es una aplicación de gestión de tareas que te permite organizar tus tareas en bolsas. Cada bolsa esta programada con unos intervalos de repetición y una prioridad. TaskBag te permite organizar tus tareas de manera que puedas ver en todo momento que tareas tienes que hacer y elegir la que mas te convenga en cada momento. TaskBag esta en desarrollo y espero poder lanzarla pronto. TaskBag esta desarrollada en Flutter y Firebase y es un proyecto personal que estoy desarrollando en mi tiempo libre.',
-    status: ProjectsProjectStatus.soon,
+        'La idea de Dream Diary es que puedas registrar tus sueños y analizarlos. Dream Diary es una aplicación de gestión de sueños que te permite registrar tus sueños, analizarlos y ver estadísticas sobre ellos. Dream Diary esta en desarrollo y espero poder lanzarla pronto. Dream Diary esta desarrollada en Flutter y Firebase y es un proyecto personal que estoy desarrollando en mi tiempo libre.',
+    status: ProjectsProjectStatus.development,
     estimatedTimeExpended: '3mo',
     technologies: [
       _technologies[0],
@@ -148,21 +148,20 @@ List<ProjectsProject> _projectList = [
       _technologies[4],
     ],
     screenShotAssetUrls: const [
-      'assets/images/app_logo.png',
-      'assets/images/app_logo.png',
-      'assets/images/app_logo.png',
+      'assets/images/projects/dream_diary/dream_diary_screenshot_1.png',
     ],
+    websiteUrl: 'https://thedreamdiary.app/',
   ),
   ProjectsProject(
     id: 3,
-    name: 'Dream Diary',
+    name: 'TaskBag',
     logoAssetUrl: 'assets/images/app_logo.png',
     description:
-        'Dream Diary es una aplicación de gestión de sueños que te permite registrar tus sueños y analizarlos.',
+        'TaskBag es una increíble aplicación de gestión de tareas que te permite organizar tu vida de manera eficiente.',
     longDescription:
-        'La idea de Dream Diary es que puedas registrar tus sueños y analizarlos. Dream Diary es una aplicación de gestión de sueños que te permite registrar tus sueños, analizarlos y ver estadísticas sobre ellos. Dream Diary esta en desarrollo y espero poder lanzarla pronto. Dream Diary esta desarrollada en Flutter y Firebase y es un proyecto personal que estoy desarrollando en mi tiempo libre.',
+        'La idea de TaskBag es que puedas organizar tu vida de manera eficiente. TaskBag es una aplicación de gestión de tareas que te permite organizar tus tareas en bolsas. Cada bolsa esta programada con unos intervalos de repetición y una prioridad. TaskBag te permite organizar tus tareas de manera que puedas ver en todo momento que tareas tienes que hacer y elegir la que mas te convenga en cada momento. TaskBag esta en desarrollo y espero poder lanzarla pronto. TaskBag esta desarrollada en Flutter y Firebase y es un proyecto personal que estoy desarrollando en mi tiempo libre.',
     status: ProjectsProjectStatus.soon,
-    estimatedTimeExpended: '1mo',
+    estimatedTimeExpended: '3mo',
     technologies: [
       _technologies[0],
       _technologies[1],

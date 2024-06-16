@@ -10,46 +10,51 @@ class FooterF2DWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: locator<ThemeService>().themeMode == ThemeMode.dark
-            ? Colors.black
-            : context.read<ThemeService>().themeData!.colorScheme.primary,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          const SizedBox(
-            height: 15,
+    return ListenableBuilder(
+      listenable: locator<ThemeService>(),
+      builder: (context, _) {
+        return Container(
+          decoration: BoxDecoration(
+            color: locator<ThemeService>().themeMode == ThemeMode.dark
+                ? Colors.black
+                : context.read<ThemeService>().themeData!.colorScheme.primary,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Image.asset(
-                kLogoPath,
-                width: 20,
-                height: 20,
-                color: Colors.white,
+              const SizedBox(
+                height: 15,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    kLogoPath,
+                    width: 20,
+                    height: 20,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(
+                    width: 1,
+                  ),
+                  Text(
+                    context.l10n.footer_text,
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(
-                width: 1,
-              ),
-              Text(
-                context.l10n.footer_text,
-                style: const TextStyle(
-                  fontSize: 12,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                ),
+                height: 15,
               ),
             ],
           ),
-          const SizedBox(
-            height: 15,
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

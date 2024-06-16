@@ -128,6 +128,14 @@
     "@settings_notifications_enabled": {
         "description": "Settings Notifications Enabled Placeholder"
     },
+    "settings_licenses": "Licenses",
+    "@settings_licenses": {
+        "description": "Settings Licenses Placeholder"
+    },
+    "settings_licenses_text": "This app uses the following libraries and tools:\n\nOnboarding illustrations by Storyset.",
+    "@settings_licenses_text": {
+        "description": "Settings Licenses Text Placeholder"
+    },
     "about_title": "Hi, my name is Alejandro Fandos",
     "@about_title": {
         "description": "About Title Placeholder"
@@ -231,5 +239,9 @@
     "ob_notifications_button": "Enable notifications",
     "@ob_notifications_button": {
         "description": "Onboarding Notifications Button Placeholder"
+    },
+    "global_close": "Close",
+    "@global_close": {
+        "description": "Global Close Placeholder"
     }
 }
