@@ -236,6 +236,10 @@
     "@ob_notifications_button": {
         "description": "Marcador de posició del botó d'activació de notificacions de Onboarding"
     },
+    "ob_notifications_download_app": "Descarrega l'aplicació",
+    "@ob_notifications_download_app": {
+        "description": "Marcador de posició del botó de descàrrega de l'aplicació de notificacions de Onboarding"
+    },
     "global_close": "Tancar",
     "@global_close": {
         "description": "Marcador de posició del tancament global"

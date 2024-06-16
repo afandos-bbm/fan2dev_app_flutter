@@ -6,6 +6,7 @@ import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/const.dart';
 import 'package:fan2dev/utils/theme/themes.dart';
 import 'package:fan2dev/utils/widgets/footer_f2d_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -101,34 +102,35 @@ class SettingsHomePage extends StatelessWidget {
                           context.push('/settings/theme');
                         },
                       ),
-                      ListenableBuilder(
-                        listenable: locator<NotificationService>(),
-                        builder: (context, _) {
-                          return ListTile(
-                            title: Text(context.l10n.settings_notifications),
-                            leading: const Icon(Icons.notifications),
-                            // add a boolean to check if notifications are enabled
-                            trailing: Switch(
-                              value: locator<NotificationService>()
-                                  .hasNotificationsEnabled,
-                              onChanged: (value) async {
+                      if (!kIsWeb)
+                        ListenableBuilder(
+                          listenable: locator<NotificationService>(),
+                          builder: (context, _) {
+                            return ListTile(
+                              title: Text(context.l10n.settings_notifications),
+                              leading: const Icon(Icons.notifications),
+                              // add a boolean to check if notifications are enabled
+                              trailing: Switch(
+                                value: locator<NotificationService>()
+                                    .hasNotificationsEnabled,
+                                onChanged: (value) async {
+                                  if (isChangingNotifications) return;
+                                  isChangingNotifications = true;
+                                  await locator<NotificationService>()
+                                      .toggleNotifications();
+                                  isChangingNotifications = false;
+                                },
+                              ),
+                              onTap: () async {
                                 if (isChangingNotifications) return;
                                 isChangingNotifications = true;
                                 await locator<NotificationService>()
                                     .toggleNotifications();
                                 isChangingNotifications = false;
                               },
-                            ),
-                            onTap: () async {
-                              if (isChangingNotifications) return;
-                              isChangingNotifications = true;
-                              await locator<NotificationService>()
-                                  .toggleNotifications();
-                              isChangingNotifications = false;
-                            },
-                          );
-                        },
-                      ),
+                            );
+                          },
+                        ),
                     ],
                   ),
                 ),

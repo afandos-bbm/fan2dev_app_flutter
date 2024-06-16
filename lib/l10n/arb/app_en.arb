@@ -240,6 +240,18 @@
     "@ob_notifications_button": {
         "description": "Onboarding Notifications Button Placeholder"
     },
+    "ob_notifications_download_app": "Download the app now!",
+    "@ob_notifications_download_app": {
+        "description": "Onboarding Notifications Download App Placeholder"
+    },
+    "ob_notifications_download_app_ios": "iOS",
+    "@ob_notifications_download_app_ios": {
+        "description": "Onboarding Notifications Download App iOS Placeholder"
+    },
+    "ob_notifications_download_app_android": "Android",
+    "@ob_notifications_download_app_android": {
+        "description": "Onboarding Notifications Download App Android Placeholder"
+    },
     "global_close": "Close",
     "@global_close": {
         "description": "Global Close Placeholder"

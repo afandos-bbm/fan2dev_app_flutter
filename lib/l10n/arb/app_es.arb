@@ -236,6 +236,10 @@
     "@ob_notifications_button": {
         "description": "Marcador de posición del botón de habilitar notificaciones de Onboarding"
     },
+    "ob_notifications_download_app": "Descarga la aplicación",
+    "@ob_notifications_download_app": {
+        "description": "Marcador de posición del botón de descargar la aplicación de Onboarding"
+    },
     "global_close": "Cerrar",
     "@global_close": {
         "description": "Marcador de posición del botón de cerrar global"

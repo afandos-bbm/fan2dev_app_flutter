@@ -2,10 +2,12 @@ import 'package:fan2dev/core/core.dart';
 import 'package:fan2dev/core/notification_service/notification_service.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/utils.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:gif/gif.dart';
 import 'package:go_router/go_router.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class ObNotificationsPage extends StatelessWidget {
   const ObNotificationsPage({super.key});
@@ -16,7 +18,7 @@ class ObNotificationsPage extends StatelessWidget {
       backgroundColor: context.themeColors.secondary,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          locator<NotificationService>().disableNotifications();
+          if (!kIsWeb) locator<NotificationService>().disableNotifications();
 
           locator<SharedPreferencesService>().hasDoneOnboarding = true;
           context.go('/');
@@ -88,24 +90,66 @@ class ObNotificationsPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            ElevatedButton.icon(
-              onPressed: () {
-                locator<NotificationService>().enableNotifications();
+            if (!kIsWeb)
+              ElevatedButton.icon(
+                onPressed: () {
+                  locator<NotificationService>().enableNotifications();
 
-                locator<SharedPreferencesService>().hasDoneOnboarding = true;
-                context.go('/');
-              },
-              icon: Icon(
-                Icons.notifications_active_rounded,
-                color: context.themeColors.background,
+                  locator<SharedPreferencesService>().hasDoneOnboarding = true;
+                  context.go('/');
+                },
+                icon: Icon(
+                  Icons.notifications_active_rounded,
+                  color: context.themeColors.background,
+                ),
+                label: Text(
+                  context.l10n.ob_notifications_button,
+                  style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                        color: context.themeColors.background,
+                      ),
+                ),
+              )
+            else ...[
+              const SizedBox(height: 20),
+              Text(
+                context.l10n.ob_notifications_download_app,
+                style: Theme.of(context).textTheme.titleMedium,
+                textAlign: TextAlign.center,
               ),
-              label: Text(
-                context.l10n.ob_notifications_button,
-                style: Theme.of(context).textTheme.labelLarge!.copyWith(
-                      color: context.themeColors.background,
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      launchUrlString(
+                          'https://play.google.com/store/apps/details?id=',);
+                    },
+                    icon: const Icon(Icons.apple_rounded),
+                    label: Text(
+                      context.l10n.ob_notifications_download_app_ios,
+                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                            color: context.themeColors.background,
+                          ),
                     ),
+                  ),
+                  const SizedBox(width: 20),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      launchUrlString(
+                          'https://play.google.com/store/apps/details?id=',);
+                    },
+                    icon: const Icon(Icons.android_rounded),
+                    label: Text(
+                      context.l10n.ob_notifications_download_app_android,
+                      style: Theme.of(context).textTheme.labelLarge!.copyWith(
+                            color: context.themeColors.background,
+                          ),
+                    ),
+                  ),
+                ],
               ),
-            ),
+            ],
           ],
         ),
       ),

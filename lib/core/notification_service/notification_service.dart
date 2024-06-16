@@ -4,7 +4,7 @@ import 'package:fan2dev/core/core.dart';
 import 'package:fan2dev/core/firebase_client/firebase_client.dart';
 import 'package:fan2dev/utils/utils.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:talker/talker.dart';
 
 class NotificationService with ChangeNotifier {
@@ -23,6 +23,15 @@ class NotificationService with ChangeNotifier {
 
   static Future<NotificationService> initNotificationService() async {
     _instance = NotificationService();
+
+    if (kIsWeb) {
+      l(
+        'Notifications are not supported on web',
+        name: '🔔 Notification Service',
+        level: LogLevel.warning,
+      );
+      return _instance;
+    }
     await _instance._configureNotifications();
 
     return _instance;

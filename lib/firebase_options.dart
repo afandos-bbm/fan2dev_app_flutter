@@ -55,7 +55,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyCllNC1pLhX6e8jUpX5uVQmO8Lw3fp8IuM',
-    appId: '1:901872844965:android:26ec4b71bf6ccbc13d8d4c',
+    appId: '1:901872844965:android:b8fb7fcaa91ad29b3d8d4c',
     messagingSenderId: '901872844965',
     projectId: 'fan2dev-personal-app',
     storageBucket: 'fan2dev-personal-app.appspot.com',
