@@ -1,4 +1,5 @@
 import 'package:fan2dev/features/blog/domain/domain.dart';
+import 'package:fan2dev/features/blog/view/widgets/blog_post_action_widget.dart';
 import 'package:fan2dev/utils/extensions/datetime_extensions.dart';
 import 'package:fan2dev/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -34,57 +35,58 @@ class BlogPostDetailPage extends StatelessWidget {
           },
           success: (post) {
             child = Column(
-                children: [
-                  const SizedBox(height: 10),
-                  SizedBox(
-                    height: 50,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const SizedBox(height: 10),
+                SizedBox(
+                  height: 50,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          context.go('/blog');
+                        },
+                        child: const Padding(
+                          padding: EdgeInsets.only(left: 20),
+                          child: Icon(Icons.arrow_back),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20, left: 10),
+                        child: Text(
+                          post.createdAt.toLocal().toFormattedString,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 10),
+                Flexible(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        GestureDetector(
-                          onTap: () {
-                            context.go('/blog');
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.only(left: 20),
-                            child: Icon(Icons.arrow_back),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: Text(
+                            post.title,
+                            style:
+                                context.currentTheme.textTheme.headlineMedium,
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 20),
-                          child:
-                              Text(post.createdAt.toLocal().toFormattedString),
+                        Markdown(
+                          data: post.content.removeLineBreaks,
+                          shrinkWrap: true,
+                          selectable: true,
+                          softLineBreak: true,
+                          physics: const NeverScrollableScrollPhysics(),
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(height: 10),
-                  Flexible(
-                    child: SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
-                            child: Text(
-                              post.title,
-                              style:
-                                  context.currentTheme.textTheme.headlineMedium,
-                            ),
-                          ),
-                          Markdown(
-                            data: post.content.removeLineBreaks,
-                            shrinkWrap: true,
-                            selectable: true,
-                            softLineBreak: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              );
+                ),
+              ],
+            );
           },
           empty: () {
             child = const Center(

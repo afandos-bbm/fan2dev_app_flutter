@@ -259,5 +259,9 @@
     "global_close": "Close",
     "@global_close": {
         "description": "Global Close Placeholder"
+    },
+    "global_copied_to_clipboard": "Copied to clipboard",
+    "@global_copied_to_clipboard": {
+        "description": "Global Copied To Clipboard Placeholder"
     }
 }

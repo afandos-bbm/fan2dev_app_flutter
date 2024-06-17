@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
+import 'package:fan2dev/core/core.dart';
 import 'package:fan2dev/features/blog/domain/entities/blog_post_category.dart';
 import 'package:json_annotation/json_annotation.dart';
 
@@ -13,6 +14,7 @@ class BlogPost extends Equatable {
     required this.subtitle,
     required this.content,
     required this.category,
+    required this.likes,
     required this.createdAt,
     required this.updatedAt,
   });
@@ -26,10 +28,16 @@ class BlogPost extends Equatable {
   final String subtitle;
   final String content;
   final BlogPostCategory category;
+  final int likes;
   @JsonKey(fromJson: _dateTimeFromTimestamp)
   final DateTime createdAt;
   @JsonKey(fromJson: _dateTimeFromTimestamp)
   final DateTime updatedAt;
+
+  bool get isLikedByUser =>
+      locator<SharedPreferencesService>().postsLiked.contains(id);
+
+  String get url => '${ConfigurationService.i.appUrl}/blog/$id';
 
   BlogPost copyWith({
     String? id,
@@ -37,6 +45,7 @@ class BlogPost extends Equatable {
     String? subtitle,
     String? content,
     BlogPostCategory? category,
+    int? likes,
     DateTime? createdAt,
     DateTime? updatedAt,
   }) {
@@ -46,6 +55,7 @@ class BlogPost extends Equatable {
       subtitle: subtitle ?? this.subtitle,
       content: content ?? this.content,
       category: category ?? this.category,
+      likes: likes ?? this.likes,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
     );
@@ -53,7 +63,7 @@ class BlogPost extends Equatable {
 
   @override
   List<Object?> get props =>
-      [id, title, subtitle, content, category, createdAt, updatedAt];
+      [id, title, subtitle, content, category, likes, createdAt, updatedAt];
 
   static DateTime _dateTimeFromTimestamp(Timestamp? timestamp) {
     return DateTime.fromMillisecondsSinceEpoch(

@@ -1,9 +1,18 @@
+import 'package:animated_toast_list/animated_toast_list.dart';
+import 'package:fan2dev/features/blog/cubit/blog_cubit/blog_cubit.dart';
 import 'package:fan2dev/features/blog/domain/domain.dart';
+import 'package:fan2dev/features/blog/view/widgets/blog_post_action_widget.dart';
 import 'package:fan2dev/features/blog/view/widgets/blog_post_chip_widget.dart';
+import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/extensions/datetime_extensions.dart';
 import 'package:fan2dev/utils/utils.dart';
+import 'package:fan2dev/utils/widgets/toast_widget.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:share_plus/share_plus.dart';
 
 class BlogPostItem extends StatelessWidget {
   const BlogPostItem({
@@ -22,12 +31,20 @@ class BlogPostItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: SizedBox(
-          height: ResponsiveWidget.isMobile(context) ? 210 : 170,
+          height: ResponsiveWidget.isMobile(context) ? 210 : 180,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              BlogPostChipWidget(
-                category: post.category,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  BlogPostChipWidget(
+                    category: post.category,
+                  ),
+                  BlogPostActionsWidget(
+                    post: post,
+                  ),
+                ],
               ),
               const SizedBox(height: 5),
               Text(
