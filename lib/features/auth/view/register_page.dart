@@ -6,7 +6,6 @@ import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/const.dart';
 import 'package:fan2dev/utils/logger.dart';
 import 'package:fan2dev/utils/widgets/footer_f2d_widget.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

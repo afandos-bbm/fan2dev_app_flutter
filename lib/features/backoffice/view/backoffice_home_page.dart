@@ -4,7 +4,6 @@ import 'package:fan2dev/features/backoffice/cubit/cubit.dart';
 import 'package:fan2dev/features/backoffice/data/data_sources/backoffice_firestore_remote_data_source.dart';
 import 'package:fan2dev/features/backoffice/view/widgets/bo_contact_list_widget.dart';
 import 'package:fan2dev/features/backoffice/view/widgets/bo_post_list_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';

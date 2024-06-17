@@ -21,7 +21,6 @@ import 'package:fan2dev/features/settings/settings.dart';
 import 'package:fan2dev/features/settings/view/settings_notifications.dart';
 import 'package:fan2dev/utils/logger.dart';
 import 'package:fan2dev/utils/result.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

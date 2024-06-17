@@ -5,10 +5,8 @@ import 'package:fan2dev/core/firebase_client/firebase_client.dart';
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/const.dart';
-import 'package:fan2dev/utils/logger.dart';
 import 'package:fan2dev/utils/widgets/footer_f2d_widget.dart';
 import 'package:fan2dev/utils/widgets/toast_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
