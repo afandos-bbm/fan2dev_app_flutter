@@ -1,6 +1,8 @@
 import 'package:fan2dev/core/core.dart';
 import 'package:fan2dev/features/backoffice/cubit/cubit.dart';
 import 'package:fan2dev/features/backoffice/data/data_sources/backoffice_firestore_remote_data_source.dart';
+import 'package:fan2dev/features/backoffice/view/widgets/bo_contact_list_widget.dart';
+import 'package:fan2dev/features/backoffice/view/widgets/bo_post_list_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +19,7 @@ class BackofficeHomePage extends StatelessWidget {
           create: (context) => BackofficeCubit(
             backofficeFirestoreRemoteDataSource:
                 locator<BackofficeFirestoreRemoteDataSource>(),
-          )..getContactForms(),
+          )..init(),
         ),
       ],
       child: const _BackofficeHomePageView(),
@@ -70,86 +72,14 @@ class _BackofficeHomePageView extends StatelessWidget {
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 20),
-              BlocBuilder<BackofficeCubit, BackofficeCubitState>(
-                builder: (context, state) {
-                  if (state.state == BackofficeCubitStates.loading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  }
-
-                  if (state.state == BackofficeCubitStates.error) {
-                    return Center(
-                      child: Text(state.error!.errorMessage),
-                    );
-                  }
-
-                  if (state.contactForms.isEmpty) {
-                    return const Center(
-                      child: Text('No hay formularios recibidos'),
-                    );
-                  }
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: state.contactForms.length,
-                    itemBuilder: (context, index) {
-                      return Card(
-                        margin: const EdgeInsets.all(10),
-                        elevation: 4,
-                        child: ListTile(
-                          title: Text(state.contactForms[index].subject),
-                          subtitle: Text(state.contactForms[index].email),
-                          onTap: () {
-                            showDialog<void>(
-                              context: context,
-                              builder: (context) {
-                                return AlertDialog(
-                                  title: Text(
-                                    state.contactForms[index].subject,
-                                  ),
-                                  content: Text(
-                                    state.contactForms[index].message,
-                                  ),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: const Text('Cerrar'),
-                                    ),
-                                  ],
-                                );
-                              },
-                            );
-                          },
-                          trailing: IconButton(
-                            icon: const Icon(Icons.delete),
-                            onPressed: () {
-                              context.read<BackofficeCubit>().deleteContactForm(
-                                    state.contactForms[index].id!,
-                                  );
-                            },
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                },
-              ),
+              const BoContactListWidget(),
               const SizedBox(height: 20),
               Text(
                 'Administración de posts',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 20),
-              Center(
-                child: Text(
-                  'En construcción... 🚧',
-                  style: Theme.of(context).textTheme.titleMedium,
-                  textAlign: TextAlign.center,
-                ),
-              ),
+              const BoPostListWidget(),
             ],
           ),
         ),

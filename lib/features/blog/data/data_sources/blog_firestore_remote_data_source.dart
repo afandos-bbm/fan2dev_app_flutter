@@ -38,12 +38,14 @@ class BlogFirestoreRemoteDataSourceImpl
         posts = await firebaseFirestore
             .collection('blogPosts')
             .where('category', isEqualTo: category.value)
+            .where('isHidden', isEqualTo: false)
             .orderBy('createdAt', descending: true)
             .limit(limit)
             .get();
       } else {
         posts = await firebaseFirestore
             .collection('blogPosts')
+            .where('isHidden', isEqualTo: false)  
             .orderBy('createdAt', descending: true)
             .limit(limit)
             .get();
