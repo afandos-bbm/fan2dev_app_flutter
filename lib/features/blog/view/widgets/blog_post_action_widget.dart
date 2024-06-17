@@ -27,14 +27,18 @@ class BlogPostActionsWidget extends StatelessWidget {
               Text(
                 post.likes.toString(),
                 style: context.currentTheme.textTheme.bodySmall!.copyWith(
-                  color: context.themeColors.onSurface.withOpacity(0.6),
+                  color: post.isLikedByUser
+                      ? context.themeColors.primary
+                      : context.themeColors.onSurface.withOpacity(0.6),
                 ),
               ),
               const SizedBox(width: 5),
               Icon(
                 post.isLikedByUser ? Icons.favorite : Icons.favorite_border,
                 size: 15,
-                color: context.themeColors.onSurface.withOpacity(0.6),
+                color: post.isLikedByUser
+                    ? context.themeColors.primary
+                    : context.themeColors.onSurface.withOpacity(0.6),
               ),
             ],
           ),
