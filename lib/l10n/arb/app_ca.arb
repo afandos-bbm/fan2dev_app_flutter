@@ -80,6 +80,10 @@
     "@contact_error_invalid_email": {
         "description": "Marcador de posició del missatge d'error de contacte per correu electrònic no vàlid"
     },
+    "contact_error_message_too_long": "Missatge massa llarg",
+    "@contact_error_message_too_long": {
+        "description": "Marcador de posició del missatge d'error de contacte per missatge massa llarg"
+    },
     "settings_title": "Configuració",
     "@settings_title": {
         "description": "Marcador de posició del títol de configuració"

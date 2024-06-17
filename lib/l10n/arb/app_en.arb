@@ -80,6 +80,10 @@
     "@contact_error_invalid_email": {
         "description": "Contact Error Invalid Email Placeholder"
     },
+    "contact_error_message_too_long": "The message is too long",
+    "@contact_error_message_too_long": {
+        "description": "Contact Error Message Too Long Placeholder"
+    },
     "settings_title": "Settings",
     "@settings_title": {
         "description": "Settings Title Placeholder"

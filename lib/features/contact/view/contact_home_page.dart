@@ -102,18 +102,30 @@ class ContactHomePage extends StatelessWidget {
                             },
                           ),
                           const SizedBox(height: 10),
-                          TextFormField(
-                            controller: _messageController,
-                            decoration: InputDecoration(
-                              labelText: context.l10n.contact_message,
-                              prefixIcon: const Icon(Icons.message),
+                          SizedBox(
+                            height: 150,
+                            child: TextFormField(
+                              controller: _messageController,
+                              // make new line when enter is pressed
+                              keyboardType: TextInputType.multiline,
+                              maxLines: null,
+                              decoration: InputDecoration(
+                                labelText: context.l10n.contact_message,
+                                prefixIcon: const Icon(Icons.message),
+                              ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return context
+                                      .l10n.contact_error_empty_message;
+                                }
+
+                                if (value.length > 1000) {
+                                  return context
+                                      .l10n.contact_error_message_too_long;
+                                }
+                                return null;
+                              },
                             ),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return context.l10n.contact_error_empty_message;
-                              }
-                              return null;
-                            },
                           ),
                           const SizedBox(height: 10),
                           Align(
