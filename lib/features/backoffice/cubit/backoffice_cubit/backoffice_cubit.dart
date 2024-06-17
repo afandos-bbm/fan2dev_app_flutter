@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:fan2dev/features/backoffice/data/data.dart';
 import 'package:fan2dev/features/blog/domain/domain.dart';
-import 'package:fan2dev/features/blog/domain/entities/blog_post_category.dart';
 import 'package:fan2dev/features/contact/domain/entities/contact_form/contact_form.dart';
 import 'package:fan2dev/utils/errors/error.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
