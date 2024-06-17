@@ -1,4 +1,3 @@
-import 'package:animated_toast_list/animated_toast_list.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fan2dev/core/auth_service/auth_service.dart';
 import 'package:fan2dev/core/firebase_client/firebase_client.dart';
@@ -7,22 +6,12 @@ import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/const.dart';
 import 'package:fan2dev/utils/logger.dart';
 import 'package:fan2dev/utils/widgets/footer_f2d_widget.dart';
-import 'package:fan2dev/utils/widgets/toast_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return _LoginPageView();
-  }
-}
-
-class _LoginPageView extends StatelessWidget {
-  _LoginPageView();
+class RegisterPage extends StatelessWidget {
+  RegisterPage({super.key});
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -43,7 +32,7 @@ class _LoginPageView extends StatelessWidget {
         padding: const EdgeInsets.only(top: 15),
         child: FloatingActionButton(
           onPressed: () {
-            context.go('/');
+            context.pop();
           },
           child: const Icon(Icons.arrow_back_ios_new_outlined),
         ),
@@ -97,80 +86,84 @@ class _LoginPageView extends StatelessWidget {
                     return context.l10n.contact_error_empty_message;
                   }
 
+                  // password strength min 8, 1 uppercase, 1 lowercase, 1 number
+                  if (value.length < 6) {
+                    return context.l10n.contact_error_password_length;
+                  }
+
+                  if (!value.contains(RegExp('[A-Z]'))) {
+                    return context.l10n.contact_error_password_weak;
+                  }
+
+                  if (!value.contains(RegExp('[a-z]'))) {
+                    return context.l10n.contact_error_password_weak;
+                  }
+
+                  if (!value.contains(RegExp('[0-9]'))) {
+                    return context.l10n.contact_error_password_weak;
+                  }
+
                   return null;
                 },
               ),
               const SizedBox(
                 height: 10,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      context.push('/register');
-                    },
-                    child: Text(
-                      context.l10n.login_register,
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () async {
-                      final email = _emailController.text;
-                      final password = _passwordController.text;
+              Align(
+                alignment: Alignment.centerRight,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    final email = _emailController.text;
+                    final password = _passwordController.text;
 
-                      if (!_formKey.currentState!.validate()) {
-                        return;
-                      }
+                    if (!_formKey.currentState!.validate()) {
+                      return;
+                    }
 
-                      final userCredentials = await locator<FirebaseClient>()
+                    try {
+                      final userCredential = await locator<FirebaseClient>()
                           .firebaseAuthInstance
-                          .signInWithEmailAndPassword(
+                          .createUserWithEmailAndPassword(
                             email: email,
                             password: password,
                           );
 
-                      if (userCredentials.user == null) {
-                        context.showToast(
-                          ToastModel(
-                            message: context.l10n.login_error,
-                            type: ToastType.error,
-                          ),
-                        );
-                        return;
-                      }
+                      await locator<FirebaseClient>()
+                          .firebaseAuthInstance
+                          .currentUser!
+                          .updateDisplayName(email.split('@').first);
 
                       final db = FirebaseFirestore.instance;
 
-                      final user = await db
+                      await db
                           .collection('users')
-                          .doc(userCredentials.user!.uid)
+                          .doc(userCredential.user!.uid)
+                          .set({
+                        'createdAt': FieldValue.serverTimestamp(),
+                        'isAdmin': false,
+                      });
+
+                      final data = await db
+                          .collection('users')
+                          .doc(userCredential.user!.uid)
                           .get();
 
-                      if (!user.exists) {
-                        context.showToast(
-                          ToastModel(
-                            message: context.l10n.login_error,
-                            type: ToastType.error,
-                          ),
-                        );
-                        return;
-                      }
-
                       locator<AuthService>().login(
-                        user.data()!.containsKey('isAdmin') &&
-                            user.data()!['isAdmin'] == true,
+                        data.data()!.containsKey('isAdmin') &&
+                            data.data()!['isAdmin'] == true,
                         DateTime.fromMillisecondsSinceEpoch(
-                          (user.data()!['createdAt'] as Timestamp)
+                          (data.data()!['createdAt'] as Timestamp)
                               .millisecondsSinceEpoch,
                         ),
                       );
-                    },
-                    child: const Text(
-                      'Login',
-                    ),
+                    } catch (e) {
+                      l(e.toString(), name: '❌ onError - FirebaseAuth');
+                    }
+                  },
+                  child: Text(
+                    context.l10n.login_register,
                   ),
-                ],
+                ),
               ),
             ],
           ),

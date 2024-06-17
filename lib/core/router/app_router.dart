@@ -1,7 +1,10 @@
+import 'package:fan2dev/core/auth_service/auth_service.dart';
 import 'package:fan2dev/core/core.dart';
+import 'package:fan2dev/core/firebase_client/firebase_client.dart';
 import 'package:fan2dev/features/about/about.dart';
 import 'package:fan2dev/features/app/privacy_policy/view/privacy_policy_page.dart';
 import 'package:fan2dev/features/auth/auth.dart';
+import 'package:fan2dev/features/auth/view/register_page.dart';
 import 'package:fan2dev/features/backoffice/backoffice.dart';
 import 'package:fan2dev/features/blog/blog.dart';
 import 'package:fan2dev/features/blog/data/data_sources/blog_firestore_remote_data_source.dart';
@@ -12,6 +15,7 @@ import 'package:fan2dev/features/home/home.dart';
 import 'package:fan2dev/features/onboarding/view/ob_notifications_page.dart';
 import 'package:fan2dev/features/onboarding/view/ob_posts_page.dart';
 import 'package:fan2dev/features/onboarding/view/ob_welcome_page.dart';
+import 'package:fan2dev/features/profile/view/profile_home_page.dart';
 import 'package:fan2dev/features/projects/projects.dart';
 import 'package:fan2dev/features/settings/settings.dart';
 import 'package:fan2dev/features/settings/view/settings_notifications.dart';
@@ -287,7 +291,21 @@ final GoRouter router = GoRouter(
       path: '/log-in',
       parentNavigatorKey: _rootNavigatorKey,
       redirect: (context, state) {
-        final auth = FirebaseAuth.instance;
+        final auth = locator<FirebaseClient>().firebaseAuthInstance;
+
+        if (auth.currentUser != null) {
+          return '/profile';
+        } else {
+          return null;
+        }
+      },
+      builder: (context, state) => const LoginPage(),
+    ),
+    GoRoute(
+      path: '/register',
+      parentNavigatorKey: _rootNavigatorKey,
+      redirect: (context, state) {
+        final auth = locator<FirebaseClient>().firebaseAuthInstance;
 
         if (auth.currentUser != null) {
           return '/backoffice';
@@ -295,7 +313,7 @@ final GoRouter router = GoRouter(
           return null;
         }
       },
-      builder: (context, state) => const LoginPage(),
+      builder: (context, state) => RegisterPage(),
     ),
     GoRoute(
       path: '/settings',
@@ -323,15 +341,33 @@ final GoRouter router = GoRouter(
       path: '/backoffice',
       parentNavigatorKey: _rootNavigatorKey,
       redirect: (context, state) {
-        final auth = FirebaseAuth.instance;
+        final auth = locator<FirebaseClient>().firebaseAuthInstance;
 
         if (auth.currentUser == null) {
-          return '/log-in';
+          return '/';
+        } else {
+          if (locator<AuthService>().isAdmin!) {
+            return null;
+          } else {
+            return '/profile';
+          }
+        }
+      },
+      builder: (context, state) => const BackofficeHomePage(),
+    ),
+    GoRoute(
+      path: '/profile',
+      parentNavigatorKey: _rootNavigatorKey,
+      redirect: (context, state) {
+        final auth = locator<FirebaseClient>().firebaseAuthInstance;
+
+        if (auth.currentUser == null) {
+          return '/';
         } else {
           return null;
         }
       },
-      builder: (context, state) => const BackofficeHomePage(),
+      builder: (context, state) => const ProfileHomePage(),
     ),
     GoRoute(
       path: '/privacy-policy',

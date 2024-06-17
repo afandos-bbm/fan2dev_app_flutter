@@ -35,4 +35,5 @@ class FirebaseClient {
   FirebaseApp get firebaseInstance => _firebaseInstance;
   FirebaseMessaging get firebaseMessagingInstance => _firebaseMessagingInstance;
   FirebaseAuth get firebaseAuthInstance => _firebaseAuthInstance;
+  FirebaseFirestore get firebaseFirestoreInstance => _firebaseFirestoreInstance;
 }

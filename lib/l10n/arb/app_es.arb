@@ -20,6 +20,10 @@
     "@login_password": {
         "description": "Contraseña"
     },
+    "login_register": "Registrarse",
+    "@login_register": {
+        "description": "Registrarse"
+    },
     "menu_blog": "Blog",
     "@menu_blog": {
         "description": "Blog"
@@ -251,5 +255,21 @@
     "global_copied_to_clipboard": "Copiado al portapapeles",
     "@global_copied_to_clipboard": {
         "description": "Mensaje de copiado al portapapeles global"
+    },
+    "contact_error_password_length": "La contraseña debe tener al menos 8 caracteres",
+    "@contact_error_password_length": {
+        "description": "Marcador de posición del mensaje de error de contacto por longitud de contraseña"
+    },
+    "contact_error_password_weak": "La contraseña debe contener al menos un número, una letra mayúscula y una letra minúscula",
+    "@contact_error_password_weak": {
+        "description": "Marcador de posición del mensaje de error de contacto por contraseña débil"
+    },
+    "login_error": "Correo electrónico o contraseña incorrectos",
+    "@login_error": {
+        "description": "Mensaje de error de inicio de sesión"
+    },
+    "profile_title": "Perfil",
+    "@profile_title": {
+        "description": "Marcador de posición del título de perfil"
     }
 }

@@ -1,4 +1,5 @@
 import 'package:fan2dev/core/core.dart';
+import 'package:fan2dev/core/firebase_client/firebase_client.dart';
 import 'package:fan2dev/features/backoffice/cubit/cubit.dart';
 import 'package:fan2dev/features/backoffice/data/data_sources/backoffice_firestore_remote_data_source.dart';
 import 'package:fan2dev/features/backoffice/view/widgets/bo_contact_list_widget.dart';
@@ -46,7 +47,7 @@ class _BackofficeHomePageView extends StatelessWidget {
           const SizedBox(width: 10),
           FloatingActionButton(
             onPressed: () {
-              FirebaseAuth.instance.signOut();
+              locator<FirebaseClient>().firebaseAuthInstance.signOut();
               context.go('/');
             },
             backgroundColor: Colors.red,
@@ -62,7 +63,7 @@ class _BackofficeHomePageView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Hola, ${FirebaseAuth.instance.currentUser!.email!.split('@').first} 🚀',
+                'Hola, ${locator<FirebaseClient>().firebaseAuthInstance.currentUser!.email!.split('@').first} 🚀',
                 style: Theme.of(context).textTheme.headlineLarge,
                 textAlign: TextAlign.start,
               ),

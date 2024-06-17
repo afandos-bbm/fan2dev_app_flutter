@@ -1,18 +1,10 @@
-import 'package:animated_toast_list/animated_toast_list.dart';
-import 'package:fan2dev/features/blog/cubit/blog_cubit/blog_cubit.dart';
 import 'package:fan2dev/features/blog/domain/domain.dart';
 import 'package:fan2dev/features/blog/view/widgets/blog_post_action_widget.dart';
 import 'package:fan2dev/features/blog/view/widgets/blog_post_chip_widget.dart';
-import 'package:fan2dev/l10n/l10n.dart';
 import 'package:fan2dev/utils/extensions/datetime_extensions.dart';
 import 'package:fan2dev/utils/utils.dart';
-import 'package:fan2dev/utils/widgets/toast_widget.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:share_plus/share_plus.dart';
 
 class BlogPostItem extends StatelessWidget {
   const BlogPostItem({

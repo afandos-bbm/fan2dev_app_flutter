@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dio/dio.dart';
+import 'package:fan2dev/core/auth_service/auth_service.dart';
 import 'package:fan2dev/core/dio_client/dio_client.dart';
 import 'package:fan2dev/core/firebase_client/firebase_client.dart';
 import 'package:fan2dev/core/notification_service/notification_service.dart';
@@ -29,6 +30,9 @@ Future<void> initGetIt() async {
   // * Core
   locator.registerLazySingleton<ThemeService>(ThemeService.new);
   locator.registerLazySingleton<DeviceInfo>(DeviceInfo.new);
+
+  // * Auth
+  locator.registerLazySingleton<AuthService>(AuthService.new);
 
   // * Network
   locator.registerSingleton<FirebaseClient>(

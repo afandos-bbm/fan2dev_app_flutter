@@ -20,6 +20,10 @@
     "@login_password": {
         "description": "Password"
     },
+    "login_register": "Register",
+    "@login_register": {
+        "description": "Register"
+    },
     "menu_blog": "Blog",
     "@menu_blog": {
         "description": "Blog"
@@ -263,5 +267,21 @@
     "global_copied_to_clipboard": "Copied to clipboard",
     "@global_copied_to_clipboard": {
         "description": "Global Copied To Clipboard Placeholder"
+    },
+    "contact_error_password_length": "Password must be at least 8 characters long",
+    "@contact_error_password_length": {
+        "description": "Contact Error Password Length Placeholder"
+    },
+    "contact_error_password_weak": "Password needs to have at least one uppercase, one lowercase , and one number",
+    "@contact_error_password_weak": {
+        "description": "Contact Error Password Weak Placeholder"
+    },
+    "login_error": "Invalid email or password",
+    "@login_error": {
+        "description": "Login Error Placeholder"
+    },
+    "profile_title": "Profile",
+    "@profile_title": {
+        "description": "Profile Title Placeholder"
     }
 }

@@ -20,6 +20,10 @@
     "@login_password": {
         "description": "Contrasenya"
     },
+    "login_register": "Registrar-se",
+    "@login_register": {
+        "description": "Registrar-se"
+    },
     "menu_blog": "Blog",
     "@menu_blog": {
         "description": "Blog"
@@ -251,5 +255,21 @@
     "global_copied_to_clipboard": "Copiat al porta-retalls",
     "@global_copied_to_clipboard": {
         "description": "Marcador de posició de la còpia global al porta-retalls"
+    },
+    "contact_error_password_length": "La contrasenya ha de tindre almenys 8 caràcters",
+    "@contact_error_password_length": {
+        "description": "Marcador de posició del missatge d'error de contacte per longitud de contrasenya"
+    },
+    "contact_error_password_weak": "La contrasenya ha de tindre almenys una lletra majúscula, una minúscula i un número",
+    "@contact_error_password_weak": {
+        "description": "Marcador de posició del missatge d'error de contacte per contrasenya feble"
+    },
+    "login_error": "El correu electrònic o la contrasenya no són correctes",
+    "@login_error": {
+        "description": "Missatge d'error de connexió"
+    },
+    "profile_title": "Perfil",
+    "@profile_title": {
+        "description": "Marcador de posició del títol de perfil"
     }
 }
