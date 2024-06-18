@@ -11,6 +11,7 @@ import 'package:fan2dev/features/backoffice/data/data_sources/backoffice_firesto
 import 'package:fan2dev/features/blog/data/data.dart';
 import 'package:fan2dev/features/contact/data/data_sources/contact_firestore_form_submissions_remote_data_source.dart';
 import 'package:fan2dev/features/projects/data/data_sources/projects_local_data_source.dart';
+import 'package:fan2dev/features/search/data/data_sources/search_firestore_remote_data_source.dart';
 import 'package:fan2dev/utils/device_info.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:get_it/get_it.dart';
@@ -49,17 +50,22 @@ Future<void> initGetIt() async {
   locator
       .registerLazySingleton<ContactFirestoreFormSubmissionsRemoteDataSource>(
     () => ContactFirestoreFormSubmissionsRemoteDataSourceImpl(
-      firebaseFirestore: FirebaseFirestore.instance,
+      firebaseFirestore: locator<FirebaseClient>().firebaseFirestoreInstance,
     ),
   );
   locator.registerLazySingleton<AboutFirebaseStorageRemoteDataSource>(
     () => AboutFirebaseStorageRemoteDataSourceImpl(
-      firebaseStorage: FirebaseStorage.instance,
+      firebaseStorage: locator<FirebaseClient>().firebaseStorageInstance,
     ),
   );
   locator.registerLazySingleton<BlogFirestoreRemoteDataSource>(
     () => BlogFirestoreRemoteDataSourceImpl(
-      firebaseFirestore: FirebaseFirestore.instance,
+      firebaseFirestore: locator<FirebaseClient>().firebaseFirestoreInstance,
+    ),
+  );
+  locator.registerLazySingleton<SearchFirestoreRemoteDataSource>(
+    () => SearchFirestoreRemoteDataSourceImpl(
+      firebaseFirestore: locator<FirebaseClient>().firebaseFirestoreInstance,
     ),
   );
   locator.registerLazySingleton<ProjectsLocalDataSource>(
@@ -67,7 +73,7 @@ Future<void> initGetIt() async {
   );
   locator.registerLazySingleton<BackofficeFirestoreRemoteDataSource>(
     () => BackofficeFirestoreRemoteDataSourceImpl(
-      firebaseFirestore: FirebaseFirestore.instance,
+      firebaseFirestore: locator<FirebaseClient>().firebaseFirestoreInstance,
     ),
   );
 }

@@ -4,6 +4,7 @@ import 'package:fan2dev/core/shared_preferences_service/shared_preferences_servi
 import 'package:fan2dev/features/blog/data/data_sources/blog_firestore_remote_data_source.dart';
 import 'package:fan2dev/features/blog/domain/domain.dart';
 import 'package:fan2dev/features/blog/domain/entities/blog_post_category.dart';
+import 'package:fan2dev/features/blog/domain/entities/blog_post_comment.dart';
 import 'package:fan2dev/utils/errors/error.dart';
 import 'package:fan2dev/utils/result.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,18 +25,17 @@ class BlogCubit extends Cubit<BlogCubitState> {
     final lastCategory = state.category;
     if (lastCategory != category) {
       emit(
-        BlogCubitState(
-          state: BlogCubitStates.loading,
+        state.copyWith(
+          status: BlogCubitStatuses.loading,
+          posts: [],
+          postsPagination: 0,
           category: category,
         ),
       );
     } else {
       emit(
-        BlogCubitState(
-          state: BlogCubitStates.loading,
-          posts: state.posts,
-          postsPagination: state.postsPagination,
-          category: category,
+        state.copyWith(
+          status: BlogCubitStatuses.loading,
         ),
       );
     }
@@ -50,8 +50,8 @@ class BlogCubit extends Cubit<BlogCubitState> {
       success: (data) {
         if (data.length < postPageLimit) {
           emit(
-            BlogCubitState(
-              state: BlogCubitStates.reachedMax,
+            state.copyWith(
+              status: BlogCubitStatuses.reachedMax,
               posts: state.posts + data,
               postsPagination: state.postsPagination + postPageLimit,
               category: category,
@@ -61,8 +61,8 @@ class BlogCubit extends Cubit<BlogCubitState> {
         }
 
         emit(
-          BlogCubitState(
-            state: BlogCubitStates.loaded,
+          state.copyWith(
+            status: BlogCubitStatuses.loaded,
             posts: state.posts + data,
             postsPagination: state.postsPagination + postPageLimit,
             category: category,
@@ -71,23 +71,23 @@ class BlogCubit extends Cubit<BlogCubitState> {
       },
       failure: (error) {
         emit(
-          BlogCubitState(
-            state: BlogCubitStates.error,
+          state.copyWith(
+            status: BlogCubitStatuses.error,
             error: BusinessAppError.generic(
               errorCode: ErrorCodes.generic,
               errorMessage: error.toString(),
             ),
+            posts: [],
           ),
         );
       },
       empty: () {
         emit(
-          const BlogCubitState(
-            state: BlogCubitStates.error,
-            error: BusinessAppError.generic(
-              errorCode: ErrorCodes.generic,
-              errorMessage: 'No data',
-            ),
+          state.copyWith(
+            status: BlogCubitStatuses.reachedMax,
+            posts: state.posts,
+            postsPagination: state.postsPagination,
+            category: category,
           ),
         );
       },
@@ -96,8 +96,8 @@ class BlogCubit extends Cubit<BlogCubitState> {
 
   Future<void> getPostById({required String id}) async {
     emit(
-      const BlogCubitState(
-        state: BlogCubitStates.loading,
+      state.copyWith(
+        status: BlogCubitStatuses.loading,
       ),
     );
 
@@ -106,8 +106,8 @@ class BlogCubit extends Cubit<BlogCubitState> {
     result.when(
       success: (data) {
         emit(
-          BlogCubitState(
-            state: BlogCubitStates.loaded,
+          state.copyWith(
+            status: BlogCubitStatuses.loaded,
             post: data,
           ),
         );
@@ -115,7 +115,7 @@ class BlogCubit extends Cubit<BlogCubitState> {
       failure: (error) {
         emit(
           BlogCubitState(
-            state: BlogCubitStates.error,
+            status: BlogCubitStatuses.error,
             error: BusinessAppError.generic(
               errorCode: ErrorCodes.generic,
               errorMessage: error.toString(),
@@ -125,11 +125,11 @@ class BlogCubit extends Cubit<BlogCubitState> {
       },
       empty: () {
         emit(
-          const BlogCubitState(
-            state: BlogCubitStates.error,
-            error: BusinessAppError.generic(
+          state.copyWith(
+            status: BlogCubitStatuses.error,
+            error: const BusinessAppError.generic(
               errorCode: ErrorCodes.generic,
-              errorMessage: 'No data',
+              errorMessage: 'Post not found',
             ),
           ),
         );
@@ -138,13 +138,11 @@ class BlogCubit extends Cubit<BlogCubitState> {
   }
 
   Future<void> toggleLike(BlogPost post) async {
-    final previousState = state.state;
+    final previousState = state.status;
 
     emit(
-      BlogCubitState(
-        state: BlogCubitStates.loading,
-        post: post,
-        posts: state.posts,
+      state.copyWith(
+        status: BlogCubitStatuses.loading,
       ),
     );
 
@@ -162,8 +160,8 @@ class BlogCubit extends Cubit<BlogCubitState> {
           locator<SharedPreferencesService>().postsLiked = postsLiked
             ..remove(post.id);
           emit(
-            BlogCubitState(
-              state: previousState,
+            state.copyWith(
+              status: previousState,
               post: post.copyWith(likes: post.likes - 1),
               posts: state.posts.map((e) {
                 if (e.id == post.id) {
@@ -177,8 +175,8 @@ class BlogCubit extends Cubit<BlogCubitState> {
           locator<SharedPreferencesService>().postsLiked = postsLiked
             ..add(post.id);
           emit(
-            BlogCubitState(
-              state: previousState,
+            state.copyWith(
+              status: previousState,
               post: post.copyWith(likes: post.likes + 1),
               posts: state.posts.map((e) {
                 if (e.id == post.id) {
@@ -192,8 +190,8 @@ class BlogCubit extends Cubit<BlogCubitState> {
       },
       failure: (error) {
         emit(
-          BlogCubitState(
-            state: BlogCubitStates.error,
+          state.copyWith(
+            status: previousState,
             error: BusinessAppError.generic(
               errorCode: ErrorCodes.generic,
               errorMessage: error.toString(),
@@ -207,8 +205,8 @@ class BlogCubit extends Cubit<BlogCubitState> {
           locator<SharedPreferencesService>().postsLiked = postsLiked
             ..remove(post.id);
           emit(
-            BlogCubitState(
-              state: previousState,
+            state.copyWith(
+              status: previousState,
               post: post.copyWith(likes: post.likes - 1),
               posts: state.posts.map((e) {
                 if (e.id == post.id) {
@@ -222,8 +220,8 @@ class BlogCubit extends Cubit<BlogCubitState> {
           locator<SharedPreferencesService>().postsLiked = postsLiked
             ..add(post.id);
           emit(
-            BlogCubitState(
-              state: previousState,
+            state.copyWith(
+              status: previousState,
               post: post.copyWith(likes: post.likes + 1),
               posts: state.posts.map((e) {
                 if (e.id == post.id) {
@@ -236,5 +234,114 @@ class BlogCubit extends Cubit<BlogCubitState> {
         }
       },
     );
+  }
+
+  Future<void> getPostComments({required String postId}) async {
+    emit(
+      state.copyWith(
+        status: BlogCubitStatuses.loading,
+      ),
+    );
+
+    final result = await blogFirestoreRemoteDataSource.getPostComments(
+      postId: postId,
+    );
+
+    result.when(
+      success: (data) {
+        emit(
+          state.copyWith(
+            status: BlogCubitStatuses.loaded,
+            postComments: data,
+          ),
+        );
+      },
+      failure: (error) {
+        emit(
+          state.copyWith(
+            status: BlogCubitStatuses.error,
+            error: BusinessAppError.generic(
+              errorCode: ErrorCodes.generic,
+              errorMessage: error.toString(),
+            ),
+          ),
+        );
+      },
+      empty: () {
+        emit(
+          state.copyWith(
+            status: BlogCubitStatuses.loaded,
+            postComments: [],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> addPostComment({
+    required String postId,
+    required String comment,
+  }) async {
+    emit(
+      state.copyWith(
+        status: BlogCubitStatuses.loading,
+      ),
+    );
+
+    final result = await blogFirestoreRemoteDataSource.addPostComment(
+      postId: postId,
+      content: comment,
+    );
+
+    result.when(
+      success: (comment) {
+        emit(
+          state.copyWith(
+            status: BlogCubitStatuses.loaded,
+            postComments: state.postComments +
+                [
+                  comment,
+                ],
+            post: state.post!.copyWith(
+              totalComments: state.post!.totalComments + 1,
+            ),
+            posts: state.posts.map((e) {
+              if (e.id == postId) {
+                return e.copyWith(
+                  totalComments: e.totalComments + 1,
+                );
+              }
+              return e;
+            }).toList(),
+          ),
+        );
+      },
+      failure: (error) {
+        emit(
+          state.copyWith(
+            status: BlogCubitStatuses.error,
+            error: BusinessAppError.generic(
+              errorCode: ErrorCodes.generic,
+              errorMessage: error.toString(),
+            ),
+          ),
+        );
+      },
+      empty: () {
+        emit(
+          state.copyWith(
+            status: BlogCubitStatuses.error,
+            error: const BusinessAppError.generic(
+              errorCode: ErrorCodes.generic,
+              errorMessage: 'Comment not added',
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> returnToPosts() async {
+    await getPosts(category: state.category);
   }
 }

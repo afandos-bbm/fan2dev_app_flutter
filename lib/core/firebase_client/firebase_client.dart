@@ -3,6 +3,7 @@ import 'package:fan2dev/firebase_options.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 
 class FirebaseClient {
@@ -13,6 +14,7 @@ class FirebaseClient {
   static late FirebaseMessaging _firebaseMessagingInstance;
   static late FirebaseAuth _firebaseAuthInstance;
   static late FirebaseFirestore _firebaseFirestoreInstance;
+  static late FirebaseStorage _firebaseStorageInstance;
 
   static Future<FirebaseClient> initFirebaseClient() async {
     _instance = FirebaseClient._();
@@ -22,6 +24,7 @@ class FirebaseClient {
     _firebaseMessagingInstance = FirebaseMessaging.instance;
     _firebaseAuthInstance = FirebaseAuth.instance;
     _firebaseFirestoreInstance = FirebaseFirestore.instance;
+    _firebaseStorageInstance = FirebaseStorage.instance;
     _firebaseFirestoreInstance.settings = const Settings(
       persistenceEnabled: true,
     );
@@ -36,4 +39,5 @@ class FirebaseClient {
   FirebaseMessaging get firebaseMessagingInstance => _firebaseMessagingInstance;
   FirebaseAuth get firebaseAuthInstance => _firebaseAuthInstance;
   FirebaseFirestore get firebaseFirestoreInstance => _firebaseFirestoreInstance;
+  FirebaseStorage get firebaseStorageInstance => _firebaseStorageInstance;
 }

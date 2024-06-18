@@ -40,6 +40,10 @@
     "@menu_contact": {
         "description": "Contacto"
     },
+    "menu_search": "Buscar",
+    "@menu_search": {
+        "description": "Buscar"
+    },
     "contact_title": "¡Envíame tu mensaje!",
     "@contact_title": {
         "description": "Marcador de posición del título de contacto"
@@ -271,5 +275,25 @@
     "profile_title": "Perfil",
     "@profile_title": {
         "description": "Marcador de posición del título de perfil"
+    },
+    "blog_post_comments_title": "Comentarios",
+    "@blog_post_comments_title": {
+        "description": "Marcador de posición del título de comentarios de publicaciones de blog"
+    },
+    "blog_post_comments_empty": "No hay comentarios. ¡Sé el primero en comentar!",
+    "@blog_post_comments_no_comments": {
+        "description": "Marcador de posición de no hay comentarios de publicaciones de blog"
+    },
+    "blog_post_comments_add": "Añadir comentario...",
+    "@blog_post_comments_add": {
+        "description": "Marcador de posición de añadir comentario de publicaciones de blog"
+    },
+    "about_cv": "Descargar CV",
+    "@about_cv": {
+        "description": "Marcador de posición de descargar CV de Acerca de"
+    },
+    "about_cv_error": "Se produjo un error al descargar el CV",
+    "@about_cv_error": {
+        "description": "Mensaje de error al descargar el CV de Acerca de"
     }
 }

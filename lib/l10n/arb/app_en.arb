@@ -40,6 +40,10 @@
     "@menu_contact": {
         "description": "Contact"
     },
+    "menu_search": "Search",
+    "@menu_search": {
+        "description": "Search"
+    },
     "contact_title": "Send me your message!",
     "@contact_title": {
         "description": "Contact Title Placeholder"
@@ -283,5 +287,25 @@
     "profile_title": "Profile",
     "@profile_title": {
         "description": "Profile Title Placeholder"
+    },
+    "blog_post_comments_title": "Comments",
+    "@blog_post_comments_title": {
+        "description": "Blog Post Comments Title Placeholder"
+    },
+    "blog_post_comments_add": "Add comment",
+    "@blog_post_comments_add": {
+        "description": "Blog Post Comments Add Placeholder"
+    },
+    "blog_post_comments_empty": "No comments yet. Be the first to comment!",
+    "@blog_post_comments_empty": {
+        "description": "Blog Post Comments Empty Placeholder"
+    },
+    "about_cv": "Download CV",
+    "@about_cv": {
+        "description": "About CV Placeholder"
+    },
+    "about_cv_error": "Error downloading CV",
+    "@about_cv_error": {
+        "description": "About CV Error Placeholder"
     }
 }

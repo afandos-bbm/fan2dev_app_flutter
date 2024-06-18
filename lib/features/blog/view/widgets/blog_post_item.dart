@@ -1,9 +1,11 @@
+import 'package:fan2dev/features/blog/cubit/blog_cubit/blog_cubit.dart';
 import 'package:fan2dev/features/blog/domain/domain.dart';
 import 'package:fan2dev/features/blog/view/widgets/blog_post_action_widget.dart';
 import 'package:fan2dev/features/blog/view/widgets/blog_post_chip_widget.dart';
 import 'package:fan2dev/utils/extensions/datetime_extensions.dart';
 import 'package:fan2dev/utils/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class BlogPostItem extends StatelessWidget {
@@ -18,7 +20,7 @@ class BlogPostItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.go('/blog/${post.id}', extra: post);
+        context.go('/blog/${post.id}', extra: context.read<BlogCubit>());
       },
       child: Padding(
         padding: const EdgeInsets.all(8),

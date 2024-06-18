@@ -7,8 +7,8 @@ import 'package:fan2dev/features/auth/auth.dart';
 import 'package:fan2dev/features/auth/view/register_page.dart';
 import 'package:fan2dev/features/backoffice/backoffice.dart';
 import 'package:fan2dev/features/blog/blog.dart';
+import 'package:fan2dev/features/blog/cubit/blog_cubit/blog_cubit.dart';
 import 'package:fan2dev/features/blog/data/data_sources/blog_firestore_remote_data_source.dart';
-import 'package:fan2dev/features/blog/domain/domain.dart';
 import 'package:fan2dev/features/blog/view/blog_post_detail_page.dart';
 import 'package:fan2dev/features/contact/contact.dart';
 import 'package:fan2dev/features/home/home.dart';
@@ -17,11 +17,12 @@ import 'package:fan2dev/features/onboarding/view/ob_posts_page.dart';
 import 'package:fan2dev/features/onboarding/view/ob_welcome_page.dart';
 import 'package:fan2dev/features/profile/view/profile_home_page.dart';
 import 'package:fan2dev/features/projects/projects.dart';
+import 'package:fan2dev/features/search/view/search_home_page.dart';
 import 'package:fan2dev/features/settings/settings.dart';
 import 'package:fan2dev/features/settings/view/settings_notifications.dart';
 import 'package:fan2dev/utils/logger.dart';
-import 'package:fan2dev/utils/result.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -96,80 +97,66 @@ final GoRouter router = GoRouter(
               parentNavigatorKey: _shellNavigatorKey,
               redirect: (context, state) async {
                 final extra = state.extra;
-                final possiblePost = extra as BlogPost?;
+                final cubit = extra as BlogCubit?;
 
-                if (possiblePost != null) {
-                  return null;
-                }
+                final postParamId = state.pathParameters['id'];
 
-                final postParamId = state.pathParameters['id']!;
-                final id = int.tryParse(postParamId);
-
-                if (id == null) {
+                if (postParamId == null) {
                   return '/blog';
                 }
 
-                final result =
-                    await locator<BlogFirestoreRemoteDataSource>().getPostById(
-                  id: id.toString(),
-                );
-
-                BlogPost? post;
-
-                result.when(
-                  success: (post) {
-                    post = post;
-                  },
-                  failure: (failure) {
-                    post = null;
-                  },
-                  empty: () {
-                    post = null;
-                  },
-                );
-
-                if (post == null) {
-                  return '/blog';
+                if (cubit != null) {
+                  if (cubit.state.post == null) {
+                    await cubit.getPostById(
+                      id: postParamId,
+                    );
+                  } else {
+                    if (cubit.state.post!.id != postParamId) {
+                      await cubit.getPostById(
+                        id: postParamId,
+                      );
+                    }
+                  }
                 }
 
                 return null;
               },
               pageBuilder: (context, state) {
                 final extra = state.extra;
-                final possiblePost = extra as BlogPost?;
+                final cubit = extra as BlogCubit?;
 
-                if (possiblePost != null) {
+                final postParamId = state.pathParameters['id']!;
+
+                if (cubit != null) {
                   return NoTransitionPage(
-                    child: BlogPostDetailPage(
-                      post: Future.value(
-                        Result<BlogPost, Exception>.success(
-                          data: possiblePost,
-                        ),
+                    child: BlocProvider.value(
+                      value: cubit,
+                      child: BlogPostDetailPage(postId: postParamId),
+                    ),
+                  );
+                } else {
+                  return NoTransitionPage(
+                    child: BlocProvider(
+                      create: (context) => BlogCubit(
+                        blogFirestoreRemoteDataSource:
+                            locator<BlogFirestoreRemoteDataSource>(),
+                      )..getPostById(id: postParamId),
+                      child: BlogPostDetailPage(
+                        postId: postParamId,
                       ),
                     ),
                   );
                 }
-
-                final postParamId = state.pathParameters['id']!;
-                final id = int.tryParse(postParamId);
-
-                if (id == null) {
-                  return const NoTransitionPage(
-                    child: BlogHomePage(),
-                  );
-                }
-
-                final result =
-                    locator<BlogFirestoreRemoteDataSource>().getPostById(
-                  id: id.toString(),
-                );
-
-                return NoTransitionPage(
-                  child: BlogPostDetailPage(post: result),
-                );
               },
             ),
           ],
+        ),
+        GoRoute(
+          path: '/search',
+          parentNavigatorKey: _shellNavigatorKey,
+          pageBuilder: (context, state) => const NoTransitionPage(
+            child: SearchHomePage(),
+          ),
         ),
         GoRoute(
           path: '/projects',

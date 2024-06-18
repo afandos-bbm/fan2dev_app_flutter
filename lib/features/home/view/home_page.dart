@@ -1,3 +1,4 @@
+import 'package:colorful_safe_area/colorful_safe_area.dart';
 import 'package:fan2dev/core/locator/locator.dart';
 import 'package:fan2dev/core/theme_service/theme_service.dart';
 import 'package:fan2dev/features/home/cubit/home_page_cubit/home_page_cubit.dart';
@@ -28,70 +29,75 @@ class _HomePageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListenableBuilder(
-      listenable: locator<ThemeService>(),
-      builder: (context, _) {
-        return Scaffold(
-          backgroundColor: locator<ThemeService>().themeMode == ThemeMode.dark
-              ? Colors.black
-              : context.themeColors.primary,
-          bottomNavigationBar: kIsWeb ? const FooterF2DWidget() : null,
-          body: Column(
-            children: [
-              if (!kIsWeb)
-                const FooterF2DWidget()
-              else ...[
-                const SizedBox(height: 5),
-                const F2DAppBarWidget(),
-                const SizedBox(height: 5),
-              ],
-              Flexible(
-                child: Card(
-                  surfaceTintColor:
-                      locator<ThemeService>().themeMode == ThemeMode.dark
-                          ? Colors.grey[900]
-                          : Colors.grey[200],
-                  margin: EdgeInsets.zero,
-                  shape: kIsWeb
-                      ? const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(15),
-                            topRight: Radius.circular(15),
-                          ),
-                        )
-                      : const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(15),
-                            bottomRight: Radius.circular(15),
-                          ),
-                        ),
-                  child: ClipRRect(
-                    borderRadius: kIsWeb
-                        ? const BorderRadius.only(
-                            topLeft: Radius.circular(15),
-                            topRight: Radius.circular(15),
+    return ColorfulSafeArea(
+      color: locator<ThemeService>().isLightMode
+          ? context.currentTheme.colorScheme.primaryContainer
+          : Colors.black,
+      child: ListenableBuilder(
+        listenable: locator<ThemeService>(),
+        builder: (context, _) {
+          return Scaffold(
+            backgroundColor: locator<ThemeService>().themeMode == ThemeMode.dark
+                ? Colors.black
+                : context.themeColors.primary,
+            bottomNavigationBar: kIsWeb ? const FooterF2DWidget() : null,
+            body: Column(
+              children: [
+                if (!kIsWeb)
+                  const FooterF2DWidget()
+                else ...[
+                  const SizedBox(height: 5),
+                  const F2DAppBarWidget(),
+                  const SizedBox(height: 5),
+                ],
+                Flexible(
+                  child: Card(
+                    surfaceTintColor:
+                        locator<ThemeService>().themeMode == ThemeMode.dark
+                            ? Colors.grey[900]
+                            : Colors.grey[200],
+                    margin: EdgeInsets.zero,
+                    shape: kIsWeb
+                        ? const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                            ),
                           )
-                        : const BorderRadius.only(
-                            bottomLeft: Radius.circular(15),
-                            bottomRight: Radius.circular(15),
+                        : const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(15),
+                              bottomRight: Radius.circular(15),
+                            ),
                           ),
-                    child: BlocBuilder<HomePageCubit, HomePageState>(
-                      builder: (context, state) {
-                        return child;
-                      },
+                    child: ClipRRect(
+                      borderRadius: kIsWeb
+                          ? const BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              topRight: Radius.circular(15),
+                            )
+                          : const BorderRadius.only(
+                              bottomLeft: Radius.circular(15),
+                              bottomRight: Radius.circular(15),
+                            ),
+                      child: BlocBuilder<HomePageCubit, HomePageState>(
+                        builder: (context, state) {
+                          return child;
+                        },
+                      ),
                     ),
                   ),
                 ),
-              ),
-              if (!kIsWeb) ...[
-                const SizedBox(height: 5),
-                const F2DAppBarWidget(),
-                const SizedBox(height: 5),
+                if (!kIsWeb) ...[
+                  const SizedBox(height: 5),
+                  const F2DAppBarWidget(),
+                  const SizedBox(height: 5),
+                ],
               ],
-            ],
-          ),
-        );
-      },
+            ),
+          );
+        },
+      ),
     );
   }
 }

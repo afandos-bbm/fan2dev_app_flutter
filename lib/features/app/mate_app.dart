@@ -49,14 +49,6 @@ class MateApp extends StatelessWidget {
                     themeMode: locator<ThemeService>().themeMode,
                     locale: selectedLocale,
                     routerConfig: router,
-                    builder: (context, child) {
-                      return ColorfulSafeArea(
-                        color: locator<ThemeService>().isLightMode
-                            ? context.currentTheme.colorScheme.primaryContainer
-                            : Colors.black,
-                        child: child!,
-                      );
-                    },
                   );
                 },
               );

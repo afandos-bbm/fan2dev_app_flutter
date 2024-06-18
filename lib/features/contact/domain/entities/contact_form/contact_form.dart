@@ -19,6 +19,7 @@ class ContactForm extends Equatable {
 
   Map<String, dynamic> toJson() => _$ContactFormToJson(this);
 
+  @JsonKey(includeToJson: false)
   final String? id;
   final String email;
   final String subject;

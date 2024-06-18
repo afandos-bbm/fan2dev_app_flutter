@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 import 'package:fan2dev/core/core.dart';
 import 'package:fan2dev/features/blog/domain/entities/blog_post_category.dart';
+import 'package:fan2dev/features/blog/domain/entities/blog_post_comment.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'blog_post.g.dart';
@@ -18,6 +19,7 @@ class BlogPost extends Equatable {
     required this.createdAt,
     required this.updatedAt,
     this.isHidden = false,
+    this.totalComments = 0,
   });
 
   factory BlogPost.fromJson(Map<String, dynamic> json) =>
@@ -37,6 +39,7 @@ class BlogPost extends Equatable {
   final DateTime updatedAt;
   @JsonKey(defaultValue: false)
   final bool isHidden;
+  final int totalComments;
 
   bool get isLikedByUser =>
       locator<SharedPreferencesService>().postsLiked.contains(id);
@@ -53,6 +56,7 @@ class BlogPost extends Equatable {
     DateTime? createdAt,
     DateTime? updatedAt,
     bool? isHidden,
+    int? totalComments,
   }) {
     return BlogPost(
       id: id ?? this.id,
@@ -64,12 +68,23 @@ class BlogPost extends Equatable {
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
       isHidden: isHidden ?? this.isHidden,
+      totalComments: totalComments ?? this.totalComments,
     );
   }
 
   @override
-  List<Object?> get props =>
-      [id, title, subtitle, content, category, likes, createdAt, updatedAt];
+  List<Object?> get props => [
+        id,
+        title,
+        subtitle,
+        content,
+        category,
+        likes,
+        createdAt,
+        updatedAt,
+        isHidden,
+        totalComments
+      ];
 
   static DateTime _dateTimeFromTimestamp(Timestamp? timestamp) {
     return DateTime.fromMillisecondsSinceEpoch(
@@ -81,5 +96,10 @@ class BlogPost extends Equatable {
     return Timestamp.fromMillisecondsSinceEpoch(
       dateTime.millisecondsSinceEpoch,
     );
+  }
+
+  @override
+  String toString() {
+    return 'BlogPost{id: $id, title: ${title.substring(0, 30)}, subtitle: ${subtitle.length}, content: ${content.length}, category: $category, likes: $likes, createdAt: $createdAt, updatedAt: $updatedAt, isHidden: $isHidden, totalComments: $totalComments}';
   }
 }

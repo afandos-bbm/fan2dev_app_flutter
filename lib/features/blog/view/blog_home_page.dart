@@ -145,21 +145,21 @@ class _BlogHomePageView extends StatelessWidget {
             Flexible(
               child: PaginatedListView(
                 itemCount: state.posts.length,
-                hasReachedMax: state.state == BlogCubitStates.reachedMax,
+                hasReachedMax: state.status == BlogCubitStatuses.reachedMax,
                 onFetchData: () {
                   context.read<BlogCubit>().getPosts();
                 },
                 errorBuilder: (context) {
                   return const GenericErrorWidget();
                 },
-                isError: state.state == BlogCubitStates.error,
+                isError: state.status == BlogCubitStatuses.error,
                 loadingBuilder: (context) {
                   return SizedBox(
                     height: MediaQuery.of(context).size.height * 0.5,
                     child: const LoadingWidget(),
                   );
                 },
-                isLoading: state.state == BlogCubitStates.loading,
+                isLoading: state.status == BlogCubitStatuses.loading,
                 padding: const EdgeInsets.all(20),
                 emptyBuilder: (context) {
                   return Center(

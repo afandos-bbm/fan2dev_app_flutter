@@ -87,7 +87,7 @@ class F2DAppBarWidget extends StatelessWidget {
                               const SizedBox(width: 10),
                               TextButton(
                                 child: Text(
-                                  context.l10n.menu_projects,
+                                  context.l10n.menu_search,
                                   style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
@@ -104,7 +104,7 @@ class F2DAppBarWidget extends StatelessWidget {
                                   context
                                       .read<HomePageCubit>()
                                       .changeBottomNavBar(1);
-                                  context.go('/projects');
+                                  context.go('/search');
                                 },
                               ),
                               const SizedBox(width: 10),
@@ -128,29 +128,6 @@ class F2DAppBarWidget extends StatelessWidget {
                                       .read<HomePageCubit>()
                                       .changeBottomNavBar(2);
                                   context.go('/about');
-                                },
-                              ),
-                              const SizedBox(width: 10),
-                              TextButton(
-                                child: Text(
-                                  context.l10n.menu_contact,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
-                                    color: context
-                                                .watch<HomePageCubit>()
-                                                .state
-                                                .index ==
-                                            3
-                                        ? Colors.white
-                                        : Colors.white70,
-                                  ),
-                                ),
-                                onPressed: () {
-                                  context
-                                      .read<HomePageCubit>()
-                                      .changeBottomNavBar(3);
-                                  context.go('/contact');
                                 },
                               ),
                             ],

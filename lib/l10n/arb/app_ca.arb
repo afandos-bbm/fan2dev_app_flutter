@@ -40,6 +40,10 @@
     "@menu_contact": {
         "description": "Contacte"
     },
+    "menu_search": "Cerca",
+    "@menu_search": {
+        "description": "Cerca"
+    },
     "contact_title": "Envia'm el teu missatge!",
     "@contact_title": {
         "description": "Marcador de posició del títol de contacte"
@@ -271,5 +275,25 @@
     "profile_title": "Perfil",
     "@profile_title": {
         "description": "Marcador de posició del títol de perfil"
+    },
+    "blog_post_comments_title": "Comentaris",
+    "@blog_post_comments_title": {
+        "description": "Marcador de posició del títol de comentaris de publicacions de blog"
+    },
+    "blog_post_comments_add": "Escriu un comentari...",
+    "@blog_post_comments_add": {
+        "description": "Marcador de posició de l'entrada de comentaris de publicacions de blog"
+    },
+    "blog_post_comments_emtpy": "Encara no hi ha comentaris. Sigues el primer!",
+    "@blog_post_comments_emtpy": {
+        "description": "Missatge d'informació quan no hi ha comentaris de publicacions de blog"
+    },
+    "about_cv": "Descarrega el meu CV",
+    "@about_cv": {
+        "description": "Marcador de posició del botó de descàrrega del CV"
+    },
+    "about_cv_error": "S'ha produït un error en descarregar el CV",
+    "@about_cv_error": {
+        "description": "Missatge d'error en descarregar el CV"
     }
 }
